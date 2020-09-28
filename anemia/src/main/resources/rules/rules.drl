@@ -1,0 +1,653 @@
+//created on: Sep 27, 2020
+package forward
+
+//list any import classes here.
+import model.*;
+import model.enums.*;
+
+//declare any global variables here
+
+
+
+rule "R1 – Nivel de hematocrito bajo"
+    when
+        $muestraDeSangre: MuestraDeSangre(hematocrito < 38.3)
+    then
+      modify($muestraDeSangre) {
+    		setNivelHematocrito(ComponentLevel.Bajo)
+    	}
+end
+
+rule "R2 – Nivel de hematocrito normal"
+    when
+        $muestraDeSangre: MuestraDeSangre(hematocrito >= 38.3 && hematocrito <= 48.6 )
+    then
+      modify($muestraDeSangre) {
+    		setNivelHematocrito(ComponentLevel.Normal)
+    	}
+end
+
+rule "R3 – Nivel de hematocrito alto"
+    when
+        $muestraDeSangre: MuestraDeSangre(hematocrito > 48.6 )
+    then
+      modify($muestraDeSangre) {
+    		setNivelHematocrito(ComponentLevel.Alto)
+    	}
+end
+
+rule "R4 – Nivel de hemoglobina corspucular media bajo"
+    when
+        $muestraDeSangre: MuestraDeSangre(hemoglobinaCorspucularMedia < 27)
+    then
+      modify($muestraDeSangre) {
+    		setNivelHemoglobinaCorpusculasMedia(ComponentLevel.Bajo)
+    	}
+end
+
+rule "R5 – Nivel de hemoglobina corspucular media normal"
+    when
+        $muestraDeSangre: MuestraDeSangre(hemoglobinaCorspucularMedia >= 27 && hemoglobinaCorspucularMedia <= 33 )
+    then
+      modify($muestraDeSangre) {
+    		setNivelHemoglobinaCorpusculasMedia(ComponentLevel.Normal)
+    	}
+end
+
+rule "R6 – Nivel de hemoglobina corspucular media alto"
+    when
+        $muestraDeSangre: MuestraDeSangre(hemoglobinaCorspucularMedia > 33 )
+    then
+      modify($muestraDeSangre) {
+    		setNivelHemoglobinaCorpusculasMedia(ComponentLevel.Alto)
+    	}
+end
+
+rule "R7 – Nivel de volumen corpuscular medio bajo"
+    when
+        $muestraDeSangre: MuestraDeSangre(volumenCorpuscularMedio < 78)
+    then
+      modify($muestraDeSangre) {
+    		setNivelVolumenCorpuscularMedio(ComponentLevel.Bajo)
+    	}
+end
+
+rule "R8 – Nivel de volumen corpuscular medio normal"
+    when
+        $muestraDeSangre: MuestraDeSangre(volumenCorpuscularMedio >= 78 && volumenCorpuscularMedio <= 100 )
+    then
+      modify($muestraDeSangre) {
+    		setNivelVolumenCorpuscularMedio(ComponentLevel.Normal)
+    	}
+end
+
+rule "R9 – Nivel de volumen corpuscular medio alto"
+    when
+        $muestraDeSangre: MuestraDeSangre(volumenCorpuscularMedio > 100 )
+    then
+      modify($muestraDeSangre) {
+    		setNivelVolumenCorpuscularMedio(ComponentLevel.Alto)
+    	}
+end
+rule "R10 – Nivel de sideremia bajo"
+    when
+        $muestraDeSangre: MuestraDeSangre(sideremia < 50)
+    then
+      modify($muestraDeSangre) {
+    		setNivelSideremia(ComponentLevel.Bajo)
+    	}
+end
+
+rule "R11 – Nivel de sideremia normal"
+    when
+        $muestraDeSangre: MuestraDeSangre(sideremia >= 50 && sideremia <= 150 )
+    then
+      modify($muestraDeSangre) {
+    		setNivelSideremia(ComponentLevel.Normal)
+    	}
+end
+
+rule "R12 – Nivel de sideremia alto"
+    when
+        $muestraDeSangre: MuestraDeSangre(sideremia > 50 )
+    then
+      modify($muestraDeSangre) {
+    		setNivelSideremia(ComponentLevel.Alto)
+    	}
+end
+rule "R13 – Nivel de transferrina bajo"
+    when
+        $muestraDeSangre: MuestraDeSangre(transferrina < 200)
+    then
+      modify($muestraDeSangre) {
+    		setNivelTransferrina(ComponentLevel.Bajo)
+    	}
+end
+
+rule "R14 – Nivel de transferrina normal"
+    when
+        $muestraDeSangre: MuestraDeSangre(transferrina >= 200 && transferrina <= 360 )
+    then
+      modify($muestraDeSangre) {
+    		setNivelTransferrina(ComponentLevel.Normal)
+    	}
+end
+
+rule "R15 – Nivel de transferrina alto"
+    when
+        $muestraDeSangre: MuestraDeSangre(transferrina > 360 )
+    then
+      modify($muestraDeSangre) {
+    		setNivelTransferrina(ComponentLevel.Alto)
+    	}
+end
+rule "R16 – Nivel de ferritina bajo"
+    when
+        $muestraDeSangre: MuestraDeSangre(ferritina < 12)
+    then
+      modify($muestraDeSangre) {
+    		setNivelFerritina(ComponentLevel.Bajo)
+    	}
+end
+
+rule "R17 – Nivel de ferritina normal"
+    when
+        $muestraDeSangre: MuestraDeSangre(ferritina >= 12 && ferritina <= 300 )
+    then
+      modify($muestraDeSangre) {
+    		setNivelFerritina(ComponentLevel.Normal)
+    	}
+end
+
+rule "R18 – Nivel de ferritina alto"
+    when
+        $muestraDeSangre: MuestraDeSangre(ferritina > 300 )
+    then
+      modify($muestraDeSangre) {
+    		setNivelFerritina(ComponentLevel.Alto)
+    	}
+end
+rule "R19 – Nivel de amplitud de distribucion eritrocitaria bajo"
+    when
+        $muestraDeSangre: MuestraDeSangre(amplitudDistribucionEritrocitaria < 11)
+    then
+      modify($muestraDeSangre) {
+    		setNivelAmplitudDistribucionEritrocitaria(ComponentLevel.Bajo)
+    	}
+end
+
+rule "R20 – Nivel de amplitud de distribucion eritrocitaria normal"
+    when
+        $muestraDeSangre: MuestraDeSangre(amplitudDistribucionEritrocitaria >= 11 && amplitudDistribucionEritrocitaria <= 14 )
+    then
+      modify($muestraDeSangre) {
+    		setNivelAmplitudDistribucionEritrocitaria(ComponentLevel.Normal)
+    	}
+end
+
+rule "R21 – Nivel de amplitud de distribucion eritrocitaria alto"
+    when
+        $muestraDeSangre: MuestraDeSangre(amplitudDistribucionEritrocitaria > 14 )
+    then
+      modify($muestraDeSangre) {
+    		setNivelAmplitudDistribucionEritrocitaria(ComponentLevel.Alto)
+    	}
+end
+rule "R22 – Nivel de reticulocitos bajo"
+    when
+        $muestraDeSangre: MuestraDeSangre(reticulocitos < 35000)
+    then
+      modify($muestraDeSangre) {
+    		setNivelReticulocitos(ComponentLevel.Bajo)
+    	}
+end
+
+rule "R23 – Nivel de reticulocitos normal"
+    when
+        $muestraDeSangre: MuestraDeSangre(reticulocitos >= 35000 && reticulocitos <= 75000 )
+    then
+      modify($muestraDeSangre) {
+    		setNivelReticulocitos(ComponentLevel.Normal)
+    	}
+end
+
+rule "R24 – Nivel de reticulocitos alto"
+    when
+        $muestraDeSangre: MuestraDeSangre(reticulocitos > 75000 )
+    then
+      modify($muestraDeSangre) {
+    		setNivelReticulocitos(ComponentLevel.Alto)
+    	}
+end
+rule "R25 – Nivel de hematies bajo"
+    when
+        $muestraDeSangre: MuestraDeSangre(hematies < 4500000)
+    then
+      modify($muestraDeSangre) {
+    		setNivelHematies(ComponentLevel.Bajo)
+    	}
+end
+
+rule "R26 – Nivel de hematies normal"
+    when
+        $muestraDeSangre: MuestraDeSangre(hematies >= 4500000 && hematies <= 5500000 )
+    then
+      modify($muestraDeSangre) {
+    		setNivelHematies(ComponentLevel.Normal)
+    	}
+end
+
+rule "R27 – Nivel de hematies alto"
+    when
+        $muestraDeSangre: MuestraDeSangre(hematies > 5500000 )
+    then
+      modify($muestraDeSangre) {
+    		setNivelHematies(ComponentLevel.Alto)
+    	}
+end
+
+rule "R28 – Morfologia anemia microcitica"
+    when
+        $muestraDeSangre: MuestraDeSangre(
+        	nivelHematocrito.isa(ComponentLevel.Bajo),
+        	nivelHemoglobinaCorpusculasMedia.isa(ComponentLevel.Bajo),
+        	nivelVolumenCorpuscularMedio.isa(ComponentLevel.Bajo)
+       )
+    then
+      modify($muestraDeSangre.getTipoAnemia()) {
+    		setMorfologia(AnemiaMorfology.Microcitica)
+    	}
+end
+
+rule "R29 – Morfologia anemia normocitica"
+    when
+        $muestraDeSangre: MuestraDeSangre(
+        	nivelHematocrito.isa(ComponentLevel.Bajo),
+        	nivelVolumenCorpuscularMedio.isa(ComponentLevel.Normal)
+       )
+    then
+      modify($muestraDeSangre.getTipoAnemia()) {
+    		setMorfologia(AnemiaMorfology.Normocitica)
+    	}
+end
+
+rule "R30 – Morfologia anemia macrocitica"
+    when
+        $muestraDeSangre: MuestraDeSangre(
+        	nivelHematocrito.isa(ComponentLevel.Bajo),
+        	nivelHemoglobinaCorpusculasMedia.isa(ComponentLevel.Alto),
+        	nivelVolumenCorpuscularMedio.isa(ComponentLevel.Alto)
+       )
+    then
+      modify($muestraDeSangre.getTipoAnemia()) {
+    		setMorfologia(AnemiaMorfology.Macrocitica)
+    	}
+end
+
+rule "R31 – Deficiencia de hierro"
+    when
+        $enfermedadPreexistente: EnfermedadPreexistente(
+        	origen.DeficienciaDeHierro.isa(PatologyOriginOptions.Si),
+        	origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
+        	origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
+        	origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
+        	origen.Cancer.isa(PatologyOriginOptions.No),
+        	origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
+        	origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
+        	origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
+        	origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
+        	origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
+        	origen.Hemocromatosis.isa(PatologyOriginOptions.No),
+            origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)        	
+       )
+    then
+      modify($enfermedadPreexistente) {
+    		setEnfermedad(ExistingDiseases.DeficienciaDeHierro)
+    	}
+end
+rule "R32 – Deficiencia de vitamina B12 y folatos"
+    when
+        $enfermedadPreexistente: EnfermedadPreexistente(
+        	origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
+        	origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.Si),
+        	origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.Si),
+        	origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
+        	origen.Cancer.isa(PatologyOriginOptions.No),
+        	origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
+        	origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
+        	origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
+        	origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
+        	origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
+        	origen.Hemocromatosis.isa(PatologyOriginOptions.No),
+            origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)        	
+       )
+    then
+      modify($enfermedadPreexistente) {
+    		setEnfermedad(ExistingDiseases.DeficienciaDeVitaminaB12YFolatos)
+    	}
+end
+rule "R33 – Enfermedades crónicas por transtornos inmunitarios"
+    when
+        $enfermedadPreexistente: EnfermedadPreexistente(
+        	origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
+        	origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
+        	origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
+        	origen.TrastornoInmunitario.isa(PatologyOriginOptions.Si),
+        	origen.Cancer.isa(PatologyOriginOptions.No),
+        	origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
+        	origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
+        	origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
+        	origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
+        	origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
+        	origen.Hemocromatosis.isa(PatologyOriginOptions.No),
+            origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)        	
+       )
+    then
+      modify($enfermedadPreexistente) {
+    		setEnfermedad(ExistingDiseases.EnfermedadesCronicas)
+    	}
+end
+rule "R34 – Enfermedades crónicas por cancer"
+    when
+        $enfermedadPreexistente: EnfermedadPreexistente(
+        	origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
+        	origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
+        	origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
+        	origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
+        	origen.Cancer.isa(PatologyOriginOptions.Si),
+        	origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
+        	origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
+        	origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
+        	origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
+        	origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
+        	origen.Hemocromatosis.isa(PatologyOriginOptions.No),
+            origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)        	
+       )
+    then
+      modify($enfermedadPreexistente) {
+    		setEnfermedad(ExistingDiseases.EnfermedadesCronicas)
+    	}
+end
+rule "R35 – Enfermedades crónicas por infecciones prologandas"
+    when
+        $enfermedadPreexistente: EnfermedadPreexistente(
+        	origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
+        	origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
+        	origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
+        	origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
+        	origen.Cancer.isa(PatologyOriginOptions.No),
+        	origen.InfeccionesProlongadas.isa(PatologyOriginOptions.Si),
+        	origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
+        	origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
+        	origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
+        	origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
+        	origen.Hemocromatosis.isa(PatologyOriginOptions.No),
+            origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)        	
+       )
+    then
+      modify($enfermedadPreexistente) {
+    		setEnfermedad(ExistingDiseases.EnfermedadesCronicas)
+    	}
+end
+rule "R36 – Glóbulos rojos con forma defectuosa originado por enfermedad drepanocítica"
+    when
+        $enfermedadPreexistente: EnfermedadPreexistente(
+        	origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
+        	origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
+        	origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
+        	origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
+        	origen.Cancer.isa(PatologyOriginOptions.No),
+        	origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
+        	origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.Si),
+        	origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
+        	origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
+        	origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
+        	origen.Hemocromatosis.isa(PatologyOriginOptions.No),
+            origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)        	
+       )
+    then
+      modify($enfermedadPreexistente) {
+    		setEnfermedad(ExistingDiseases.GlobulosRojosConFormaDefectuosa)
+    	}
+end
+rule "R37 – Glóbulos rojos con forma defectuosa originado por rasgo drepanocítico"
+    when
+        $enfermedadPreexistente: EnfermedadPreexistente(
+        	origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
+        	origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
+        	origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
+        	origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
+        	origen.Cancer.isa(PatologyOriginOptions.No),
+        	origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
+        	origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
+        	origen.RasgoDrepanocítico.isa(PatologyOriginOptions.Si),
+        	origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
+        	origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
+        	origen.Hemocromatosis.isa(PatologyOriginOptions.No),
+            origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)        	
+       )
+    then
+      modify($enfermedadPreexistente) {
+    		setEnfermedad(ExistingDiseases.GlobulosRojosConFormaDefectuosa)
+    	}
+end
+rule "R38 – Destrucción de glóbulos rojos antes de lo normal"
+    when
+        $enfermedadPreexistente: EnfermedadPreexistente(
+        	origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
+        	origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
+        	origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
+        	origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
+        	origen.Cancer.isa(PatologyOriginOptions.No),
+        	origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
+        	origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
+        	origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
+        	origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.Si),
+        	origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
+        	origen.Hemocromatosis.isa(PatologyOriginOptions.No),
+            origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)        	
+       )
+    then
+      modify($enfermedadPreexistente) {
+    		setEnfermedad(ExistingDiseases.DestruccionDeGlobulosRojosAntesDeLoNormal)
+    	}
+end
+rule "R39 – Baja producción de glóbulos rojos"
+    when
+        $enfermedadPreexistente: EnfermedadPreexistente(
+        	origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
+        	origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
+        	origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
+        	origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
+        	origen.Cancer.isa(PatologyOriginOptions.No),
+        	origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
+        	origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
+        	origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
+        	origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
+        	origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.Si),
+        	origen.Hemocromatosis.isa(PatologyOriginOptions.No),
+            origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)        	
+       )
+    then
+      modify($enfermedadPreexistente) {
+    		setEnfermedad(ExistingDiseases.BajaProduccionDeGlobulosRojos)
+    	}
+end
+rule "R40 – Acumulación excesiva de hierro "
+    when
+        $enfermedadPreexistente: EnfermedadPreexistente(
+        	origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
+        	origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
+        	origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
+        	origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
+        	origen.Cancer.isa(PatologyOriginOptions.No),
+        	origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
+        	origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
+        	origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
+        	origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
+        	origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
+        	origen.Hemocromatosis.isa(PatologyOriginOptions.Si),
+            origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)        	
+       )
+    then
+      modify($enfermedadPreexistente) {
+    		setEnfermedad(ExistingDiseases.AcumulacionExcesivaDeHierro)
+    	}
+end
+rule "R41 – Deficiencia hereditario de hemoglobina"
+    when
+        $enfermedadPreexistente: EnfermedadPreexistente(
+        	origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
+        	origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
+        	origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
+        	origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
+        	origen.Cancer.isa(PatologyOriginOptions.No),
+        	origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
+        	origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
+        	origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
+        	origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
+        	origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
+        	origen.Hemocromatosis.isa(PatologyOriginOptions.No),
+        	origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.Si)        	
+       )
+    then
+      modify($enfermedadPreexistente) {
+    		setEnfermedad(ExistingDiseases.DeficitHereditarioDeHemoglobina)
+    	}
+end
+
+rule "R42 – Anemia sideroblastica"
+    when
+        $muestraDeSangre: MuestraDeSangre(
+        	tipoAnemia.morfologia.isa(AnemiaMorfology.Microcitica),
+        	nivelSideremia.isa(ComponentLevel.Normal) || nivelSideremia.isa(ComponentLevel.Alto),
+        	nivelTransferrina.isa(ComponentLevel.Normal),
+        	nivelFerritina.isa(ComponentLevel.Alto),
+        	nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Alto),
+        	nivelReticulocitos.isa(ComponentLevel.Bajo),
+        	nivelHematies.isa(ComponentLevel.Bajo)
+       )
+    then
+      modify($muestraDeSangre.getTipoAnemia()) {
+    		setDiagnostico(AnemiaTypes.Sideroblastica)
+    	}
+end
+
+rule "R43 – Talasemia"
+    when
+        $muestraDeSangre: MuestraDeSangre(
+        	tipoAnemia.morfologia.isa(AnemiaMorfology.Microcitica),
+        	nivelSideremia.isa(ComponentLevel.Normal),
+        	nivelTransferrina.isa(ComponentLevel.Normal),
+        	nivelFerritina.isa(ComponentLevel.Normal),
+        	nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Normal),
+        	nivelReticulocitos.isa(ComponentLevel.Normal),
+        	nivelHematies.isa(ComponentLevel.Alto)
+       )
+    then
+      modify($muestraDeSangre.getTipoAnemia()) {
+    		setDiagnostico(AnemiaTypes.Talasemia)
+    	}
+end
+
+rule "R44 – Anemia ferropénica"
+    when
+        $muestraDeSangre: MuestraDeSangre(
+        	tipoAnemia.morfologia.isa(AnemiaMorfology.Microcitica),
+        	nivelSideremia.isa(ComponentLevel.Bajo),
+        	nivelTransferrina.isa(ComponentLevel.Alto),
+        	nivelFerritina.isa(ComponentLevel.Bajo),
+        	nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Alto),
+        	nivelReticulocitos.isa(ComponentLevel.Normal),
+        	nivelHematies.isa(ComponentLevel.Bajo)
+       )
+    then
+      modify($muestraDeSangre.getTipoAnemia()) {
+    		setDiagnostico(AnemiaTypes.Ferropenica)
+    	}
+end
+
+rule "R45 – Anemia de enfermedades cronicas"
+    when
+        $muestraDeSangre: MuestraDeSangre(
+        	tipoAnemia.morfologia.isa(AnemiaMorfology.Microcitica),
+        	nivelSideremia.isa(ComponentLevel.Bajo),
+        	nivelTransferrina.isa(ComponentLevel.Bajo),
+        	nivelFerritina.isa(ComponentLevel.Alto),
+        	nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Normal),
+        	nivelReticulocitos.isa(ComponentLevel.Bajo),
+        	nivelHematies.isa(ComponentLevel.Bajo)
+       )
+    then
+      modify($muestraDeSangre.getTipoAnemia()) {
+    		setDiagnostico(AnemiaTypes.DeEnfermedadesCronicas)
+    	}
+end
+
+rule "R46 – Anemia hemolitica"
+    when
+        $muestraDeSangre: MuestraDeSangre(
+        	tipoAnemia.morfologia.isa(AnemiaMorfology.Normocitica),
+        	nivelSideremia.isa(ComponentLevel.Alto),
+        	nivelTransferrina.isa(ComponentLevel.Bajo),
+        	nivelFerritina.isa(ComponentLevel.Normal) || nivelFerritina.isa(ComponentLevel.Alto),
+        	nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Normal),
+        	nivelReticulocitos.isa(ComponentLevel.Alto),
+        	nivelHematies.isa(ComponentLevel.Bajo)
+       )
+    then
+      modify($muestraDeSangre.getTipoAnemia()) {
+    		setDiagnostico(AnemiaTypes.Hemolitica)
+    	}
+end
+
+rule "R47 – Anemia aplasica"
+    when
+        $muestraDeSangre: MuestraDeSangre(
+        	tipoAnemia.morfologia.isa(AnemiaMorfology.Normocitica),
+        	nivelSideremia.isa(ComponentLevel.Alto),
+        	nivelTransferrina.isa(ComponentLevel.Bajo),
+        	nivelFerritina.isa(ComponentLevel.Alto),
+        	nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Normal),
+        	nivelReticulocitos.isa(ComponentLevel.Bajo) || nivelReticulocitos.isa(ComponentLevel.Normal),
+        	nivelHematies.isa(ComponentLevel.Bajo)
+       )
+    then
+      modify($muestraDeSangre.getTipoAnemia()) {
+    		setDiagnostico(AnemiaTypes.Aplasica)
+    	}
+end
+
+rule "R48 – Anemia de celulas falciformes"
+    when
+        $muestraDeSangre: MuestraDeSangre(
+        	tipoAnemia.morfologia.isa(AnemiaMorfology.Normocitica),
+        	nivelSideremia.isa(ComponentLevel.Alto),
+        	nivelTransferrina.isa(ComponentLevel.Alto),
+        	nivelFerritina.isa(ComponentLevel.Normal),
+        	nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Alto),
+        	nivelReticulocitos.isa(ComponentLevel.Alto),
+        	nivelHematies.isa(ComponentLevel.Alto)
+       )
+    then
+      modify($muestraDeSangre.getTipoAnemia()) {
+    		setDiagnostico(AnemiaTypes.DeCelulasFalciformes)
+    	}
+end
+
+rule "R49 – Anemia megaloblastica"
+    when
+        $muestraDeSangre: MuestraDeSangre(
+        	tipoAnemia.morfologia.isa(AnemiaMorfology.Macrocitica),
+        	nivelSideremia.isa(ComponentLevel.Normal),
+        	nivelTransferrina.isa(ComponentLevel.Normal),
+        	nivelFerritina.isa(ComponentLevel.Normal),
+        	nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Alto),
+        	nivelReticulocitos.isa(ComponentLevel.Bajo),
+        	nivelHematies.isa(ComponentLevel.Bajo)
+       )
+    then
+      modify($muestraDeSangre.getTipoAnemia()) {
+    		setDiagnostico(AnemiaTypes.Megaloblastica)
+    	}
+end
