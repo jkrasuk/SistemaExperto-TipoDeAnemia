@@ -1,5 +1,8 @@
 package utils;
 
+
+import java.util.List;
+
 import model.Persona;
 import model.enums.AnemiaMorfology;
 import model.enums.AnemiaTypes;
@@ -19,13 +22,13 @@ public class TestCaseUtils {
 
 	public static void print(Persona persona) {
 
-		ExistingDiseases enfermedad = persona.getEnfermedadPreexistente().getEnfermedad();
+		List<ExistingDiseases> enfermedades = persona.getEnfermedadPreexistente().getEnfermedades();
 		AnemiaMorfology morfologia = persona.getMuestraDeSangre().getTipoAnemia().getMorfologia();
 		AnemiaTypes tipoAnemia = persona.getMuestraDeSangre().getTipoAnemia().getDiagnostico();
 
 		print();
 		print("Persona");
-		print("Enfermedad Preexistente: " + enfermedad);
+		print("Enfermedades Preexistentes: " + enfermedades.toString());
 		print("Morfología de anemia: " + morfologia);
 		print("Tipo de anemia: " + tipoAnemia);
 		print();
