@@ -77,10 +77,10 @@ public class ForwardTestCases {
 		muestra.setHematies(3000000.0);
 
 		OrigenPatologia origen = new OrigenPatologia();
-		origen.setCancer(PatologyOriginOptions.No);
-		origen.setDeficienciaDeFolatos(PatologyOriginOptions.No);
+		origen.setCancer(PatologyOriginOptions.Si);
+		origen.setDeficienciaDeFolatos(PatologyOriginOptions.Si);
 		origen.setDeficienciaDeHierro(PatologyOriginOptions.Si);
-		origen.setDeficienciaDeVitaminaB12(PatologyOriginOptions.No);
+		origen.setDeficienciaDeVitaminaB12(PatologyOriginOptions.Si);
 		origen.setEnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos(PatologyOriginOptions.No);
 		origen.setEnfermedadDrepanocítica(PatologyOriginOptions.No);
 		origen.setGenDeProduccionDeHemoglobinaDefectuoso(PatologyOriginOptions.No);

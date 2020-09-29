@@ -314,242 +314,122 @@ end
 rule "R31 – Deficiencia de hierro" lock-on-active agenda-group "enfermedad"
     when
         $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.Si),
-            enfermedadPreexistente.origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Cancer.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)         
+            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.Si)
        )
     then
       modify($persona) {
-            getEnfermedadPreexistente().setEnfermedad(ExistingDiseases.DeficienciaDeHierro)
+            getEnfermedadPreexistente().setDeficienciaDeHierro(ExistingDiseaseOptions.Si)
         }
 end
 rule "R32 – Deficiencia de vitamina B12 y folatos"
 lock-on-active agenda-group "enfermedad"
     when
         $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
             enfermedadPreexistente.origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.Si),
-            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.Si),
-            enfermedadPreexistente.origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Cancer.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)         
-       )
+            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.Si)
+         )
     then
       modify($persona) {
-            getEnfermedadPreexistente().setEnfermedad(ExistingDiseases.DeficienciaDeVitaminaB12YFolatos)
+            getEnfermedadPreexistente().setDeficienciaDeVitaminaB12YFolatos(ExistingDiseaseOptions.Si)
         }
 end
 rule "R33 – Enfermedades crónicas por transtornos inmunitarios"
 lock-on-active agenda-group "enfermedad"
     when
         $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.TrastornoInmunitario.isa(PatologyOriginOptions.Si),
-            enfermedadPreexistente.origen.Cancer.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)         
+            enfermedadPreexistente.origen.TrastornoInmunitario.isa(PatologyOriginOptions.Si)
        )
     then
       modify($persona) {
-            getEnfermedadPreexistente().setEnfermedad(ExistingDiseases.EnfermedadesCronicas)
+            getEnfermedadPreexistente().setEnfermedadesCronicas(ExistingDiseaseOptions.Si)
         }
 end
 rule "R34 – Enfermedades crónicas por cancer"
 lock-on-active agenda-group "enfermedad"
     when
         $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Cancer.isa(PatologyOriginOptions.Si),
-            enfermedadPreexistente.origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)         
+            enfermedadPreexistente.origen.Cancer.isa(PatologyOriginOptions.Si)
        )
     then
       modify($persona) {
-            getEnfermedadPreexistente().setEnfermedad(ExistingDiseases.EnfermedadesCronicas)
+            getEnfermedadPreexistente().setEnfermedadesCronicas(ExistingDiseaseOptions.Si)
         }
 end
 rule "R35 – Enfermedades crónicas por infecciones prologandas"
 lock-on-active agenda-group "enfermedad"
     when
         $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Cancer.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.InfeccionesProlongadas.isa(PatologyOriginOptions.Si),
-            enfermedadPreexistente.origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)         
+            enfermedadPreexistente.origen.InfeccionesProlongadas.isa(PatologyOriginOptions.Si)
        )
     then
       modify($persona) {
-            getEnfermedadPreexistente().setEnfermedad(ExistingDiseases.EnfermedadesCronicas)
+            getEnfermedadPreexistente().setEnfermedadesCronicas(ExistingDiseaseOptions.Si)
         }
 end
 rule "R36 – Glóbulos rojos con forma defectuosa originado por enfermedad drepanocítica"
 lock-on-active agenda-group "enfermedad"
     when
         $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Cancer.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.Si),
-            enfermedadPreexistente.origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)         
+            enfermedadPreexistente.origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.Si)
        )
     then
       modify($persona) {
-            getEnfermedadPreexistente().setEnfermedad(ExistingDiseases.GlobulosRojosConFormaDefectuosa)
+            getEnfermedadPreexistente().setGlobulosRojosConFormaDefectuosa(ExistingDiseaseOptions.Si)
         }
 end
 rule "R37 – Glóbulos rojos con forma defectuosa originado por rasgo drepanocítico"
 lock-on-active agenda-group "enfermedad"
     when
         $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Cancer.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.RasgoDrepanocítico.isa(PatologyOriginOptions.Si),
-            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)         
+            enfermedadPreexistente.origen.RasgoDrepanocítico.isa(PatologyOriginOptions.Si)        
        )
     then
       modify($persona) {
-            getEnfermedadPreexistente().setEnfermedad(ExistingDiseases.GlobulosRojosConFormaDefectuosa)
+            getEnfermedadPreexistente().setGlobulosRojosConFormaDefectuosa(ExistingDiseaseOptions.Si)
         }
 end
 rule "R38 – Destrucción de glóbulos rojos antes de lo normal"
 lock-on-active agenda-group "enfermedad"
     when
         $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Cancer.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.Si),
-            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)         
+            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.Si)
        )
     then
       modify($persona) {
-            getEnfermedadPreexistente().setEnfermedad(ExistingDiseases.DestruccionDeGlobulosRojosAntesDeLoNormal)
+            getEnfermedadPreexistente().setDestruccionDeGlobulosRojosAntesDeLoNormal(ExistingDiseaseOptions.Si)
         }
 end
 rule "R39 – Baja producción de glóbulos rojos"
 lock-on-active agenda-group "enfermedad"
     when
         $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Cancer.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.Si),
-            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)         
+            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.Si)
        )
     then
       modify($persona) {
-            getEnfermedadPreexistente().setEnfermedad(ExistingDiseases.BajaProduccionDeGlobulosRojos)
+            getEnfermedadPreexistente().setBajaProduccionDeGlobulosRojos(ExistingDiseaseOptions.Si)
         }
 end
 rule "R40 – Acumulación excesiva de hierro "
 lock-on-active agenda-group "enfermedad"
     when
         $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Cancer.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.Si),
-            enfermedadPreexistente.origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)         
+            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.Si)
        )
     then
       modify($persona) {
-            getEnfermedadPreexistente().setEnfermedad(ExistingDiseases.AcumulacionExcesivaDeHierro)
+            getEnfermedadPreexistente().setAcumulacionExcesivaDeHierro(ExistingDiseaseOptions.Si)
         }
 end
 rule "R41 – Deficiencia hereditario de hemoglobina"
 lock-on-active agenda-group "enfermedad"
     when
         $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Cancer.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.No),
             enfermedadPreexistente.origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.Si)         
        )
     then
       modify($persona) {
-            getEnfermedadPreexistente().setEnfermedad(ExistingDiseases.DeficitHereditarioDeHemoglobina)
+            getEnfermedadPreexistente().setDeficitHereditarioDeHemoglobina(ExistingDiseaseOptions.Si)
         }
 end
 rule "R42 – Anemia sideroblastica"
@@ -563,7 +443,7 @@ lock-on-active agenda-group "diagnosticoFinal"
             muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Bajo),
             muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo),
-            enfermedadPreexistente.enfermedad.isa(ExistingDiseases.AcumulacionExcesivaDeHierro)
+            enfermedadPreexistente.AcumulacionExcesivaDeHierro.isa(ExistingDiseaseOptions.Si)
        )
     then
       modify($persona) {
@@ -582,7 +462,7 @@ lock-on-active agenda-group "diagnosticoFinal"
             muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Normal),
             muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Normal),
             muestraDeSangre.nivelHematies.isa(ComponentLevel.Alto),
-            enfermedadPreexistente.enfermedad.isa(ExistingDiseases.DeficitHereditarioDeHemoglobina)
+            enfermedadPreexistente.DeficitHereditarioDeHemoglobina.isa(ExistingDiseaseOptions.Si)
        )
     then
       modify($persona) {
@@ -600,8 +480,8 @@ lock-on-active agenda-group "diagnosticoFinal"
             muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Normal),
             muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo),
-            enfermedadPreexistente.enfermedad.isa(ExistingDiseases.DeficienciaDeHierro)
-       )
+            enfermedadPreexistente.DeficienciaDeHierro.isa(ExistingDiseaseOptions.Si)
+          )
     then
       modify($persona) {
             getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.Ferropenica)
@@ -618,7 +498,7 @@ lock-on-active agenda-group "diagnosticoFinal"
             muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Normal),
             muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Bajo),
             muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo),
-            enfermedadPreexistente.enfermedad.isa(ExistingDiseases.EnfermedadesCronicas)
+            enfermedadPreexistente.EnfermedadesCronicas.isa(ExistingDiseaseOptions.Si)
        )
     then
       modify($persona) {
@@ -637,7 +517,7 @@ lock-on-active agenda-group "diagnosticoFinal"
             muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Normal),
             muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo),
-            enfermedadPreexistente.enfermedad.isa(ExistingDiseases.DestruccionDeGlobulosRojosAntesDeLoNormal)
+            enfermedadPreexistente.DestruccionDeGlobulosRojosAntesDeLoNormal.isa(ExistingDiseaseOptions.Si)
        )
     then
       modify($persona) {
@@ -656,7 +536,7 @@ lock-on-active agenda-group "diagnosticoFinal"
             muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Normal),
             muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Bajo) || muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Normal),
             muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo),
-            enfermedadPreexistente.enfermedad.isa(ExistingDiseases.BajaProduccionDeGlobulosRojos)
+            enfermedadPreexistente.BajaProduccionDeGlobulosRojos.isa(ExistingDiseaseOptions.Si)
        )
     then
       modify($persona) {
@@ -675,7 +555,7 @@ lock-on-active agenda-group "diagnosticoFinal"
             muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelHematies.isa(ComponentLevel.Alto),
-            enfermedadPreexistente.enfermedad.isa(ExistingDiseases.GlobulosRojosConFormaDefectuosa)
+            enfermedadPreexistente.GlobulosRojosConFormaDefectuosa.isa(ExistingDiseaseOptions.Si)
        )
     then
       modify($persona) {
@@ -694,7 +574,7 @@ lock-on-active agenda-group "diagnosticoFinal"
             muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Bajo),
             muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo),
-            enfermedadPreexistente.enfermedad.isa(ExistingDiseases.DeficienciaDeVitaminaB12YFolatos)
+            enfermedadPreexistente.DeficienciaDeVitaminaB12YFolatos.isa(ExistingDiseaseOptions.Si)
        )
     then
       modify($persona) {
