@@ -3,23 +3,23 @@ package model;
 import model.enums.ComponentLevel;
 
 public class MuestraDeSangre {
-	private float hematocrito;
+	private Double hematocrito;
 	private ComponentLevel nivelHematocrito;
-	private float hemoglobinaCorspucularMedia;
+	private Double hemoglobinaCorspucularMedia;
 	private ComponentLevel nivelHemoglobinaCorpusculasMedia;
-	private float volumenCorpuscularMedio;
+	private Double volumenCorpuscularMedio;
 	private ComponentLevel nivelVolumenCorpuscularMedio;
-	private float sideremia;
+	private Double sideremia;
 	private ComponentLevel nivelSideremia;
-	private float transferrina;
+	private Double transferrina;
 	private ComponentLevel nivelTransferrina;
-	private float ferritina;
+	private Double ferritina;
 	private ComponentLevel nivelFerritina;
-	private float amplitudDistribucionEritrocitaria;
+	private Double amplitudDistribucionEritrocitaria;
 	private ComponentLevel nivelAmplitudDistribucionEritrocitaria;
-	private float reticulocitos;
+	private Double reticulocitos;
 	private ComponentLevel nivelReticulocitos;
-	private float hematies;
+	private Double hematies;
 	private ComponentLevel nivelHematies;
 	private TipoAnemia tipoAnemia;
 
@@ -31,11 +31,11 @@ public class MuestraDeSangre {
 		this.tipoAnemia = tipoAnemia;
 	}
 
-	public float getHematocrito() {
+	public Double getHematocrito() {
 		return hematocrito;
 	}
 
-	public void setHematocrito(float hematocrito) {
+	public void setHematocrito(Double hematocrito) {
 		this.hematocrito = hematocrito;
 	}
 
@@ -47,11 +47,11 @@ public class MuestraDeSangre {
 		this.nivelHematocrito = nivelHematocrito;
 	}
 
-	public float getHemoglobinaCorspucularMedia() {
+	public Double getHemoglobinaCorspucularMedia() {
 		return hemoglobinaCorspucularMedia;
 	}
 
-	public void setHemoglobinaCorspucularMedia(float hemoglobinaCorspucularMedia) {
+	public void setHemoglobinaCorspucularMedia(Double hemoglobinaCorspucularMedia) {
 		this.hemoglobinaCorspucularMedia = hemoglobinaCorspucularMedia;
 	}
 
@@ -63,11 +63,11 @@ public class MuestraDeSangre {
 		this.nivelHemoglobinaCorpusculasMedia = nivelHemoglobinaCorpusculasMedia;
 	}
 
-	public float getVolumenCorpuscularMedio() {
+	public Double getVolumenCorpuscularMedio() {
 		return volumenCorpuscularMedio;
 	}
 
-	public void setVolumenCorpuscularMedio(float volumenCorpuscularMedio) {
+	public void setVolumenCorpuscularMedio(Double volumenCorpuscularMedio) {
 		this.volumenCorpuscularMedio = volumenCorpuscularMedio;
 	}
 
@@ -79,11 +79,11 @@ public class MuestraDeSangre {
 		this.nivelVolumenCorpuscularMedio = nivelVolumenCorpuscularMedio;
 	}
 
-	public float getSideremia() {
+	public Double getSideremia() {
 		return sideremia;
 	}
 
-	public void setSideremia(float sideremia) {
+	public void setSideremia(Double sideremia) {
 		this.sideremia = sideremia;
 	}
 
@@ -95,11 +95,11 @@ public class MuestraDeSangre {
 		this.nivelSideremia = nivelSideremia;
 	}
 
-	public float getTransferrina() {
+	public Double getTransferrina() {
 		return transferrina;
 	}
 
-	public void setTransferrina(float transferrina) {
+	public void setTransferrina(Double transferrina) {
 		this.transferrina = transferrina;
 	}
 
@@ -111,11 +111,11 @@ public class MuestraDeSangre {
 		this.nivelTransferrina = nivelTransferrina;
 	}
 
-	public float getFerritina() {
+	public Double getFerritina() {
 		return ferritina;
 	}
 
-	public void setFerritina(float ferritina) {
+	public void setFerritina(Double ferritina) {
 		this.ferritina = ferritina;
 	}
 
@@ -127,11 +127,11 @@ public class MuestraDeSangre {
 		this.nivelFerritina = nivelFerritina;
 	}
 
-	public float getAmplitudDistribucionEritrocitaria() {
+	public Double getAmplitudDistribucionEritrocitaria() {
 		return amplitudDistribucionEritrocitaria;
 	}
 
-	public void setAmplitudDistribucionEritrocitaria(float amplitudDistribucionEritrocitaria) {
+	public void setAmplitudDistribucionEritrocitaria(Double amplitudDistribucionEritrocitaria) {
 		this.amplitudDistribucionEritrocitaria = amplitudDistribucionEritrocitaria;
 	}
 
@@ -143,11 +143,11 @@ public class MuestraDeSangre {
 		this.nivelAmplitudDistribucionEritrocitaria = nivelAmplitudDistribucionEritrocitaria;
 	}
 
-	public float getReticulocitos() {
+	public Double getReticulocitos() {
 		return reticulocitos;
 	}
 
-	public void setReticulocitos(float reticulocitos) {
+	public void setReticulocitos(Double reticulocitos) {
 		this.reticulocitos = reticulocitos;
 	}
 
@@ -159,11 +159,11 @@ public class MuestraDeSangre {
 		this.nivelReticulocitos = nivelReticulocitos;
 	}
 
-	public float getHematies() {
+	public Double getHematies() {
 		return hematies;
 	}
 
-	public void setHematies(float hematies) {
+	public void setHematies(Double hematies) {
 		this.hematies = hematies;
 	}
 
