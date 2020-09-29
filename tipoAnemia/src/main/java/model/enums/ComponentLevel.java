@@ -6,5 +6,5 @@ public enum ComponentLevel {
 	public Boolean isa(ComponentLevel level) {
 		return this.toString() == level.toString();
 	}
-	
+
 }

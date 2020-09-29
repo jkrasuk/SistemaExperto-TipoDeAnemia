@@ -118,6 +118,5 @@ public class OrigenPatologia {
 				+ EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos + ", Hemocromatosis=" + Hemocromatosis
 				+ ", GenDeProduccionDeHemoglobinaDefectuoso=" + GenDeProduccionDeHemoglobinaDefectuoso + "]";
 	}
-	
 
 }

@@ -1,6 +1,6 @@
 package utils;
 
-import model.*;
+import model.Persona;
 import model.enums.AnemiaMorfology;
 import model.enums.AnemiaTypes;
 import model.enums.ExistingDiseases;

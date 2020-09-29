@@ -118,7 +118,7 @@ public class ForwardTestCases {
 	public void anemiaHemoliticaTest() {
 
 		print("Caso de prueba: Anemia hemolitica");
-		
+
 		MuestraDeSangre muestra = new MuestraDeSangre();
 		muestra.setHematocrito(30.0);
 		muestra.setVolumenCorpuscularMedio(90.0);
@@ -227,7 +227,7 @@ public class ForwardTestCases {
 		muestra.setHematocrito(32.0);
 		muestra.setVolumenCorpuscularMedio(130.0);
 		muestra.setHemoglobinaCorspucularMedia(40.0);
-		
+
 		muestra.setSideremia(70.0);
 		muestra.setTransferrina(300.0);
 		muestra.setFerritina(100.0);
