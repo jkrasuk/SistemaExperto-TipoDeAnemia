@@ -118,35 +118,264 @@ public class ForwardTestCases {
 	public void anemiaHemoliticaTest() {
 
 		print("Caso de prueba: Anemia hemolitica");
+		
+		MuestraDeSangre muestra = new MuestraDeSangre();
+		muestra.setHematocrito(30.0);
+		muestra.setVolumenCorpuscularMedio(90.0);
+		muestra.setSideremia(180.0);
+		muestra.setTransferrina(150.0);
+		muestra.setFerritina(100.0);
+		muestra.setAmplitudDistribucionEritrocitaria(12.0);
+		muestra.setReticulocitos(80000.0);
+		muestra.setHematies(100000.0);
 
+		OrigenPatologia origen = new OrigenPatologia();
+		origen.setCancer(PatologyOriginOptions.No);
+		origen.setDeficienciaDeFolatos(PatologyOriginOptions.No);
+		origen.setDeficienciaDeHierro(PatologyOriginOptions.No);
+		origen.setDeficienciaDeVitaminaB12(PatologyOriginOptions.No);
+		origen.setEnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos(PatologyOriginOptions.No);
+		origen.setEnfermedadDrepanocítica(PatologyOriginOptions.No);
+		origen.setGenDeProduccionDeHemoglobinaDefectuoso(PatologyOriginOptions.No);
+		origen.setHemocromatosis(PatologyOriginOptions.No);
+		origen.setInfeccionesProlongadas(PatologyOriginOptions.No);
+		origen.setRasgoDrepanocítico(PatologyOriginOptions.No);
+		origen.setTrastornoInmunitario(PatologyOriginOptions.No);
+		origen.setVelocidadDeRegeneracionDeGlobulosRojosBaja(PatologyOriginOptions.Si);
+
+		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
+		enfermedad.setOrigen(origen);
+
+		Persona persona = new Persona();
+		persona.setMuestraDeSangre(muestra);
+		persona.setEnfermedadPreexistente(enfermedad);
+
+		sessionStatefull.insert(persona);
+		Agenda agenda = sessionStatefull.getAgenda();
+
+		agenda.getAgendaGroup("diagnosticoFinal").setFocus();
+		agenda.getAgendaGroup("report").setFocus();
+		agenda.getAgendaGroup("enfermedad").setFocus();
+		agenda.getAgendaGroup("calculation").setFocus();
+
+		sessionStatefull.fireAllRules();
+
+		AnemiaTypes diagnostico = persona.getMuestraDeSangre().getTipoAnemia().getDiagnostico();
+
+		String valorEsperado = AnemiaTypes.Hemolitica.toString();
+		print(persona);
+		assertResults(diagnostico, valorEsperado);
 	}
 
 	@Test
 	public void anemiaCelulasFalciformesTest() {
 
 		print("Caso de prueba: Anemia de células falciformes");
+		MuestraDeSangre muestra = new MuestraDeSangre();
+		muestra.setHematocrito(30.0);
+		muestra.setVolumenCorpuscularMedio(90.0);
+		muestra.setSideremia(180.0);
+		muestra.setTransferrina(450.0);
+		muestra.setFerritina(100.0);
+		muestra.setAmplitudDistribucionEritrocitaria(17.0);
+		muestra.setReticulocitos(80000.0);
+		muestra.setHematies(6000000.0);
 
+		OrigenPatologia origen = new OrigenPatologia();
+		origen.setCancer(PatologyOriginOptions.No);
+		origen.setDeficienciaDeFolatos(PatologyOriginOptions.No);
+		origen.setDeficienciaDeHierro(PatologyOriginOptions.No);
+		origen.setDeficienciaDeVitaminaB12(PatologyOriginOptions.No);
+		origen.setEnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos(PatologyOriginOptions.No);
+		origen.setEnfermedadDrepanocítica(PatologyOriginOptions.Si);
+		origen.setGenDeProduccionDeHemoglobinaDefectuoso(PatologyOriginOptions.No);
+		origen.setHemocromatosis(PatologyOriginOptions.No);
+		origen.setInfeccionesProlongadas(PatologyOriginOptions.No);
+		origen.setRasgoDrepanocítico(PatologyOriginOptions.No);
+		origen.setTrastornoInmunitario(PatologyOriginOptions.No);
+		origen.setVelocidadDeRegeneracionDeGlobulosRojosBaja(PatologyOriginOptions.No);
+
+		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
+		enfermedad.setOrigen(origen);
+
+		Persona persona = new Persona();
+		persona.setMuestraDeSangre(muestra);
+		persona.setEnfermedadPreexistente(enfermedad);
+
+		sessionStatefull.insert(persona);
+		Agenda agenda = sessionStatefull.getAgenda();
+
+		agenda.getAgendaGroup("diagnosticoFinal").setFocus();
+		agenda.getAgendaGroup("report").setFocus();
+		agenda.getAgendaGroup("enfermedad").setFocus();
+		agenda.getAgendaGroup("calculation").setFocus();
+
+		sessionStatefull.fireAllRules();
+
+		AnemiaTypes diagnostico = persona.getMuestraDeSangre().getTipoAnemia().getDiagnostico();
+
+		String valorEsperado = AnemiaTypes.DeCelulasFalciformes.toString();
+		print(persona);
+		assertResults(diagnostico, valorEsperado);
 	}
 
 	@Test
 	public void anemiaMegaloblasticaTest() {
 
 		print("Caso de prueba: Anemia megaloblastica");
+		MuestraDeSangre muestra = new MuestraDeSangre();
+		muestra.setHematocrito(32.0);
+		muestra.setVolumenCorpuscularMedio(130.0);
+		muestra.setHemoglobinaCorspucularMedia(40.0);
+		
+		muestra.setSideremia(70.0);
+		muestra.setTransferrina(300.0);
+		muestra.setFerritina(100.0);
+		muestra.setAmplitudDistribucionEritrocitaria(17.0);
+		muestra.setReticulocitos(30000.0);
+		muestra.setHematies(3000000.0);
 
+		OrigenPatologia origen = new OrigenPatologia();
+		origen.setCancer(PatologyOriginOptions.No);
+		origen.setDeficienciaDeFolatos(PatologyOriginOptions.Si);
+		origen.setDeficienciaDeHierro(PatologyOriginOptions.No);
+		origen.setDeficienciaDeVitaminaB12(PatologyOriginOptions.Si);
+		origen.setEnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos(PatologyOriginOptions.No);
+		origen.setEnfermedadDrepanocítica(PatologyOriginOptions.No);
+		origen.setGenDeProduccionDeHemoglobinaDefectuoso(PatologyOriginOptions.No);
+		origen.setHemocromatosis(PatologyOriginOptions.No);
+		origen.setInfeccionesProlongadas(PatologyOriginOptions.No);
+		origen.setRasgoDrepanocítico(PatologyOriginOptions.No);
+		origen.setTrastornoInmunitario(PatologyOriginOptions.No);
+		origen.setVelocidadDeRegeneracionDeGlobulosRojosBaja(PatologyOriginOptions.No);
+
+		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
+		enfermedad.setOrigen(origen);
+
+		Persona persona = new Persona();
+		persona.setMuestraDeSangre(muestra);
+		persona.setEnfermedadPreexistente(enfermedad);
+
+		sessionStatefull.insert(persona);
+		Agenda agenda = sessionStatefull.getAgenda();
+
+		agenda.getAgendaGroup("diagnosticoFinal").setFocus();
+		agenda.getAgendaGroup("report").setFocus();
+		agenda.getAgendaGroup("enfermedad").setFocus();
+		agenda.getAgendaGroup("calculation").setFocus();
+
+		sessionStatefull.fireAllRules();
+
+		AnemiaTypes diagnostico = persona.getMuestraDeSangre().getTipoAnemia().getDiagnostico();
+
+		String valorEsperado = AnemiaTypes.Megaloblastica.toString();
+		print(persona);
+		assertResults(diagnostico, valorEsperado);
 	}
 
 	@Test
 	public void anemiaSideroblasticaTest() {
 
 		print("Caso de prueba: Anemia sideroblástica");
+		MuestraDeSangre muestra = new MuestraDeSangre();
+		muestra.setHematocrito(35.0);
+		muestra.setHemoglobinaCorspucularMedia(20.0);
+		muestra.setVolumenCorpuscularMedio(70.0);
+		muestra.setSideremia(100.0);
+		muestra.setTransferrina(300.0);
+		muestra.setFerritina(400.0);
+		muestra.setAmplitudDistribucionEritrocitaria(17.0);
+		muestra.setReticulocitos(30000.0);
+		muestra.setHematies(4000000.0);
 
+		OrigenPatologia origen = new OrigenPatologia();
+		origen.setCancer(PatologyOriginOptions.No);
+		origen.setDeficienciaDeFolatos(PatologyOriginOptions.No);
+		origen.setDeficienciaDeHierro(PatologyOriginOptions.No);
+		origen.setDeficienciaDeVitaminaB12(PatologyOriginOptions.No);
+		origen.setEnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos(PatologyOriginOptions.No);
+		origen.setEnfermedadDrepanocítica(PatologyOriginOptions.No);
+		origen.setGenDeProduccionDeHemoglobinaDefectuoso(PatologyOriginOptions.No);
+		origen.setHemocromatosis(PatologyOriginOptions.Si);
+		origen.setInfeccionesProlongadas(PatologyOriginOptions.No);
+		origen.setRasgoDrepanocítico(PatologyOriginOptions.No);
+		origen.setTrastornoInmunitario(PatologyOriginOptions.No);
+		origen.setVelocidadDeRegeneracionDeGlobulosRojosBaja(PatologyOriginOptions.No);
+
+		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
+		enfermedad.setOrigen(origen);
+
+		Persona persona = new Persona();
+		persona.setMuestraDeSangre(muestra);
+		persona.setEnfermedadPreexistente(enfermedad);
+
+		sessionStatefull.insert(persona);
+		Agenda agenda = sessionStatefull.getAgenda();
+
+		agenda.getAgendaGroup("diagnosticoFinal").setFocus();
+		agenda.getAgendaGroup("report").setFocus();
+		agenda.getAgendaGroup("enfermedad").setFocus();
+		agenda.getAgendaGroup("calculation").setFocus();
+
+		sessionStatefull.fireAllRules();
+
+		AnemiaTypes diagnostico = persona.getMuestraDeSangre().getTipoAnemia().getDiagnostico();
+
+		String valorEsperado = AnemiaTypes.Sideroblastica.toString();
+		print(persona);
+		assertResults(diagnostico, valorEsperado);
 	}
 
 	@Test
 	public void anemiaAplasicaTest() {
 
 		print("Caso de prueba: Anemia aplasica");
+		MuestraDeSangre muestra = new MuestraDeSangre();
+		muestra.setHematocrito(30.0);
+		muestra.setVolumenCorpuscularMedio(90.0);
+		muestra.setSideremia(180.0);
+		muestra.setTransferrina(180.0);
+		muestra.setFerritina(400.0);
+		muestra.setAmplitudDistribucionEritrocitaria(12.0);
+		muestra.setReticulocitos(50000.0);
+		muestra.setHematies(50000.0);
 
+		OrigenPatologia origen = new OrigenPatologia();
+		origen.setCancer(PatologyOriginOptions.No);
+		origen.setDeficienciaDeFolatos(PatologyOriginOptions.No);
+		origen.setDeficienciaDeHierro(PatologyOriginOptions.No);
+		origen.setDeficienciaDeVitaminaB12(PatologyOriginOptions.No);
+		origen.setEnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos(PatologyOriginOptions.Si);
+		origen.setEnfermedadDrepanocítica(PatologyOriginOptions.No);
+		origen.setGenDeProduccionDeHemoglobinaDefectuoso(PatologyOriginOptions.No);
+		origen.setHemocromatosis(PatologyOriginOptions.No);
+		origen.setInfeccionesProlongadas(PatologyOriginOptions.No);
+		origen.setRasgoDrepanocítico(PatologyOriginOptions.No);
+		origen.setTrastornoInmunitario(PatologyOriginOptions.No);
+		origen.setVelocidadDeRegeneracionDeGlobulosRojosBaja(PatologyOriginOptions.No);
+
+		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
+		enfermedad.setOrigen(origen);
+
+		Persona persona = new Persona();
+		persona.setMuestraDeSangre(muestra);
+		persona.setEnfermedadPreexistente(enfermedad);
+
+		sessionStatefull.insert(persona);
+		Agenda agenda = sessionStatefull.getAgenda();
+
+		agenda.getAgendaGroup("diagnosticoFinal").setFocus();
+		agenda.getAgendaGroup("report").setFocus();
+		agenda.getAgendaGroup("enfermedad").setFocus();
+		agenda.getAgendaGroup("calculation").setFocus();
+
+		sessionStatefull.fireAllRules();
+
+		AnemiaTypes diagnostico = persona.getMuestraDeSangre().getTipoAnemia().getDiagnostico();
+
+		String valorEsperado = AnemiaTypes.Aplasica.toString();
+		print(persona);
+		assertResults(diagnostico, valorEsperado);
 	}
 
 	private RuleRuntimeEventListener buildEventListener() {

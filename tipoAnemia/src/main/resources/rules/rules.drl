@@ -117,7 +117,7 @@ end
 rule "R12 – Nivel de sideremia alto" lock-on-active
 agenda-group "calculation"
     when
-        $persona: Persona(muestraDeSangre.sideremia > 50 )
+        $persona: Persona(muestraDeSangre.sideremia > 150 )
     then
       modify($persona) {
             getMuestraDeSangre().setNivelSideremia(ComponentLevel.Alto)
@@ -566,8 +566,8 @@ lock-on-active agenda-group "diagnosticoFinal"
             enfermedadPreexistente.enfermedad.isa(ExistingDiseases.AcumulacionExcesivaDeHierro)
        )
     then
-      modify($persona.getMuestraDeSangre().getTipoAnemia()) {
-            setDiagnostico(AnemiaTypes.Sideroblastica)
+      modify($persona) {
+            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.Sideroblastica)
         }
 end
 
@@ -585,8 +585,8 @@ lock-on-active agenda-group "diagnosticoFinal"
             enfermedadPreexistente.enfermedad.isa(ExistingDiseases.DeficitHereditarioDeHemoglobina)
        )
     then
-      modify($persona.getMuestraDeSangre().getTipoAnemia()) {
-            setDiagnostico(AnemiaTypes.Talasemia)
+      modify($persona) {
+            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.Talasemia)
         }
 end
 rule "R44 – Anemia ferropénica"
@@ -621,8 +621,8 @@ lock-on-active agenda-group "diagnosticoFinal"
             enfermedadPreexistente.enfermedad.isa(ExistingDiseases.EnfermedadesCronicas)
        )
     then
-      modify($persona.getMuestraDeSangre().getTipoAnemia()) {
-            setDiagnostico(AnemiaTypes.DeEnfermedadesCronicas)
+      modify($persona) {
+            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.DeEnfermedadesCronicas)
         }
 end
 
@@ -640,8 +640,8 @@ lock-on-active agenda-group "diagnosticoFinal"
             enfermedadPreexistente.enfermedad.isa(ExistingDiseases.DestruccionDeGlobulosRojosAntesDeLoNormal)
        )
     then
-      modify($persona.getMuestraDeSangre().getTipoAnemia()) {
-            setDiagnostico(AnemiaTypes.Hemolitica)
+      modify($persona) {
+            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.Hemolitica)
         }
 end
 
@@ -659,8 +659,8 @@ lock-on-active agenda-group "diagnosticoFinal"
             enfermedadPreexistente.enfermedad.isa(ExistingDiseases.BajaProduccionDeGlobulosRojos)
        )
     then
-      modify($persona.getMuestraDeSangre().getTipoAnemia()) {
-            setDiagnostico(AnemiaTypes.Aplasica)
+      modify($persona) {
+            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.Aplasica)
         }
 end
 
@@ -678,8 +678,8 @@ lock-on-active agenda-group "diagnosticoFinal"
             enfermedadPreexistente.enfermedad.isa(ExistingDiseases.GlobulosRojosConFormaDefectuosa)
        )
     then
-      modify($persona.getMuestraDeSangre().getTipoAnemia()) {
-            setDiagnostico(AnemiaTypes.DeCelulasFalciformes)
+      modify($persona) {
+            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.DeCelulasFalciformes)
         }
 end
 
@@ -697,7 +697,7 @@ lock-on-active agenda-group "diagnosticoFinal"
             enfermedadPreexistente.enfermedad.isa(ExistingDiseases.DeficienciaDeVitaminaB12YFolatos)
        )
     then
-      modify($persona.getMuestraDeSangre().getTipoAnemia()) {
-            setDiagnostico(AnemiaTypes.Megaloblastica)
+      modify($persona) {
+            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.Megaloblastica)
         }
 end
