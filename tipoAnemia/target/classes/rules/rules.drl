@@ -318,7 +318,7 @@ rule "R31 – Deficiencia de hierro" lock-on-active agenda-group "enfermedad"
        )
     then
       modify($persona) {
-            getEnfermedadPreexistente().addEnfermedad(ExistingDiseases.DeficienciaDeHierro)
+            getEnfermedadPreexistente().setDeficienciaDeHierro(ExistingDiseaseOptions.Si)
         }
 end
 rule "R32 – Deficiencia de vitamina B12 y folatos"
@@ -330,7 +330,7 @@ lock-on-active agenda-group "enfermedad"
          )
     then
       modify($persona) {
-            getEnfermedadPreexistente().addEnfermedad(ExistingDiseases.DeficienciaDeVitaminaB12YFolatos)
+            getEnfermedadPreexistente().setDeficienciaDeVitaminaB12YFolatos(ExistingDiseaseOptions.Si)
         }
 end
 rule "R33 – Enfermedades crónicas por transtornos inmunitarios"
@@ -341,7 +341,7 @@ lock-on-active agenda-group "enfermedad"
        )
     then
       modify($persona) {
-            getEnfermedadPreexistente().addEnfermedad(ExistingDiseases.EnfermedadesCronicas)
+            getEnfermedadPreexistente().setEnfermedadesCronicas(ExistingDiseaseOptions.Si)
         }
 end
 rule "R34 – Enfermedades crónicas por cancer"
@@ -352,7 +352,7 @@ lock-on-active agenda-group "enfermedad"
        )
     then
       modify($persona) {
-            getEnfermedadPreexistente().addEnfermedad(ExistingDiseases.EnfermedadesCronicas)
+            getEnfermedadPreexistente().setEnfermedadesCronicas(ExistingDiseaseOptions.Si)
         }
 end
 rule "R35 – Enfermedades crónicas por infecciones prologandas"
@@ -363,7 +363,7 @@ lock-on-active agenda-group "enfermedad"
        )
     then
       modify($persona) {
-            getEnfermedadPreexistente().addEnfermedad(ExistingDiseases.EnfermedadesCronicas)
+            getEnfermedadPreexistente().setEnfermedadesCronicas(ExistingDiseaseOptions.Si)
         }
 end
 rule "R36 – Glóbulos rojos con forma defectuosa originado por enfermedad drepanocítica"
@@ -374,7 +374,7 @@ lock-on-active agenda-group "enfermedad"
        )
     then
       modify($persona) {
-            getEnfermedadPreexistente().addEnfermedad(ExistingDiseases.GlobulosRojosConFormaDefectuosa)
+            getEnfermedadPreexistente().setGlobulosRojosConFormaDefectuosa(ExistingDiseaseOptions.Si)
         }
 end
 rule "R37 – Glóbulos rojos con forma defectuosa originado por rasgo drepanocítico"
@@ -385,7 +385,7 @@ lock-on-active agenda-group "enfermedad"
        )
     then
       modify($persona) {
-            getEnfermedadPreexistente().addEnfermedad(ExistingDiseases.GlobulosRojosConFormaDefectuosa)
+            getEnfermedadPreexistente().setGlobulosRojosConFormaDefectuosa(ExistingDiseaseOptions.Si)
         }
 end
 rule "R38 – Destrucción de glóbulos rojos antes de lo normal"
@@ -396,7 +396,7 @@ lock-on-active agenda-group "enfermedad"
        )
     then
       modify($persona) {
-            getEnfermedadPreexistente().addEnfermedad(ExistingDiseases.DestruccionDeGlobulosRojosAntesDeLoNormal)
+            getEnfermedadPreexistente().setDestruccionDeGlobulosRojosAntesDeLoNormal(ExistingDiseaseOptions.Si)
         }
 end
 rule "R39 – Baja producción de glóbulos rojos"
@@ -407,7 +407,7 @@ lock-on-active agenda-group "enfermedad"
        )
     then
       modify($persona) {
-            getEnfermedadPreexistente().addEnfermedad(ExistingDiseases.BajaProduccionDeGlobulosRojos)
+            getEnfermedadPreexistente().setBajaProduccionDeGlobulosRojos(ExistingDiseaseOptions.Si)
         }
 end
 rule "R40 – Acumulación excesiva de hierro "
@@ -418,7 +418,7 @@ lock-on-active agenda-group "enfermedad"
        )
     then
       modify($persona) {
-            getEnfermedadPreexistente().addEnfermedad(ExistingDiseases.AcumulacionExcesivaDeHierro)
+            getEnfermedadPreexistente().setAcumulacionExcesivaDeHierro(ExistingDiseaseOptions.Si)
         }
 end
 rule "R41 – Deficiencia hereditario de hemoglobina"
@@ -429,7 +429,7 @@ lock-on-active agenda-group "enfermedad"
        )
     then
       modify($persona) {
-            getEnfermedadPreexistente().addEnfermedad(ExistingDiseases.DeficitHereditarioDeHemoglobina)
+            getEnfermedadPreexistente().setDeficitHereditarioDeHemoglobina(ExistingDiseaseOptions.Si)
         }
 end
 rule "R42 – Anemia sideroblastica"
@@ -443,7 +443,7 @@ lock-on-active agenda-group "diagnosticoFinal"
             muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Bajo),
             muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo),
-            enfermedadPreexistente.enfermedades contains ExistingDiseases.AcumulacionExcesivaDeHierro
+            enfermedadPreexistente.AcumulacionExcesivaDeHierro.isa(ExistingDiseaseOptions.Si)
        )
     then
       modify($persona) {
@@ -462,7 +462,7 @@ lock-on-active agenda-group "diagnosticoFinal"
             muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Normal),
             muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Normal),
             muestraDeSangre.nivelHematies.isa(ComponentLevel.Alto),
-            enfermedadPreexistente.enfermedades contains ExistingDiseases.DeficitHereditarioDeHemoglobina
+            enfermedadPreexistente.DeficitHereditarioDeHemoglobina.isa(ExistingDiseaseOptions.Si)
        )
     then
       modify($persona) {
@@ -480,7 +480,7 @@ lock-on-active agenda-group "diagnosticoFinal"
             muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Normal),
             muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo),
-            enfermedadPreexistente.enfermedades contains ExistingDiseases.DeficienciaDeHierro
+            enfermedadPreexistente.DeficienciaDeHierro.isa(ExistingDiseaseOptions.Si)
           )
     then
       modify($persona) {
@@ -498,7 +498,7 @@ lock-on-active agenda-group "diagnosticoFinal"
             muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Normal),
             muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Bajo),
             muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo),
-            enfermedadPreexistente.enfermedades contains ExistingDiseases.EnfermedadesCronicas
+            enfermedadPreexistente.EnfermedadesCronicas.isa(ExistingDiseaseOptions.Si)
        )
     then
       modify($persona) {
@@ -517,7 +517,7 @@ lock-on-active agenda-group "diagnosticoFinal"
             muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Normal),
             muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo),
-            enfermedadPreexistente.enfermedades contains ExistingDiseases.DestruccionDeGlobulosRojosAntesDeLoNormal
+            enfermedadPreexistente.DestruccionDeGlobulosRojosAntesDeLoNormal.isa(ExistingDiseaseOptions.Si)
        )
     then
       modify($persona) {
@@ -536,7 +536,7 @@ lock-on-active agenda-group "diagnosticoFinal"
             muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Normal),
             muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Bajo) || muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Normal),
             muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo),
-            enfermedadPreexistente.enfermedades contains ExistingDiseases.BajaProduccionDeGlobulosRojos
+            enfermedadPreexistente.BajaProduccionDeGlobulosRojos.isa(ExistingDiseaseOptions.Si)
        )
     then
       modify($persona) {
@@ -555,7 +555,7 @@ lock-on-active agenda-group "diagnosticoFinal"
             muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelHematies.isa(ComponentLevel.Alto),
-            enfermedadPreexistente.enfermedades contains ExistingDiseases.GlobulosRojosConFormaDefectuosa
+            enfermedadPreexistente.GlobulosRojosConFormaDefectuosa.isa(ExistingDiseaseOptions.Si)
        )
     then
       modify($persona) {
@@ -574,7 +574,7 @@ lock-on-active agenda-group "diagnosticoFinal"
             muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Bajo),
             muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo),
-            enfermedadPreexistente.enfermedades contains ExistingDiseases.DeficienciaDeVitaminaB12YFolatos
+            enfermedadPreexistente.DeficienciaDeVitaminaB12YFolatos.isa(ExistingDiseaseOptions.Si)
        )
     then
       modify($persona) {

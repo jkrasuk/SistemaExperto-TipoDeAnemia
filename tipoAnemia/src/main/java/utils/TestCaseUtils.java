@@ -1,12 +1,11 @@
 package utils;
 
-
 import java.util.List;
 
+import model.EnfermedadPreexistente;
 import model.Persona;
 import model.enums.AnemiaMorfology;
 import model.enums.AnemiaTypes;
-import model.enums.ExistingDiseases;
 
 public class TestCaseUtils {
 
@@ -22,15 +21,30 @@ public class TestCaseUtils {
 
 	public static void print(Persona persona) {
 
-		List<ExistingDiseases> enfermedades = persona.getEnfermedadPreexistente().getEnfermedades();
 		AnemiaMorfology morfologia = persona.getMuestraDeSangre().getTipoAnemia().getMorfologia();
 		AnemiaTypes tipoAnemia = persona.getMuestraDeSangre().getTipoAnemia().getDiagnostico();
 
 		print();
 		print("Persona");
-		print("Enfermedades Preexistentes: " + enfermedades.toString());
+		print("Enfermedades Preexistentes: ");
+		printDiseases(persona.getEnfermedadPreexistente());
 		print("Morfología de anemia: " + morfologia);
 		print("Tipo de anemia: " + tipoAnemia);
+		print();
+	}
+
+	private static void printDiseases(EnfermedadPreexistente enfermedadPreexistente) {
+
+		print();
+		print("\t Acumulación excesiva de hierro: " + enfermedadPreexistente.getAcumulacionExcesivaDeHierro());
+		print("\t Deficiencia de hierro: " + enfermedadPreexistente.getDeficienciaDeHierro());
+		print("\t Deficiencia de vitamina B12 y folatos: "
+				+ enfermedadPreexistente.getDeficienciaDeVitaminaB12YFolatos());
+		print("\t Enfermedades cronicas: " + enfermedadPreexistente.getEnfermedadesCronicas());
+		print("\t Globulos rojos con forma defectuosa: " + enfermedadPreexistente.getGlobulosRojosConFormaDefectuosa());
+		print("\t Destruccion de globulos rojos antes de lo normal: " + enfermedadPreexistente.getDestruccionDeGlobulosRojosAntesDeLoNormal());
+		print("\t Baja produccion de globulos rojos: " + enfermedadPreexistente.getBajaProduccionDeGlobulosRojos());
+		print("\t Deficit hereditario de hemoglobina: " + enfermedadPreexistente.getDeficitHereditarioDeHemoglobina());
 		print();
 	}
 

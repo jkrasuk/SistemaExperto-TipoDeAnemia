@@ -1,27 +1,28 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import model.enums.ExistingDiseases;
+import model.enums.ExistingDiseaseOptions;
 
 public class EnfermedadPreexistente {
-	private ExistingDiseases enfermedad;
 	private OrigenPatologia origen;
-	private List<ExistingDiseases> enfermedades;
+
+	private ExistingDiseaseOptions DeficienciaDeHierro, DeficienciaDeVitaminaB12YFolatos, EnfermedadesCronicas,
+			GlobulosRojosConFormaDefectuosa, DestruccionDeGlobulosRojosAntesDeLoNormal, BajaProduccionDeGlobulosRojos,
+			AcumulacionExcesivaDeHierro, DeficitHereditarioDeHemoglobina;
+
 	
-	public List<ExistingDiseases> getEnfermedades() {
-		return enfermedades;
-	}
-
-	public void setEnfermedades(List<ExistingDiseases> enfermedades) {
-		this.enfermedades = enfermedades;
-	}
-
 	public EnfermedadPreexistente() {
 		super();
 		origen = new OrigenPatologia();
-		enfermedades = new ArrayList<ExistingDiseases>();
+		
+		//Inicializo
+		this.DeficienciaDeHierro = ExistingDiseaseOptions.No;
+		this.DeficienciaDeVitaminaB12YFolatos = ExistingDiseaseOptions.No;
+		this.EnfermedadesCronicas = ExistingDiseaseOptions.No;
+		this.GlobulosRojosConFormaDefectuosa = ExistingDiseaseOptions.No;
+		this.DestruccionDeGlobulosRojosAntesDeLoNormal = ExistingDiseaseOptions.No;
+		this.BajaProduccionDeGlobulosRojos = ExistingDiseaseOptions.No;
+		this.AcumulacionExcesivaDeHierro = ExistingDiseaseOptions.No;
+		this.DeficitHereditarioDeHemoglobina = ExistingDiseaseOptions.No;
 	}
 
 	public OrigenPatologia getOrigen() {
@@ -32,21 +33,70 @@ public class EnfermedadPreexistente {
 		this.origen = origen;
 	}
 
-	public ExistingDiseases getEnfermedad() {
-		return enfermedad;
+	public ExistingDiseaseOptions getDeficienciaDeHierro() {
+		return DeficienciaDeHierro;
 	}
 
-	public void setEnfermedad(ExistingDiseases enfermedad) {
-		this.enfermedad = enfermedad;
+	public void setDeficienciaDeHierro(ExistingDiseaseOptions deficienciaDeHierro) {
+		DeficienciaDeHierro = deficienciaDeHierro;
 	}
 
-	public void addEnfermedad(ExistingDiseases enfermedad) {
-		this.enfermedades.add(enfermedad);
+	public ExistingDiseaseOptions getDeficienciaDeVitaminaB12YFolatos() {
+		return DeficienciaDeVitaminaB12YFolatos;
 	}
-	
-	@Override
-	public String toString() {
-		return "EnfermedadPreexistente [enfermedad=" + enfermedad + ", origen=" + origen + "]";
+
+	public void setDeficienciaDeVitaminaB12YFolatos(ExistingDiseaseOptions deficienciaDeVitaminaB12YFolatos) {
+		DeficienciaDeVitaminaB12YFolatos = deficienciaDeVitaminaB12YFolatos;
 	}
+
+	public ExistingDiseaseOptions getEnfermedadesCronicas() {
+		return EnfermedadesCronicas;
+	}
+
+	public void setEnfermedadesCronicas(ExistingDiseaseOptions enfermedadesCronicas) {
+		EnfermedadesCronicas = enfermedadesCronicas;
+	}
+
+	public ExistingDiseaseOptions getGlobulosRojosConFormaDefectuosa() {
+		return GlobulosRojosConFormaDefectuosa;
+	}
+
+	public void setGlobulosRojosConFormaDefectuosa(ExistingDiseaseOptions globulosRojosConFormaDefectuosa) {
+		GlobulosRojosConFormaDefectuosa = globulosRojosConFormaDefectuosa;
+	}
+
+	public ExistingDiseaseOptions getDestruccionDeGlobulosRojosAntesDeLoNormal() {
+		return DestruccionDeGlobulosRojosAntesDeLoNormal;
+	}
+
+	public void setDestruccionDeGlobulosRojosAntesDeLoNormal(
+			ExistingDiseaseOptions destruccionDeGlobulosRojosAntesDeLoNormal) {
+		DestruccionDeGlobulosRojosAntesDeLoNormal = destruccionDeGlobulosRojosAntesDeLoNormal;
+	}
+
+	public ExistingDiseaseOptions getBajaProduccionDeGlobulosRojos() {
+		return BajaProduccionDeGlobulosRojos;
+	}
+
+	public void setBajaProduccionDeGlobulosRojos(ExistingDiseaseOptions bajaProduccionDeGlobulosRojos) {
+		BajaProduccionDeGlobulosRojos = bajaProduccionDeGlobulosRojos;
+	}
+
+	public ExistingDiseaseOptions getAcumulacionExcesivaDeHierro() {
+		return AcumulacionExcesivaDeHierro;
+	}
+
+	public void setAcumulacionExcesivaDeHierro(ExistingDiseaseOptions acumulacionExcesivaDeHierro) {
+		AcumulacionExcesivaDeHierro = acumulacionExcesivaDeHierro;
+	}
+
+	public ExistingDiseaseOptions getDeficitHereditarioDeHemoglobina() {
+		return DeficitHereditarioDeHemoglobina;
+	}
+
+	public void setDeficitHereditarioDeHemoglobina(ExistingDiseaseOptions deficitHereditarioDeHemoglobina) {
+		DeficitHereditarioDeHemoglobina = deficitHereditarioDeHemoglobina;
+	}
+
 
 }
