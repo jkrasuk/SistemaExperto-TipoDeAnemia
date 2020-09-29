@@ -101,9 +101,9 @@ public class ForwardTestCases {
 		Agenda agenda = sessionStatefull.getAgenda();
 
 		agenda.getAgendaGroup("diagnosticoFinal").setFocus();
-		agenda.getAgendaGroup("report").setFocus();
+		agenda.getAgendaGroup("morfologiaAnemia").setFocus();
 		agenda.getAgendaGroup("enfermedad").setFocus();
-		agenda.getAgendaGroup("calculation").setFocus();
+		agenda.getAgendaGroup("nivelesDeComponentesDeSangre").setFocus();
 
 		sessionStatefull.fireAllRules();
 
@@ -154,9 +154,9 @@ public class ForwardTestCases {
 		Agenda agenda = sessionStatefull.getAgenda();
 
 		agenda.getAgendaGroup("diagnosticoFinal").setFocus();
-		agenda.getAgendaGroup("report").setFocus();
+		agenda.getAgendaGroup("morfologiaAnemia").setFocus();
 		agenda.getAgendaGroup("enfermedad").setFocus();
-		agenda.getAgendaGroup("calculation").setFocus();
+		agenda.getAgendaGroup("nivelesDeComponentesDeSangre").setFocus();
 
 		sessionStatefull.fireAllRules();
 
@@ -206,9 +206,9 @@ public class ForwardTestCases {
 		Agenda agenda = sessionStatefull.getAgenda();
 
 		agenda.getAgendaGroup("diagnosticoFinal").setFocus();
-		agenda.getAgendaGroup("report").setFocus();
+		agenda.getAgendaGroup("morfologiaAnemia").setFocus();
 		agenda.getAgendaGroup("enfermedad").setFocus();
-		agenda.getAgendaGroup("calculation").setFocus();
+		agenda.getAgendaGroup("nivelesDeComponentesDeSangre").setFocus();
 
 		sessionStatefull.fireAllRules();
 
@@ -260,9 +260,9 @@ public class ForwardTestCases {
 		Agenda agenda = sessionStatefull.getAgenda();
 
 		agenda.getAgendaGroup("diagnosticoFinal").setFocus();
-		agenda.getAgendaGroup("report").setFocus();
+		agenda.getAgendaGroup("morfologiaAnemia").setFocus();
 		agenda.getAgendaGroup("enfermedad").setFocus();
-		agenda.getAgendaGroup("calculation").setFocus();
+		agenda.getAgendaGroup("nivelesDeComponentesDeSangre").setFocus();
 
 		sessionStatefull.fireAllRules();
 
@@ -313,9 +313,9 @@ public class ForwardTestCases {
 		Agenda agenda = sessionStatefull.getAgenda();
 
 		agenda.getAgendaGroup("diagnosticoFinal").setFocus();
-		agenda.getAgendaGroup("report").setFocus();
+		agenda.getAgendaGroup("morfologiaAnemia").setFocus();
 		agenda.getAgendaGroup("enfermedad").setFocus();
-		agenda.getAgendaGroup("calculation").setFocus();
+		agenda.getAgendaGroup("nivelesDeComponentesDeSangre").setFocus();
 
 		sessionStatefull.fireAllRules();
 
@@ -365,9 +365,9 @@ public class ForwardTestCases {
 		Agenda agenda = sessionStatefull.getAgenda();
 
 		agenda.getAgendaGroup("diagnosticoFinal").setFocus();
-		agenda.getAgendaGroup("report").setFocus();
+		agenda.getAgendaGroup("morfologiaAnemia").setFocus();
 		agenda.getAgendaGroup("enfermedad").setFocus();
-		agenda.getAgendaGroup("calculation").setFocus();
+		agenda.getAgendaGroup("nivelesDeComponentesDeSangre").setFocus();
 
 		sessionStatefull.fireAllRules();
 

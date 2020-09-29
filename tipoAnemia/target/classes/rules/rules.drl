@@ -10,7 +10,7 @@ import model.enums.*;
 
 
 rule "R1 – Nivel de hematocrito bajo" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.hematocrito < 38.3)
     then
@@ -20,7 +20,7 @@ agenda-group "calculation"
 end
 
 rule "R2 – Nivel de hematocrito normal" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.hematocrito >= 38.3 && muestraDeSangre.hematocrito <= 48.6 )
     then
@@ -29,7 +29,7 @@ agenda-group "calculation"
         }
 end
 rule "R3 – Nivel de hematocrito alto" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.hematocrito > 48.6 )
     then
@@ -38,7 +38,7 @@ agenda-group "calculation"
         }
 end
 rule "R4 – Nivel de hemoglobina corspucular media bajo" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.hemoglobinaCorspucularMedia < 27)
     then
@@ -47,7 +47,7 @@ agenda-group "calculation"
         }
 end
 rule "R5 – Nivel de hemoglobina corspucular media normal" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.hemoglobinaCorspucularMedia >= 27 && muestraDeSangre.hemoglobinaCorspucularMedia <= 33 )
     then
@@ -56,7 +56,7 @@ agenda-group "calculation"
         }
 end
 rule "R6 – Nivel de hemoglobina corspucular media alto" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.hemoglobinaCorspucularMedia > 33 )
     then
@@ -65,7 +65,7 @@ agenda-group "calculation"
         }
 end
 rule "R7 – Nivel de hemoglobina corspucular media alto" lock-on-active
-no-loop agenda-group "calculation"
+no-loop agenda-group "nivelesDeComponentesDeSangre"
 when
     $persona: Persona(muestraDeSangre.volumenCorpuscularMedio < 78.0 )
 then
@@ -76,7 +76,7 @@ end
 
 
 rule "R8 – Nivel de volumen corpuscular medio normal" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
 when
     $persona: Persona(muestraDeSangre.volumenCorpuscularMedio >= 78.0 && muestraDeSangre.volumenCorpuscularMedio <= 100.0 )
 then
@@ -86,7 +86,7 @@ then
 end
 
 rule "R9 – Nivel de volumen corpuscular medio alto" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
 when
     $persona: Persona(muestraDeSangre.volumenCorpuscularMedio > 100.0 )
 then
@@ -95,7 +95,7 @@ then
     }
 end
 rule "R10 – Nivel de sideremia bajo" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.sideremia < 50)
     then
@@ -105,7 +105,7 @@ agenda-group "calculation"
 end
 
 rule "R11 – Nivel de sideremia normal" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.sideremia >= 50 && muestraDeSangre.sideremia <= 150 )
     then
@@ -115,7 +115,7 @@ agenda-group "calculation"
 end
 
 rule "R12 – Nivel de sideremia alto" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.sideremia > 150 )
     then
@@ -124,7 +124,7 @@ agenda-group "calculation"
         }
 end
 rule "R13 – Nivel de transferrina bajo" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.transferrina < 200)
     then
@@ -134,7 +134,7 @@ agenda-group "calculation"
 end
 
 rule "R14 – Nivel de transferrina normal" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.transferrina >= 200 && muestraDeSangre.transferrina <= 360 )
     then
@@ -144,7 +144,7 @@ agenda-group "calculation"
 end
 
 rule "R15 – Nivel de transferrina alto" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.transferrina > 360 )
     then
@@ -153,7 +153,7 @@ agenda-group "calculation"
         }
 end
 rule "R16 – Nivel de ferritina bajo" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.ferritina < 12)
     then
@@ -163,7 +163,7 @@ agenda-group "calculation"
 end
 
 rule "R17 – Nivel de ferritina normal" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.ferritina >= 12 && muestraDeSangre.ferritina <= 300 )
     then
@@ -173,7 +173,7 @@ agenda-group "calculation"
 end
 
 rule "R18 – Nivel de ferritina alto" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.ferritina > 300 )
     then
@@ -182,7 +182,7 @@ agenda-group "calculation"
         }
 end
 rule "R19 – Nivel de amplitud de distribucion eritrocitaria bajo" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.amplitudDistribucionEritrocitaria < 11)
     then
@@ -192,7 +192,7 @@ agenda-group "calculation"
 end
 
 rule "R20 – Nivel de amplitud de distribucion eritrocitaria normal" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.amplitudDistribucionEritrocitaria >= 11 && muestraDeSangre.amplitudDistribucionEritrocitaria <= 14 )
     then
@@ -202,7 +202,7 @@ agenda-group "calculation"
 end
 
 rule "R21 – Nivel de amplitud de distribucion eritrocitaria alto" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.amplitudDistribucionEritrocitaria > 14 )
     then
@@ -211,7 +211,7 @@ agenda-group "calculation"
         }
 end
 rule "R22 – Nivel de reticulocitos bajo" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.reticulocitos < 35000)
     then
@@ -221,7 +221,7 @@ agenda-group "calculation"
 end
 
 rule "R23 – Nivel de reticulocitos normal" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.reticulocitos >= 35000 && muestraDeSangre.reticulocitos <= 75000 )
     then
@@ -231,7 +231,7 @@ agenda-group "calculation"
 end
 
 rule "R24 – Nivel de reticulocitos alto" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.reticulocitos > 75000 )
     then
@@ -241,7 +241,7 @@ agenda-group "calculation"
 end
 
 rule "R25 – Nivel de hematies bajo" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.hematies < 4500000)
     then
@@ -251,7 +251,7 @@ agenda-group "calculation"
 end
 
 rule "R26 – Nivel de hematies normal" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.hematies >= 4500000 && muestraDeSangre.hematies <= 5500000 )
     then
@@ -261,7 +261,7 @@ agenda-group "calculation"
 end
 
 rule "R27 – Nivel de hematies alto" lock-on-active
-agenda-group "calculation"
+agenda-group "nivelesDeComponentesDeSangre"
     when
         $persona: Persona(muestraDeSangre.hematies > 5500000 )
     then
@@ -272,7 +272,7 @@ end
 
 
 rule "R28 – Morfologia anemia microcitica" lock-on-active
-agenda-group "report"
+agenda-group "morfologiaAnemia"
     when
         $persona: Persona(
             muestraDeSangre.getNivelHematocrito().isa(ComponentLevel.Bajo),
@@ -285,7 +285,7 @@ agenda-group "report"
         update($persona);
 end
 rule "R29 – Morfologia anemia normocitica" lock-on-active
-agenda-group "report"
+agenda-group "morfologiaAnemia"
     when
         $persona: Persona(
             muestraDeSangre.nivelHematocrito.isa(ComponentLevel.Bajo),
@@ -299,7 +299,7 @@ agenda-group "report"
 end
 
 rule "R30 – Morfologia anemia macrocitica" lock-on-active
-agenda-group "report"
+agenda-group "morfologiaAnemia"
     when
         $persona: Persona(
             muestraDeSangre.nivelHematocrito.isa(ComponentLevel.Bajo),
