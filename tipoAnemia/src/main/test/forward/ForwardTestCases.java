@@ -378,6 +378,7 @@ public class ForwardTestCases {
 		assertResults(diagnostico, valorEsperado);
 	}
 
+	@SuppressWarnings("unused")
 	private RuleRuntimeEventListener buildEventListener() {
 		return new RuleRuntimeEventListener() {
 			@Override
