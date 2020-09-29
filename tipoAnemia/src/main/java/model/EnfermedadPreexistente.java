@@ -22,4 +22,9 @@ public class EnfermedadPreexistente {
 		this.enfermedad = enfermedad;
 	}
 
+	@Override
+	public String toString() {
+		return "EnfermedadPreexistente [enfermedad=" + enfermedad + ", origen=" + origen + "]";
+	}
+
 }

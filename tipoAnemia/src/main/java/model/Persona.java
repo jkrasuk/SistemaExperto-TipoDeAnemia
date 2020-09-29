@@ -20,4 +20,10 @@ public class Persona {
 		this.muestraDeSangre = muestraDeSangre;
 	}
 
+	@Override
+	public String toString() {
+		return "Persona [muestraDeSangre=" + muestraDeSangre + ", enfermedadPreexistente=" + enfermedadPreexistente
+				+ "]";
+	}
+
 }

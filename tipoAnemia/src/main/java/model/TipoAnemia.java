@@ -22,4 +22,11 @@ public class TipoAnemia {
 	public void setDiagnostico(AnemiaTypes diagnostico) {
 		this.diagnostico = diagnostico;
 	}
+
+	@Override
+	public String toString() {
+		return "TipoAnemia [diagnostico=" + diagnostico + ", morfologia=" + morfologia + "]";
+	}
+	
+	
 }

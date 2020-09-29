@@ -9,653 +9,278 @@ import model.enums.*;
 
 
 
-rule "R1 – Nivel de hematocrito bajo"
+rule "R1 – Nivel de hematocrito bajo" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.hematocrito < 38.3)
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelHematocrito(ComponentLevel.Bajo)
-        }
+      modify($persona) {
+            getMuestraDeSangre().setNivelHematocrito(ComponentLevel.Bajo);
+        }   
 end
 
-rule "R2 – Nivel de hematocrito normal"
+rule "R2 – Nivel de hematocrito normal" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.hematocrito >= 38.3 && muestraDeSangre.hematocrito <= 48.6 )
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelHematocrito(ComponentLevel.Normal)
+      modify($persona) {
+            getMuestraDeSangre().setNivelHematocrito(ComponentLevel.Normal)
         }
 end
-
-rule "R3 – Nivel de hematocrito alto"
+rule "R3 – Nivel de hematocrito alto" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.hematocrito > 48.6 )
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelHematocrito(ComponentLevel.Alto)
+      modify($persona) {
+            getMuestraDeSangre().setNivelHematocrito(ComponentLevel.Alto)
         }
 end
-
-rule "R4 – Nivel de hemoglobina corspucular media bajo"
+rule "R4 – Nivel de hemoglobina corspucular media bajo" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.hemoglobinaCorspucularMedia < 27)
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelHemoglobinaCorpusculasMedia(ComponentLevel.Bajo)
+      modify($persona) {
+            getMuestraDeSangre().setNivelHemoglobinaCorpusculasMedia(ComponentLevel.Bajo)
         }
 end
-
-rule "R5 – Nivel de hemoglobina corspucular media normal"
+rule "R5 – Nivel de hemoglobina corspucular media normal" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.hemoglobinaCorspucularMedia >= 27 && muestraDeSangre.hemoglobinaCorspucularMedia <= 33 )
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelHemoglobinaCorpusculasMedia(ComponentLevel.Normal)
+      modify($persona) {
+            getMuestraDeSangre().setNivelHemoglobinaCorpusculasMedia(ComponentLevel.Normal)
         }
 end
-
-rule "R6 – Nivel de hemoglobina corspucular media alto"
+rule "R6 – Nivel de hemoglobina corspucular media alto" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.hemoglobinaCorspucularMedia > 33 )
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelHemoglobinaCorpusculasMedia(ComponentLevel.Alto)
+      modify($persona) {
+            getMuestraDeSangre().setNivelHemoglobinaCorpusculasMedia(ComponentLevel.Alto)
         }
+end
+rule "R7 – Nivel de hemoglobina corspucular media alto" lock-on-active
+no-loop agenda-group "calculation"
+when
+    $persona: Persona(muestraDeSangre.volumenCorpuscularMedio < 78.0 )
+then
+  modify($persona) {
+        getMuestraDeSangre().setNivelVolumenCorpuscularMedio(ComponentLevel.Bajo)
+    }
 end
 
-rule "R7 – Nivel de volumen corpuscular medio bajo"
-    when
-        $persona: Persona(muestraDeSangre.volumenCorpuscularMedio < 78)
-    then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelVolumenCorpuscularMedio(ComponentLevel.Bajo)
-        }
+
+rule "R8 – Nivel de volumen corpuscular medio normal" lock-on-active
+agenda-group "calculation"
+when
+    $persona: Persona(muestraDeSangre.volumenCorpuscularMedio >= 78.0 && muestraDeSangre.volumenCorpuscularMedio <= 100.0 )
+then
+  modify($persona) {
+        getMuestraDeSangre().setNivelVolumenCorpuscularMedio(ComponentLevel.Normal)
+    }
 end
 
-rule "R8 – Nivel de volumen corpuscular medio normal"
-    when
-        $persona: Persona(muestraDeSangre.volumenCorpuscularMedio >= 78 && muestraDeSangre.volumenCorpuscularMedio <= 100 )
-    then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelVolumenCorpuscularMedio(ComponentLevel.Normal)
-        }
+rule "R9 – Nivel de volumen corpuscular medio alto" lock-on-active
+agenda-group "calculation"
+when
+    $persona: Persona(muestraDeSangre.volumenCorpuscularMedio > 100.0 )
+then
+  modify($persona) {
+        getMuestraDeSangre().setNivelVolumenCorpuscularMedio(ComponentLevel.Alto)
+    }
 end
-
-rule "R9 – Nivel de volumen corpuscular medio alto"
-    when
-        $persona: Persona(muestraDeSangre.volumenCorpuscularMedio > 100 )
-    then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelVolumenCorpuscularMedio(ComponentLevel.Alto)
-        }
-end
-rule "R10 – Nivel de sideremia bajo"
+rule "R10 – Nivel de sideremia bajo" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.sideremia < 50)
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelSideremia(ComponentLevel.Bajo)
+      modify($persona) {
+            getMuestraDeSangre().setNivelSideremia(ComponentLevel.Bajo)
         }
 end
 
-rule "R11 – Nivel de sideremia normal"
+rule "R11 – Nivel de sideremia normal" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.sideremia >= 50 && muestraDeSangre.sideremia <= 150 )
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelSideremia(ComponentLevel.Normal)
+      modify($persona) {
+            getMuestraDeSangre().setNivelSideremia(ComponentLevel.Normal)
         }
 end
 
-rule "R12 – Nivel de sideremia alto"
+rule "R12 – Nivel de sideremia alto" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.sideremia > 50 )
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelSideremia(ComponentLevel.Alto)
+      modify($persona) {
+            getMuestraDeSangre().setNivelSideremia(ComponentLevel.Alto)
         }
 end
-rule "R13 – Nivel de transferrina bajo"
+rule "R13 – Nivel de transferrina bajo" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.transferrina < 200)
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelTransferrina(ComponentLevel.Bajo)
+      modify($persona) {
+            getMuestraDeSangre().setNivelTransferrina(ComponentLevel.Bajo)
         }
 end
 
-rule "R14 – Nivel de transferrina normal"
+rule "R14 – Nivel de transferrina normal" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.transferrina >= 200 && muestraDeSangre.transferrina <= 360 )
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelTransferrina(ComponentLevel.Normal)
+      modify($persona) {
+            getMuestraDeSangre().setNivelTransferrina(ComponentLevel.Normal)
         }
 end
 
-rule "R15 – Nivel de transferrina alto"
+rule "R15 – Nivel de transferrina alto" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.transferrina > 360 )
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelTransferrina(ComponentLevel.Alto)
+      modify($persona) {
+            getMuestraDeSangre().setNivelTransferrina(ComponentLevel.Alto)
         }
 end
-rule "R16 – Nivel de ferritina bajo"
+rule "R16 – Nivel de ferritina bajo" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.ferritina < 12)
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelFerritina(ComponentLevel.Bajo)
+      modify($persona) {
+            getMuestraDeSangre().setNivelFerritina(ComponentLevel.Bajo)
         }
 end
 
-rule "R17 – Nivel de ferritina normal"
+rule "R17 – Nivel de ferritina normal" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.ferritina >= 12 && muestraDeSangre.ferritina <= 300 )
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelFerritina(ComponentLevel.Normal)
+      modify($persona) {
+            getMuestraDeSangre().setNivelFerritina(ComponentLevel.Normal)
         }
 end
 
-rule "R18 – Nivel de ferritina alto"
+rule "R18 – Nivel de ferritina alto" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.ferritina > 300 )
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelFerritina(ComponentLevel.Alto)
+      modify($persona) {
+            getMuestraDeSangre().setNivelFerritina(ComponentLevel.Alto)
         }
 end
-rule "R19 – Nivel de amplitud de distribucion eritrocitaria bajo"
+rule "R19 – Nivel de amplitud de distribucion eritrocitaria bajo" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.amplitudDistribucionEritrocitaria < 11)
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelAmplitudDistribucionEritrocitaria(ComponentLevel.Bajo)
+      modify($persona) {
+            getMuestraDeSangre().setNivelAmplitudDistribucionEritrocitaria(ComponentLevel.Bajo)
         }
 end
 
-rule "R20 – Nivel de amplitud de distribucion eritrocitaria normal"
+rule "R20 – Nivel de amplitud de distribucion eritrocitaria normal" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.amplitudDistribucionEritrocitaria >= 11 && muestraDeSangre.amplitudDistribucionEritrocitaria <= 14 )
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelAmplitudDistribucionEritrocitaria(ComponentLevel.Normal)
+      modify($persona) {
+            getMuestraDeSangre().setNivelAmplitudDistribucionEritrocitaria(ComponentLevel.Normal)
         }
 end
 
-rule "R21 – Nivel de amplitud de distribucion eritrocitaria alto"
+rule "R21 – Nivel de amplitud de distribucion eritrocitaria alto" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.amplitudDistribucionEritrocitaria > 14 )
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelAmplitudDistribucionEritrocitaria(ComponentLevel.Alto)
+      modify($persona) {
+            getMuestraDeSangre().setNivelAmplitudDistribucionEritrocitaria(ComponentLevel.Alto)
         }
 end
-rule "R22 – Nivel de reticulocitos bajo"
+rule "R22 – Nivel de reticulocitos bajo" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.reticulocitos < 35000)
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelReticulocitos(ComponentLevel.Bajo)
+      modify($persona) {
+            getMuestraDeSangre().setNivelReticulocitos(ComponentLevel.Bajo)
         }
 end
 
-rule "R23 – Nivel de reticulocitos normal"
+rule "R23 – Nivel de reticulocitos normal" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.reticulocitos >= 35000 && muestraDeSangre.reticulocitos <= 75000 )
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelReticulocitos(ComponentLevel.Normal)
+      modify($persona) {
+            getMuestraDeSangre().setNivelReticulocitos(ComponentLevel.Normal)
         }
 end
 
-rule "R24 – Nivel de reticulocitos alto"
+rule "R24 – Nivel de reticulocitos alto" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.reticulocitos > 75000 )
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelReticulocitos(ComponentLevel.Alto)
+      modify($persona) {
+            getMuestraDeSangre().setNivelReticulocitos(ComponentLevel.Alto)
         }
 end
-rule "R25 – Nivel de hematies bajo"
+
+rule "R25 – Nivel de hematies bajo" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.hematies < 4500000)
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelHematies(ComponentLevel.Bajo)
+      modify($persona) {
+            getMuestraDeSangre().setNivelHematies(ComponentLevel.Bajo)
         }
 end
 
-rule "R26 – Nivel de hematies normal"
+rule "R26 – Nivel de hematies normal" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.hematies >= 4500000 && muestraDeSangre.hematies <= 5500000 )
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelHematies(ComponentLevel.Normal)
+      modify($persona) {
+            getMuestraDeSangre().setNivelHematies(ComponentLevel.Normal)
         }
 end
 
-rule "R27 – Nivel de hematies alto"
+rule "R27 – Nivel de hematies alto" lock-on-active
+agenda-group "calculation"
     when
         $persona: Persona(muestraDeSangre.hematies > 5500000 )
     then
-      modify($persona.getMuestraDeSangre()) {
-            setNivelHematies(ComponentLevel.Alto)
+      modify($persona) {
+            getMuestraDeSangre().setNivelHematies(ComponentLevel.Alto)
         }
 end
 
-rule "R28 – Morfologia anemia microcitica"
+rule "R28 – Morfologia anemia microcitica" lock-on-active agenda-group "report"
     when
         $persona: Persona(
-            muestraDeSangre.nivelHematocrito.isa(ComponentLevel.Bajo),
+            muestraDeSangre.getNivelHematocrito().isa(ComponentLevel.Bajo),
             muestraDeSangre.nivelHemoglobinaCorpusculasMedia.isa(ComponentLevel.Bajo),
             muestraDeSangre.nivelVolumenCorpuscularMedio.isa(ComponentLevel.Bajo)
        )
+     
     then
-      modify($persona.getMuestraDeSangre().getTipoAnemia()) {
-            setMorfologia(AnemiaMorfology.Microcitica)
-        }
+      modify($persona) {
+      	getMuestraDeSangre().getTipoAnemia().setMorfologia(AnemiaMorfology.Microcitica);
+	  }
 end
 
-rule "R29 – Morfologia anemia normocitica"
-    when
-        $persona: Persona(
-            muestraDeSangre.nivelHematocrito.isa(ComponentLevel.Bajo),
-            muestraDeSangre.nivelVolumenCorpuscularMedio.isa(ComponentLevel.Normal)
-       )
-    then
-      modify($persona.getMuestraDeSangre().getTipoAnemia()) {
-            setMorfologia(AnemiaMorfology.Normocitica)
-        }
-end
-
-rule "R30 – Morfologia anemia macrocitica"
-    when
-        $persona: Persona(
-            muestraDeSangre.nivelHematocrito.isa(ComponentLevel.Bajo),
-            muestraDeSangre.nivelHemoglobinaCorpusculasMedia.isa(ComponentLevel.Alto),
-            muestraDeSangre.nivelVolumenCorpuscularMedio.isa(ComponentLevel.Alto)
-       )
-    then
-      modify($persona.getMuestraDeSangre().getTipoAnemia()) {
-            setMorfologia(AnemiaMorfology.Macrocitica)
-        }
-end
-
-rule "R31 – Deficiencia de hierro"
-    when
-        $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.Si),
-            enfermedadPreexistente.origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Cancer.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)         
-       )
-    then
-      modify($persona.getEnfermedadPreexistente()) {
-            setEnfermedad(ExistingDiseases.DeficienciaDeHierro)
-        }
-end
-rule "R32 – Deficiencia de vitamina B12 y folatos"
-    when
-        $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.Si),
-            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.Si),
-            enfermedadPreexistente.origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Cancer.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)         
-       )
-    then
-      modify($persona.getEnfermedadPreexistente()) {
-            setEnfermedad(ExistingDiseases.DeficienciaDeVitaminaB12YFolatos)
-        }
-end
-rule "R33 – Enfermedades crónicas por transtornos inmunitarios"
-    when
-        $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.TrastornoInmunitario.isa(PatologyOriginOptions.Si),
-            enfermedadPreexistente.origen.Cancer.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)         
-       )
-    then
-      modify($persona.getEnfermedadPreexistente()) {
-            setEnfermedad(ExistingDiseases.EnfermedadesCronicas)
-        }
-end
-rule "R34 – Enfermedades crónicas por cancer"
-    when
-        $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Cancer.isa(PatologyOriginOptions.Si),
-            enfermedadPreexistente.origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)         
-       )
-    then
-      modify($persona.getEnfermedadPreexistente()) {
-            setEnfermedad(ExistingDiseases.EnfermedadesCronicas)
-        }
-end
-rule "R35 – Enfermedades crónicas por infecciones prologandas"
-    when
-        $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Cancer.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.InfeccionesProlongadas.isa(PatologyOriginOptions.Si),
-            enfermedadPreexistente.origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)         
-       )
-    then
-      modify($persona.getEnfermedadPreexistente()) {
-            setEnfermedad(ExistingDiseases.EnfermedadesCronicas)
-        }
-end
-rule "R36 – Glóbulos rojos con forma defectuosa originado por enfermedad drepanocítica"
-    when
-        $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Cancer.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.Si),
-            enfermedadPreexistente.origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)         
-       )
-    then
-      modify($persona.getEnfermedadPreexistente()) {
-            setEnfermedad(ExistingDiseases.GlobulosRojosConFormaDefectuosa)
-        }
-end
-rule "R37 – Glóbulos rojos con forma defectuosa originado por rasgo drepanocítico"
-    when
-        $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Cancer.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.RasgoDrepanocítico.isa(PatologyOriginOptions.Si),
-            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)         
-       )
-    then
-      modify($persona.getEnfermedadPreexistente()) {
-            setEnfermedad(ExistingDiseases.GlobulosRojosConFormaDefectuosa)
-        }
-end
-rule "R38 – Destrucción de glóbulos rojos antes de lo normal"
-    when
-        $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Cancer.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.Si),
-            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)         
-       )
-    then
-      modify($persona.getEnfermedadPreexistente()) {
-            setEnfermedad(ExistingDiseases.DestruccionDeGlobulosRojosAntesDeLoNormal)
-        }
-end
-rule "R39 – Baja producción de glóbulos rojos"
-    when
-        $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Cancer.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.Si),
-            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)         
-       )
-    then
-      modify($persona.getEnfermedadPreexistente()) {
-            setEnfermedad(ExistingDiseases.BajaProduccionDeGlobulosRojos)
-        }
-end
-rule "R40 – Acumulación excesiva de hierro "
-    when
-        $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Cancer.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.Si),
-            enfermedadPreexistente.origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.No)         
-       )
-    then
-      modify($persona.getEnfermedadPreexistente()) {
-            setEnfermedad(ExistingDiseases.AcumulacionExcesivaDeHierro)
-        }
-end
-rule "R41 – Deficiencia hereditario de hemoglobina"
-    when
-        $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.TrastornoInmunitario.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Cancer.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.InfeccionesProlongadas.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDrepanocítica.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.RasgoDrepanocítico.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.No),
-            enfermedadPreexistente.origen.GenDeProduccionDeHemoglobinaDefectuoso.isa(PatologyOriginOptions.Si)         
-       )
-    then
-      modify($persona.getEnfermedadPreexistente()) {
-            setEnfermedad(ExistingDiseases.DeficitHereditarioDeHemoglobina)
-        }
-end
-
-rule "R42 – Anemia sideroblastica"
-    when
-        $persona: Persona(
-            muestraDeSangre.tipoAnemia.morfologia.isa(AnemiaMorfology.Microcitica),
-            muestraDeSangre.nivelSideremia.isa(ComponentLevel.Normal) || muestraDeSangre.nivelSideremia.isa(ComponentLevel.Alto),
-            muestraDeSangre.nivelTransferrina.isa(ComponentLevel.Normal),
-            muestraDeSangre.nivelFerritina.isa(ComponentLevel.Alto),
-            muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Alto),
-            muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Bajo),
-            muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo),
-            enfermedadPreexistente.enfermedad.isa(ExistingDiseases.AcumulacionExcesivaDeHierro)
-       )
-    then
-      modify($persona.getMuestraDeSangre().getTipoAnemia()) {
-            setDiagnostico(AnemiaTypes.Sideroblastica)
-        }
-end
-
-rule "R43 – Talasemia"
-    when
-        $persona: Persona(
-            muestraDeSangre.tipoAnemia.morfologia.isa(AnemiaMorfology.Microcitica),
-            muestraDeSangre.nivelSideremia.isa(ComponentLevel.Normal),
-            muestraDeSangre.nivelTransferrina.isa(ComponentLevel.Normal),
-            muestraDeSangre.nivelFerritina.isa(ComponentLevel.Normal),
-            muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Normal),
-            muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Normal),
-            muestraDeSangre.nivelHematies.isa(ComponentLevel.Alto),
-            enfermedadPreexistente.enfermedad.isa(ExistingDiseases.DeficitHereditarioDeHemoglobina)
-       )
-    then
-      modify($persona.getMuestraDeSangre().getTipoAnemia()) {
-            setDiagnostico(AnemiaTypes.Talasemia)
-        }
-end
-
-rule "R44 – Anemia ferropénica"
-    when
-        $persona: Persona(
-            muestraDeSangre.tipoAnemia.morfologia.isa(AnemiaMorfology.Microcitica),
-            muestraDeSangre.nivelSideremia.isa(ComponentLevel.Bajo),
-            muestraDeSangre.nivelTransferrina.isa(ComponentLevel.Alto),
-            muestraDeSangre.nivelFerritina.isa(ComponentLevel.Bajo),
-            muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Alto),
-            muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Normal),
-            muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo),
-            enfermedadPreexistente.enfermedad.isa(ExistingDiseases.DeficienciaDeHierro)
-       )
-    then
-      modify($persona.getMuestraDeSangre().getTipoAnemia()) {
-            setDiagnostico(AnemiaTypes.Ferropenica)
-        }
-end
-
-rule "R45 – Anemia de enfermedades cronicas"
-    when
-        $persona: Persona(
-            muestraDeSangre.tipoAnemia.morfologia.isa(AnemiaMorfology.Microcitica),
-            muestraDeSangre.nivelSideremia.isa(ComponentLevel.Bajo),
-            muestraDeSangre.nivelTransferrina.isa(ComponentLevel.Bajo),
-            muestraDeSangre.nivelFerritina.isa(ComponentLevel.Alto),
-            muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Normal),
-            muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Bajo),
-            muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo),
-            enfermedadPreexistente.enfermedad.isa(ExistingDiseases.EnfermedadesCronicas)
-       )
-    then
-      modify($persona.getMuestraDeSangre().getTipoAnemia()) {
-            setDiagnostico(AnemiaTypes.DeEnfermedadesCronicas)
-        }
-end
-
-rule "R46 – Anemia hemolitica"
-    when
-        $persona: Persona(
-            muestraDeSangre.tipoAnemia.morfologia.isa(AnemiaMorfology.Normocitica),
-            muestraDeSangre.nivelSideremia.isa(ComponentLevel.Alto),
-            muestraDeSangre.nivelTransferrina.isa(ComponentLevel.Bajo),
-            muestraDeSangre.nivelFerritina.isa(ComponentLevel.Normal) || muestraDeSangre.nivelFerritina.isa(ComponentLevel.Alto),
-            muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Normal),
-            muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Alto),
-            muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo),
-            enfermedadPreexistente.enfermedad.isa(ExistingDiseases.DestruccionDeGlobulosRojosAntesDeLoNormal)
-       )
-    then
-      modify($persona.getMuestraDeSangre().getTipoAnemia()) {
-            setDiagnostico(AnemiaTypes.Hemolitica)
-        }
-end
-
-rule "R47 – Anemia aplasica"
-    when
-        $persona: Persona(
-            muestraDeSangre.tipoAnemia.morfologia.isa(AnemiaMorfology.Normocitica),
-            muestraDeSangre.nivelSideremia.isa(ComponentLevel.Alto),
-            muestraDeSangre.nivelTransferrina.isa(ComponentLevel.Bajo),
-            muestraDeSangre.nivelFerritina.isa(ComponentLevel.Alto),
-            muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Normal),
-            muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Bajo) || muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Normal),
-            muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo),
-            enfermedadPreexistente.enfermedad.isa(ExistingDiseases.BajaProduccionDeGlobulosRojos)
-       )
-    then
-      modify($persona.getMuestraDeSangre().getTipoAnemia()) {
-            setDiagnostico(AnemiaTypes.Aplasica)
-        }
-end
-
-rule "R48 – Anemia de celulas falciformes"
-    when
-        $persona: Persona(
-            muestraDeSangre.tipoAnemia.morfologia.isa(AnemiaMorfology.Normocitica),
-            muestraDeSangre.nivelSideremia.isa(ComponentLevel.Alto),
-            muestraDeSangre.nivelTransferrina.isa(ComponentLevel.Alto),
-            muestraDeSangre.nivelFerritina.isa(ComponentLevel.Normal),
-            muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Alto),
-            muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Alto),
-            muestraDeSangre.nivelHematies.isa(ComponentLevel.Alto),
-            enfermedadPreexistente.enfermedad.isa(ExistingDiseases.GlobulosRojosConFormaDefectuosa)
-       )
-    then
-      modify($persona.getMuestraDeSangre().getTipoAnemia()) {
-            setDiagnostico(AnemiaTypes.DeCelulasFalciformes)
-        }
-end
-
-rule "R49 – Anemia megaloblastica"
-    when
-        $persona: Persona(
-            muestraDeSangre.tipoAnemia.morfologia.isa(AnemiaMorfology.Macrocitica),
-            muestraDeSangre.nivelSideremia.isa(ComponentLevel.Normal),
-            muestraDeSangre.nivelTransferrina.isa(ComponentLevel.Normal),
-            muestraDeSangre.nivelFerritina.isa(ComponentLevel.Normal),
-            muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Alto),
-            muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Bajo),
-            muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo),
-            enfermedadPreexistente.enfermedad.isa(ExistingDiseases.DeficienciaDeVitaminaB12YFolatos)
-       )
-    then
-      modify($persona.getMuestraDeSangre().getTipoAnemia()) {
-            setDiagnostico(AnemiaTypes.Megaloblastica)
-        }
-end

@@ -68,6 +68,7 @@ public class MuestraDeSangre {
 	}
 
 	public void setVolumenCorpuscularMedio(Double volumenCorpuscularMedio) {
+
 		this.volumenCorpuscularMedio = volumenCorpuscularMedio;
 	}
 
@@ -76,6 +77,8 @@ public class MuestraDeSangre {
 	}
 
 	public void setNivelVolumenCorpuscularMedio(ComponentLevel nivelVolumenCorpuscularMedio) {
+		System.out.println(nivelVolumenCorpuscularMedio);
+		System.out.println("ACA");
 		this.nivelVolumenCorpuscularMedio = nivelVolumenCorpuscularMedio;
 	}
 
@@ -174,5 +177,21 @@ public class MuestraDeSangre {
 	public void setNivelHematies(ComponentLevel nivelHematies) {
 		this.nivelHematies = nivelHematies;
 	}
+
+	@Override
+	public String toString() {
+		return "MuestraDeSangre [hematocrito=" + hematocrito + ", nivelHematocrito=" + nivelHematocrito
+				+ ", hemoglobinaCorspucularMedia=" + hemoglobinaCorspucularMedia + ", nivelHemoglobinaCorpusculasMedia="
+				+ nivelHemoglobinaCorpusculasMedia + ", volumenCorpuscularMedio=" + volumenCorpuscularMedio
+				+ ", nivelVolumenCorpuscularMedio=" + nivelVolumenCorpuscularMedio + ", sideremia=" + sideremia
+				+ ", nivelSideremia=" + nivelSideremia + ", transferrina=" + transferrina + ", nivelTransferrina="
+				+ nivelTransferrina + ", ferritina=" + ferritina + ", nivelFerritina=" + nivelFerritina
+				+ ", amplitudDistribucionEritrocitaria=" + amplitudDistribucionEritrocitaria
+				+ ", nivelAmplitudDistribucionEritrocitaria=" + nivelAmplitudDistribucionEritrocitaria
+				+ ", reticulocitos=" + reticulocitos + ", nivelReticulocitos=" + nivelReticulocitos + ", hematies="
+				+ hematies + ", nivelHematies=" + nivelHematies + ", tipoAnemia=" + tipoAnemia + "]";
+	}
+	
+	
 
 }

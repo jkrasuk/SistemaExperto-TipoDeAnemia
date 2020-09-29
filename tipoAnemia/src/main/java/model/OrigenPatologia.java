@@ -107,4 +107,17 @@ public class OrigenPatologia {
 		GenDeProduccionDeHemoglobinaDefectuoso = genDeProduccionDeHemoglobinaDefectuoso;
 	}
 
+	@Override
+	public String toString() {
+		return "OrigenPatologia [DeficienciaDeHierro=" + DeficienciaDeHierro + ", DeficienciaDeVitaminaB12="
+				+ DeficienciaDeVitaminaB12 + ", DeficienciaDeFolatos=" + DeficienciaDeFolatos
+				+ ", TrastornoInmunitario=" + TrastornoInmunitario + ", Cancer=" + Cancer + ", InfeccionesProlongadas="
+				+ InfeccionesProlongadas + ", EnfermedadDrepanocítica=" + EnfermedadDrepanocítica
+				+ ", RasgoDrepanocítico=" + RasgoDrepanocítico + ", VelocidadDeRegeneracionDeGlobulosRojosBaja="
+				+ VelocidadDeRegeneracionDeGlobulosRojosBaja + ", EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos="
+				+ EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos + ", Hemocromatosis=" + Hemocromatosis
+				+ ", GenDeProduccionDeHemoglobinaDefectuoso=" + GenDeProduccionDeHemoglobinaDefectuoso + "]";
+	}
+	
+
 }
