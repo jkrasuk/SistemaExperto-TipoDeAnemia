@@ -1,11 +1,13 @@
 package utils;
 
 import model.*;
-
+import model.enums.AnemiaMorfology;
+import model.enums.AnemiaTypes;
+import model.enums.ExistingDiseases;
 
 public class TestCaseUtils {
 
-	////////////////TEST CASES UTILS ////////////////
+	//////////////// TEST CASES UTILS ////////////////
 
 	public static void print(String title) {
 		System.out.println(title);
@@ -15,35 +17,35 @@ public class TestCaseUtils {
 		print("");
 	}
 
-	public static void print(Persona automovil) {
+	public static void print(Persona persona) {
 
-//		Motor motor = automovil.getMotor();
-//		Bateria bateria = automovil.getBateria();
-//		TanqueCombustible tanque = automovil.getTanque();
-//
-//		print();
-//		print("Vehiculo");
-//		print("Motor: " + motor);
-//		print("Bateria: " + bateria);
-//		print("Tanque: " + tanque);
-//		print();
+		ExistingDiseases enfermedad = persona.getEnfermedadPreexistente().getEnfermedad();
+		AnemiaMorfology morfologia = persona.getMuestraDeSangre().getTipoAnemia().getMorfologia();
+		AnemiaTypes tipoAnemia = persona.getMuestraDeSangre().getTipoAnemia().getDiagnostico();
+
+		print();
+		print("Persona");
+		print("Enfermedad Preexistente: " + enfermedad);
+		print("Morfología de anemia: " + morfologia);
+		print("Tipo de anemia: " + tipoAnemia);
+		print();
 	}
 
-	public static void assertResults(TipoAnemia diagnostico, String valorEsperado) {
-		
-//		String diagnosticoFinal = diagnostico.getDiagnosticoFinal();
-//
-//		printResults(diagnosticoFinal, valorEsperado);
-//
-//		assert(diagnosticoFinal.equals(valorEsperado));
+	public static void assertResults(AnemiaTypes diagnostico, String valorEsperado) {
+
+		String diagnosticoFinal = diagnostico.toString();
+
+		printResults(diagnosticoFinal, valorEsperado);
+
+		assert (diagnosticoFinal.equals(valorEsperado));
 	}
 
-	private static void printResults(String result,String expected) {
+	private static void printResults(String result, String expected) {
 		print("Resultados");
 		print("Esperaba: " + expected);
 		print("Recibi: " + result);
 		Boolean isOk = result.equals(expected);
 		String condition = isOk ? "Ok" : "Fallo";
-		print("Caso de prueba: "+ condition);
+		print("Caso de prueba: " + condition);
 	}
 }

@@ -23,6 +23,20 @@ public class MuestraDeSangre {
 	private ComponentLevel nivelHematies;
 	private TipoAnemia tipoAnemia;
 
+	public MuestraDeSangre() {
+		super();
+		this.tipoAnemia = new TipoAnemia();
+		this.nivelHematocrito = ComponentLevel.NoDeterminado;
+		this.nivelHemoglobinaCorpusculasMedia = ComponentLevel.NoDeterminado;
+		this.nivelVolumenCorpuscularMedio = ComponentLevel.NoDeterminado;
+		this.nivelSideremia = ComponentLevel.NoDeterminado;
+		this.nivelTransferrina = ComponentLevel.NoDeterminado;
+		this.nivelAmplitudDistribucionEritrocitaria = ComponentLevel.NoDeterminado;
+		this.nivelReticulocitos = ComponentLevel.NoDeterminado;
+		this.nivelHematies = ComponentLevel.NoDeterminado;
+		this.nivelFerritina = ComponentLevel.NoDeterminado;
+	}
+
 	public TipoAnemia getTipoAnemia() {
 		return tipoAnemia;
 	}
@@ -77,8 +91,6 @@ public class MuestraDeSangre {
 	}
 
 	public void setNivelVolumenCorpuscularMedio(ComponentLevel nivelVolumenCorpuscularMedio) {
-		System.out.println(nivelVolumenCorpuscularMedio);
-		System.out.println("ACA");
 		this.nivelVolumenCorpuscularMedio = nivelVolumenCorpuscularMedio;
 	}
 
@@ -191,7 +203,5 @@ public class MuestraDeSangre {
 				+ ", reticulocitos=" + reticulocitos + ", nivelReticulocitos=" + nivelReticulocitos + ", hematies="
 				+ hematies + ", nivelHematies=" + nivelHematies + ", tipoAnemia=" + tipoAnemia + "]";
 	}
-	
-	
 
 }

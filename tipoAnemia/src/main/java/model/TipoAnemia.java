@@ -7,6 +7,12 @@ public class TipoAnemia {
 	private AnemiaTypes diagnostico;
 	private AnemiaMorfology morfologia;
 
+	public TipoAnemia() {
+		super();
+		this.diagnostico = AnemiaTypes.NoDeterminado;
+		this.morfologia = AnemiaMorfology.NoDeterminado;
+	}
+
 	public AnemiaMorfology getMorfologia() {
 		return morfologia;
 	}
@@ -27,6 +33,5 @@ public class TipoAnemia {
 	public String toString() {
 		return "TipoAnemia [diagnostico=" + diagnostico + ", morfologia=" + morfologia + "]";
 	}
-	
-	
+
 }

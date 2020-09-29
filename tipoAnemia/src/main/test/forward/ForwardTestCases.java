@@ -1,5 +1,6 @@
 package forward;
 
+import static utils.TestCaseUtils.assertResults;
 import static utils.TestCaseUtils.print;
 
 import org.junit.After;
@@ -19,9 +20,9 @@ import model.EnfermedadPreexistente;
 import model.MuestraDeSangre;
 import model.OrigenPatologia;
 import model.Persona;
+import model.enums.AnemiaTypes;
 import model.enums.PatologyOriginOptions;
 import utils.KnowledgeSessionHelper;
-import utils.OutputDisplay;
 
 public class ForwardTestCases {
 
@@ -42,8 +43,7 @@ public class ForwardTestCases {
 
 	private void prepareKnowledgeSession() {
 		sessionStatefull = KnowledgeSessionHelper.getStatefulKnowledgeSession(kieContainer, K_SESSION_NAME);
-//		 OutputDisplay outputDisplay = new OutputDisplay();
-		sessionStatefull.addEventListener(buildEventListener());
+//		sessionStatefull.addEventListener(buildEventListener());
 	}
 
 	@Before
@@ -67,10 +67,8 @@ public class ForwardTestCases {
 
 		MuestraDeSangre muestra = new MuestraDeSangre();
 		muestra.setHematocrito(35.0);
-		muestra.setHemoglobinaCorspucularMedia(60.0);
-
-		muestra.setVolumenCorpuscularMedio(87.0);
-
+		muestra.setHemoglobinaCorspucularMedia(20.0);
+		muestra.setVolumenCorpuscularMedio(70.0);
 		muestra.setSideremia(30.0);
 		muestra.setTransferrina(380.0);
 		muestra.setFerritina(4.0);
@@ -99,18 +97,21 @@ public class ForwardTestCases {
 		persona.setMuestraDeSangre(muestra);
 		persona.setEnfermedadPreexistente(enfermedad);
 
-//		FactHandle automovilDir = sessionStatefull.insert(persona);
 		sessionStatefull.insert(persona);
 		Agenda agenda = sessionStatefull.getAgenda();
+
+		agenda.getAgendaGroup("diagnosticoFinal").setFocus();
+		agenda.getAgendaGroup("report").setFocus();
+		agenda.getAgendaGroup("enfermedad").setFocus();
 		agenda.getAgendaGroup("calculation").setFocus();
 
-		agenda.getAgendaGroup("report").setFocus();
-
 		sessionStatefull.fireAllRules();
-//		persona = (Persona) sessionStatefull.getObject(automovilDir);
 
-		System.out.println(persona.toString());
-//		System.out.println(persona.getMuestraDeSangre().getTipoAnemia().toString());
+		AnemiaTypes diagnostico = persona.getMuestraDeSangre().getTipoAnemia().getDiagnostico();
+
+		String valorEsperado = AnemiaTypes.Ferropenica.toString();
+		print(persona);
+		assertResults(diagnostico, valorEsperado);
 	}
 
 	@Test

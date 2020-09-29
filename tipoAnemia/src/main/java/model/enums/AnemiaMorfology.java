@@ -1,7 +1,7 @@
 package model.enums;
 
 public enum AnemiaMorfology {
-	Microcitica, Normocitica, Macrocitica;
+	NoDeterminado, Microcitica, Normocitica, Macrocitica;
 	
 	
 	public Boolean isa(AnemiaMorfology morfologia) {

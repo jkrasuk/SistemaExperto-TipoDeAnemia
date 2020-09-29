@@ -6,6 +6,11 @@ public class EnfermedadPreexistente {
 	private ExistingDiseases enfermedad;
 	private OrigenPatologia origen;
 
+	public EnfermedadPreexistente() {
+		super();
+		origen = new OrigenPatologia();
+	}
+
 	public OrigenPatologia getOrigen() {
 		return origen;
 	}
