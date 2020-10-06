@@ -21,11 +21,9 @@ public class MuestraDeSangre {
 	private ComponentLevel nivelReticulocitos;
 	private Double hematies;
 	private ComponentLevel nivelHematies;
-	private TipoAnemia tipoAnemia;
 
 	public MuestraDeSangre() {
 		super();
-		this.tipoAnemia = new TipoAnemia();
 		this.nivelHematocrito = ComponentLevel.NoDeterminado;
 		this.nivelHemoglobinaCorpusculasMedia = ComponentLevel.NoDeterminado;
 		this.nivelVolumenCorpuscularMedio = ComponentLevel.NoDeterminado;
@@ -35,14 +33,6 @@ public class MuestraDeSangre {
 		this.nivelReticulocitos = ComponentLevel.NoDeterminado;
 		this.nivelHematies = ComponentLevel.NoDeterminado;
 		this.nivelFerritina = ComponentLevel.NoDeterminado;
-	}
-
-	public TipoAnemia getTipoAnemia() {
-		return tipoAnemia;
-	}
-
-	public void setTipoAnemia(TipoAnemia tipoAnemia) {
-		this.tipoAnemia = tipoAnemia;
 	}
 
 	public Double getHematocrito() {
@@ -201,7 +191,8 @@ public class MuestraDeSangre {
 				+ ", amplitudDistribucionEritrocitaria=" + amplitudDistribucionEritrocitaria
 				+ ", nivelAmplitudDistribucionEritrocitaria=" + nivelAmplitudDistribucionEritrocitaria
 				+ ", reticulocitos=" + reticulocitos + ", nivelReticulocitos=" + nivelReticulocitos + ", hematies="
-				+ hematies + ", nivelHematies=" + nivelHematies + ", tipoAnemia=" + tipoAnemia + "]";
+				+ hematies + ", nivelHematies=" + nivelHematies + "]";
 	}
-
+	
+	
 }

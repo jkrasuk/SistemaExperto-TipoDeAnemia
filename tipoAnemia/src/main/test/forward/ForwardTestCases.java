@@ -20,6 +20,7 @@ import model.EnfermedadPreexistente;
 import model.MuestraDeSangre;
 import model.OrigenPatologia;
 import model.Persona;
+import model.TipoAnemia;
 import model.enums.AnemiaTypes;
 import model.enums.PatologyOriginOptions;
 import utils.KnowledgeSessionHelper;
@@ -43,7 +44,7 @@ public class ForwardTestCases {
 
 	private void prepareKnowledgeSession() {
 		sessionStatefull = KnowledgeSessionHelper.getStatefulKnowledgeSession(kieContainer, K_SESSION_NAME);
-//		sessionStatefull.addEventListener(buildEventListener());
+		sessionStatefull.addEventListener(buildEventListener());
 	}
 
 	@Before
@@ -93,10 +94,13 @@ public class ForwardTestCases {
 		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
 		enfermedad.setOrigen(origen);
 
+		TipoAnemia tipoAnemia = new TipoAnemia();
+		
 		Persona persona = new Persona();
 		persona.setMuestraDeSangre(muestra);
 		persona.setEnfermedadPreexistente(enfermedad);
-
+		persona.setTipoAnemia(tipoAnemia);
+		
 		sessionStatefull.insert(persona);
 		Agenda agenda = sessionStatefull.getAgenda();
 
@@ -107,7 +111,7 @@ public class ForwardTestCases {
 
 		sessionStatefull.fireAllRules();
 
-		AnemiaTypes diagnostico = persona.getMuestraDeSangre().getTipoAnemia().getDiagnostico();
+		AnemiaTypes diagnostico = persona.getTipoAnemia().getDiagnostico();
 
 		String valorEsperado = AnemiaTypes.AnemiaFerropenica.toString();
 		print(persona);
@@ -145,10 +149,12 @@ public class ForwardTestCases {
 
 		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
 		enfermedad.setOrigen(origen);
-
+		TipoAnemia tipoAnemia = new TipoAnemia();
+		
 		Persona persona = new Persona();
 		persona.setMuestraDeSangre(muestra);
 		persona.setEnfermedadPreexistente(enfermedad);
+		persona.setTipoAnemia(tipoAnemia);
 
 		sessionStatefull.insert(persona);
 		Agenda agenda = sessionStatefull.getAgenda();
@@ -160,7 +166,7 @@ public class ForwardTestCases {
 
 		sessionStatefull.fireAllRules();
 
-		AnemiaTypes diagnostico = persona.getMuestraDeSangre().getTipoAnemia().getDiagnostico();
+		AnemiaTypes diagnostico = persona.getTipoAnemia().getDiagnostico();
 
 		String valorEsperado = AnemiaTypes.AnemiaHemolitica.toString();
 		print(persona);
@@ -197,11 +203,12 @@ public class ForwardTestCases {
 
 		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
 		enfermedad.setOrigen(origen);
-
+		TipoAnemia tipoAnemia = new TipoAnemia();
+		
 		Persona persona = new Persona();
 		persona.setMuestraDeSangre(muestra);
 		persona.setEnfermedadPreexistente(enfermedad);
-
+		persona.setTipoAnemia(tipoAnemia);
 		sessionStatefull.insert(persona);
 		Agenda agenda = sessionStatefull.getAgenda();
 
@@ -212,7 +219,7 @@ public class ForwardTestCases {
 
 		sessionStatefull.fireAllRules();
 
-		AnemiaTypes diagnostico = persona.getMuestraDeSangre().getTipoAnemia().getDiagnostico();
+		AnemiaTypes diagnostico = persona.getTipoAnemia().getDiagnostico();
 
 		String valorEsperado = AnemiaTypes.AnemiaDeCelulasFalciformes.toString();
 		print(persona);
@@ -251,11 +258,12 @@ public class ForwardTestCases {
 
 		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
 		enfermedad.setOrigen(origen);
-
+		TipoAnemia tipoAnemia = new TipoAnemia();
+		
 		Persona persona = new Persona();
 		persona.setMuestraDeSangre(muestra);
 		persona.setEnfermedadPreexistente(enfermedad);
-
+		persona.setTipoAnemia(tipoAnemia);
 		sessionStatefull.insert(persona);
 		Agenda agenda = sessionStatefull.getAgenda();
 
@@ -266,7 +274,7 @@ public class ForwardTestCases {
 
 		sessionStatefull.fireAllRules();
 
-		AnemiaTypes diagnostico = persona.getMuestraDeSangre().getTipoAnemia().getDiagnostico();
+		AnemiaTypes diagnostico = persona.getTipoAnemia().getDiagnostico();
 
 		String valorEsperado = AnemiaTypes.AnemiaMegaloblastica.toString();
 		print(persona);
@@ -305,9 +313,12 @@ public class ForwardTestCases {
 		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
 		enfermedad.setOrigen(origen);
 
+		TipoAnemia tipoAnemia = new TipoAnemia();
+		
 		Persona persona = new Persona();
 		persona.setMuestraDeSangre(muestra);
 		persona.setEnfermedadPreexistente(enfermedad);
+		persona.setTipoAnemia(tipoAnemia);
 
 		sessionStatefull.insert(persona);
 		Agenda agenda = sessionStatefull.getAgenda();
@@ -319,7 +330,7 @@ public class ForwardTestCases {
 
 		sessionStatefull.fireAllRules();
 
-		AnemiaTypes diagnostico = persona.getMuestraDeSangre().getTipoAnemia().getDiagnostico();
+		AnemiaTypes diagnostico = persona.getTipoAnemia().getDiagnostico();
 
 		String valorEsperado = AnemiaTypes.AnemiaSideroblastica.toString();
 		print(persona);
@@ -357,9 +368,12 @@ public class ForwardTestCases {
 		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
 		enfermedad.setOrigen(origen);
 
+		TipoAnemia tipoAnemia = new TipoAnemia();
+		
 		Persona persona = new Persona();
 		persona.setMuestraDeSangre(muestra);
 		persona.setEnfermedadPreexistente(enfermedad);
+		persona.setTipoAnemia(tipoAnemia);
 
 		sessionStatefull.insert(persona);
 		Agenda agenda = sessionStatefull.getAgenda();
@@ -371,7 +385,7 @@ public class ForwardTestCases {
 
 		sessionStatefull.fireAllRules();
 
-		AnemiaTypes diagnostico = persona.getMuestraDeSangre().getTipoAnemia().getDiagnostico();
+		AnemiaTypes diagnostico = persona.getTipoAnemia().getDiagnostico();
 
 		String valorEsperado = AnemiaTypes.AnemiaAplasica.toString();
 		print(persona);

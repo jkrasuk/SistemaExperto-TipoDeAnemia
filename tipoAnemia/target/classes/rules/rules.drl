@@ -281,7 +281,7 @@ agenda-group "morfologiaAnemia"
        )
      
     then
-       $persona.getMuestraDeSangre().getTipoAnemia().setMorfologia(AnemiaMorfology.Microcitica);
+       $persona.getTipoAnemia().setMorfologia(AnemiaMorfology.Microcitica);
         update($persona);
 end
 rule "R29 – Morfologia anemia normocitica" lock-on-active
@@ -294,7 +294,7 @@ agenda-group "morfologiaAnemia"
       
     then
       modify($persona) {
-            getMuestraDeSangre().getTipoAnemia().setMorfologia(AnemiaMorfology.Normocitica)
+            getTipoAnemia().setMorfologia(AnemiaMorfology.Normocitica)
         }
 end
 
@@ -308,7 +308,7 @@ agenda-group "morfologiaAnemia"
        )
     then
       modify($persona) {
-            getMuestraDeSangre().getTipoAnemia().setMorfologia(AnemiaMorfology.Macrocitica)
+            getTipoAnemia().setMorfologia(AnemiaMorfology.Macrocitica)
         }
 end
 rule "R31 – Deficiencia de hierro" lock-on-active agenda-group "enfermedad"
@@ -436,7 +436,7 @@ rule "R42 – Anemia sideroblastica"
 lock-on-active agenda-group "diagnosticoFinal"
     when
         $persona: Persona(
-            muestraDeSangre.tipoAnemia.morfologia.isa(AnemiaMorfology.Microcitica),
+            tipoAnemia.morfologia.isa(AnemiaMorfology.Microcitica),
             muestraDeSangre.nivelSideremia.isa(ComponentLevel.Normal) || muestraDeSangre.nivelSideremia.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelTransferrina.isa(ComponentLevel.Normal),
             muestraDeSangre.nivelFerritina.isa(ComponentLevel.Alto),
@@ -447,7 +447,7 @@ lock-on-active agenda-group "diagnosticoFinal"
        )
     then
       modify($persona) {
-            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.AnemiaSideroblastica)
+            getTipoAnemia().setDiagnostico(AnemiaTypes.AnemiaSideroblastica)
         }
 end
 
@@ -455,7 +455,7 @@ rule "R43 – Talasemia"
 lock-on-active agenda-group "diagnosticoFinal"
     when
         $persona: Persona(
-            muestraDeSangre.tipoAnemia.morfologia.isa(AnemiaMorfology.Microcitica),
+            tipoAnemia.morfologia.isa(AnemiaMorfology.Microcitica),
             muestraDeSangre.nivelSideremia.isa(ComponentLevel.Normal),
             muestraDeSangre.nivelTransferrina.isa(ComponentLevel.Normal),
             muestraDeSangre.nivelFerritina.isa(ComponentLevel.Normal),
@@ -466,14 +466,14 @@ lock-on-active agenda-group "diagnosticoFinal"
        )
     then
       modify($persona) {
-            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.Talasemia)
+            getTipoAnemia().setDiagnostico(AnemiaTypes.Talasemia)
         }
 end
 rule "R44 – Anemia ferropénica"
 lock-on-active agenda-group "diagnosticoFinal"
     when
         $persona: Persona(
-            muestraDeSangre.tipoAnemia.morfologia.isa(AnemiaMorfology.Microcitica),
+            tipoAnemia.morfologia.isa(AnemiaMorfology.Microcitica),
             muestraDeSangre.nivelSideremia.isa(ComponentLevel.Bajo),
             muestraDeSangre.nivelTransferrina.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelFerritina.isa(ComponentLevel.Bajo),
@@ -484,14 +484,14 @@ lock-on-active agenda-group "diagnosticoFinal"
           )
     then
       modify($persona) {
-            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.AnemiaFerropenica)
+            getTipoAnemia().setDiagnostico(AnemiaTypes.AnemiaFerropenica)
         }
 end
 rule "R45 – Anemia de enfermedades cronicas"
 lock-on-active agenda-group "diagnosticoFinal"
     when
         $persona: Persona(
-            muestraDeSangre.tipoAnemia.morfologia.isa(AnemiaMorfology.Microcitica),
+            tipoAnemia.morfologia.isa(AnemiaMorfology.Microcitica),
             muestraDeSangre.nivelSideremia.isa(ComponentLevel.Bajo),
             muestraDeSangre.nivelTransferrina.isa(ComponentLevel.Bajo),
             muestraDeSangre.nivelFerritina.isa(ComponentLevel.Alto),
@@ -502,7 +502,7 @@ lock-on-active agenda-group "diagnosticoFinal"
        )
     then
       modify($persona) {
-            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.AnemiaDeEnfermedadesCronicas)
+            getTipoAnemia().setDiagnostico(AnemiaTypes.AnemiaDeEnfermedadesCronicas)
         }
 end
 
@@ -510,7 +510,7 @@ rule "R46 – Anemia hemolitica"
 lock-on-active agenda-group "diagnosticoFinal"
     when
         $persona: Persona(
-            muestraDeSangre.tipoAnemia.morfologia.isa(AnemiaMorfology.Normocitica),
+            tipoAnemia.morfologia.isa(AnemiaMorfology.Normocitica),
             muestraDeSangre.nivelSideremia.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelTransferrina.isa(ComponentLevel.Bajo),
             muestraDeSangre.nivelFerritina.isa(ComponentLevel.Normal) || muestraDeSangre.nivelFerritina.isa(ComponentLevel.Alto),
@@ -521,7 +521,7 @@ lock-on-active agenda-group "diagnosticoFinal"
        )
     then
       modify($persona) {
-            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.AnemiaHemolitica)
+            getTipoAnemia().setDiagnostico(AnemiaTypes.AnemiaHemolitica)
         }
 end
 
@@ -529,7 +529,7 @@ rule "R47 – Anemia aplasica"
 lock-on-active agenda-group "diagnosticoFinal"
     when
         $persona: Persona(
-            muestraDeSangre.tipoAnemia.morfologia.isa(AnemiaMorfology.Normocitica),
+            tipoAnemia.morfologia.isa(AnemiaMorfology.Normocitica),
             muestraDeSangre.nivelSideremia.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelTransferrina.isa(ComponentLevel.Bajo),
             muestraDeSangre.nivelFerritina.isa(ComponentLevel.Alto),
@@ -540,7 +540,7 @@ lock-on-active agenda-group "diagnosticoFinal"
        )
     then
       modify($persona) {
-            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.AnemiaAplasica)
+            getTipoAnemia().setDiagnostico(AnemiaTypes.AnemiaAplasica)
         }
 end
 
@@ -548,7 +548,7 @@ rule "R48 – Anemia de celulas falciformes"
 lock-on-active agenda-group "diagnosticoFinal"
     when
         $persona: Persona(
-            muestraDeSangre.tipoAnemia.morfologia.isa(AnemiaMorfology.Normocitica),
+            tipoAnemia.morfologia.isa(AnemiaMorfology.Normocitica),
             muestraDeSangre.nivelSideremia.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelTransferrina.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelFerritina.isa(ComponentLevel.Normal),
@@ -559,7 +559,7 @@ lock-on-active agenda-group "diagnosticoFinal"
        )
     then
       modify($persona) {
-            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.AnemiaDeCelulasFalciformes)
+            getTipoAnemia().setDiagnostico(AnemiaTypes.AnemiaDeCelulasFalciformes)
         }
 end
 
@@ -567,7 +567,7 @@ rule "R49 – Anemia megaloblastica"
 lock-on-active agenda-group "diagnosticoFinal"
     when
         $persona: Persona(
-            muestraDeSangre.tipoAnemia.morfologia.isa(AnemiaMorfology.Macrocitica),
+            tipoAnemia.morfologia.isa(AnemiaMorfology.Macrocitica),
             muestraDeSangre.nivelSideremia.isa(ComponentLevel.Normal),
             muestraDeSangre.nivelTransferrina.isa(ComponentLevel.Normal),
             muestraDeSangre.nivelFerritina.isa(ComponentLevel.Normal),
@@ -578,6 +578,6 @@ lock-on-active agenda-group "diagnosticoFinal"
        )
     then
       modify($persona) {
-            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.AnemiaMegaloblastica)
+            getTipoAnemia().setDiagnostico(AnemiaTypes.AnemiaMegaloblastica)
         }
 end

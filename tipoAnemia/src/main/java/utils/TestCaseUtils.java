@@ -21,8 +21,8 @@ public class TestCaseUtils {
 
 	public static void print(Persona persona) {
 
-		AnemiaMorfology morfologia = persona.getMuestraDeSangre().getTipoAnemia().getMorfologia();
-		AnemiaTypes tipoAnemia = persona.getMuestraDeSangre().getTipoAnemia().getDiagnostico();
+		AnemiaMorfology morfologia = persona.getTipoAnemia().getMorfologia();
+		AnemiaTypes tipoAnemia = persona.getTipoAnemia().getDiagnostico();
 
 		print();
 		print("Persona");
