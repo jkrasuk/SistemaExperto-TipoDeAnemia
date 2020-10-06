@@ -64,7 +64,7 @@ agenda-group "nivelesDeComponentesDeSangre"
             getMuestraDeSangre().setNivelHemoglobinaCorpusculasMedia(ComponentLevel.Alto)
         }
 end
-rule "R7 – Nivel de hemoglobina corspucular media alto" lock-on-active
+rule "R7 – Nivel de volumen corpuscular medio bajo" lock-on-active
 no-loop agenda-group "nivelesDeComponentesDeSangre"
 when
     $persona: Persona(muestraDeSangre.volumenCorpuscularMedio < 78.0 )
@@ -447,7 +447,7 @@ lock-on-active agenda-group "diagnosticoFinal"
        )
     then
       modify($persona) {
-            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.Sideroblastica)
+            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.AnemiaSideroblastica)
         }
 end
 
@@ -484,7 +484,7 @@ lock-on-active agenda-group "diagnosticoFinal"
           )
     then
       modify($persona) {
-            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.Ferropenica)
+            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.AnemiaFerropenica)
         }
 end
 rule "R45 – Anemia de enfermedades cronicas"
@@ -502,7 +502,7 @@ lock-on-active agenda-group "diagnosticoFinal"
        )
     then
       modify($persona) {
-            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.DeEnfermedadesCronicas)
+            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.AnemiaDeEnfermedadesCronicas)
         }
 end
 
@@ -521,7 +521,7 @@ lock-on-active agenda-group "diagnosticoFinal"
        )
     then
       modify($persona) {
-            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.Hemolitica)
+            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.AnemiaHemolitica)
         }
 end
 
@@ -540,7 +540,7 @@ lock-on-active agenda-group "diagnosticoFinal"
        )
     then
       modify($persona) {
-            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.Aplasica)
+            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.AnemiaAplasica)
         }
 end
 
@@ -559,7 +559,7 @@ lock-on-active agenda-group "diagnosticoFinal"
        )
     then
       modify($persona) {
-            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.DeCelulasFalciformes)
+            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.AnemiaDeCelulasFalciformes)
         }
 end
 
@@ -578,6 +578,6 @@ lock-on-active agenda-group "diagnosticoFinal"
        )
     then
       modify($persona) {
-            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.Megaloblastica)
+            getMuestraDeSangre().getTipoAnemia().setDiagnostico(AnemiaTypes.AnemiaMegaloblastica)
         }
 end

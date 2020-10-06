@@ -109,7 +109,7 @@ public class ForwardTestCases {
 
 		AnemiaTypes diagnostico = persona.getMuestraDeSangre().getTipoAnemia().getDiagnostico();
 
-		String valorEsperado = AnemiaTypes.Ferropenica.toString();
+		String valorEsperado = AnemiaTypes.AnemiaFerropenica.toString();
 		print(persona);
 		assertResults(diagnostico, valorEsperado);
 	}
@@ -162,7 +162,7 @@ public class ForwardTestCases {
 
 		AnemiaTypes diagnostico = persona.getMuestraDeSangre().getTipoAnemia().getDiagnostico();
 
-		String valorEsperado = AnemiaTypes.Hemolitica.toString();
+		String valorEsperado = AnemiaTypes.AnemiaHemolitica.toString();
 		print(persona);
 		assertResults(diagnostico, valorEsperado);
 	}
@@ -214,7 +214,7 @@ public class ForwardTestCases {
 
 		AnemiaTypes diagnostico = persona.getMuestraDeSangre().getTipoAnemia().getDiagnostico();
 
-		String valorEsperado = AnemiaTypes.DeCelulasFalciformes.toString();
+		String valorEsperado = AnemiaTypes.AnemiaDeCelulasFalciformes.toString();
 		print(persona);
 		assertResults(diagnostico, valorEsperado);
 	}
@@ -268,7 +268,7 @@ public class ForwardTestCases {
 
 		AnemiaTypes diagnostico = persona.getMuestraDeSangre().getTipoAnemia().getDiagnostico();
 
-		String valorEsperado = AnemiaTypes.Megaloblastica.toString();
+		String valorEsperado = AnemiaTypes.AnemiaMegaloblastica.toString();
 		print(persona);
 		assertResults(diagnostico, valorEsperado);
 	}
@@ -321,7 +321,7 @@ public class ForwardTestCases {
 
 		AnemiaTypes diagnostico = persona.getMuestraDeSangre().getTipoAnemia().getDiagnostico();
 
-		String valorEsperado = AnemiaTypes.Sideroblastica.toString();
+		String valorEsperado = AnemiaTypes.AnemiaSideroblastica.toString();
 		print(persona);
 		assertResults(diagnostico, valorEsperado);
 	}
@@ -373,7 +373,7 @@ public class ForwardTestCases {
 
 		AnemiaTypes diagnostico = persona.getMuestraDeSangre().getTipoAnemia().getDiagnostico();
 
-		String valorEsperado = AnemiaTypes.Aplasica.toString();
+		String valorEsperado = AnemiaTypes.AnemiaAplasica.toString();
 		print(persona);
 		assertResults(diagnostico, valorEsperado);
 	}

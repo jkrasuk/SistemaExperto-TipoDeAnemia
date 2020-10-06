@@ -1,8 +1,8 @@
 package model.enums;
 
 public enum AnemiaTypes {
-	NoDeterminado, Sideroblastica, Megaloblastica, DeEnfermedadesCronicas, DeCelulasFalciformes, Hemolitica, Aplasica,
-	Ferropenica, Talasemia;
+	NoDeterminado, AnemiaSideroblastica, AnemiaMegaloblastica, AnemiaDeEnfermedadesCronicas, AnemiaDeCelulasFalciformes, AnemiaHemolitica, AnemiaAplasica,
+	AnemiaFerropenica, Talasemia;
 
 	public Boolean isa(AnemiaTypes tipo) {
 
