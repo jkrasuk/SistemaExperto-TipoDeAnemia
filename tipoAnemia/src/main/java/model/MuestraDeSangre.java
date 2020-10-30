@@ -21,7 +21,11 @@ public class MuestraDeSangre {
 	private ComponentLevel nivelReticulocitos;
 	private Double hematies;
 	private ComponentLevel nivelHematies;
-
+	private Double vitaminaB12;
+	private ComponentLevel nivelVitaminaB12;	
+	private Double folato;
+	private ComponentLevel nivelFolato;
+	
 	public MuestraDeSangre() {
 		super();
 		this.nivelHematocrito = ComponentLevel.NoDeterminado;
@@ -33,6 +37,8 @@ public class MuestraDeSangre {
 		this.nivelReticulocitos = ComponentLevel.NoDeterminado;
 		this.nivelHematies = ComponentLevel.NoDeterminado;
 		this.nivelFerritina = ComponentLevel.NoDeterminado;
+		this.nivelVitaminaB12 = ComponentLevel.NoDeterminado;
+		this.nivelFolato = ComponentLevel.NoDeterminado;
 	}
 
 	public Double getHematocrito() {
@@ -180,6 +186,38 @@ public class MuestraDeSangre {
 		this.nivelHematies = nivelHematies;
 	}
 
+	public Double getVitaminaB12() {
+		return vitaminaB12;
+	}
+
+	public void setVitaminaB12(Double vitaminaB12) {
+		this.vitaminaB12 = vitaminaB12;
+	}
+
+	public ComponentLevel getNivelVitaminaB12() {
+		return nivelVitaminaB12;
+	}
+
+	public void setNivelVitaminaB12(ComponentLevel nivelVitaminaB12) {
+		this.nivelVitaminaB12 = nivelVitaminaB12;
+	}
+
+	public Double getFolato() {
+		return folato;
+	}
+
+	public void setFolato(Double folato) {
+		this.folato = folato;
+	}
+
+	public ComponentLevel getNivelFolato() {
+		return nivelFolato;
+	}
+
+	public void setNivelFolato(ComponentLevel nivelFolato) {
+		this.nivelFolato = nivelFolato;
+	}
+
 	@Override
 	public String toString() {
 		return "MuestraDeSangre [hematocrito=" + hematocrito + ", nivelHematocrito=" + nivelHematocrito
@@ -191,7 +229,8 @@ public class MuestraDeSangre {
 				+ ", amplitudDistribucionEritrocitaria=" + amplitudDistribucionEritrocitaria
 				+ ", nivelAmplitudDistribucionEritrocitaria=" + nivelAmplitudDistribucionEritrocitaria
 				+ ", reticulocitos=" + reticulocitos + ", nivelReticulocitos=" + nivelReticulocitos + ", hematies="
-				+ hematies + ", nivelHematies=" + nivelHematies + "]";
+				+ hematies + ", nivelHematies=" + nivelHematies + ", vitaminaB12=" + vitaminaB12 + ", nivelVitaminaB12="
+				+ nivelVitaminaB12 + ", folato=" + folato + ", nivelFolato=" + nivelFolato + "]";
 	}
 	
 	

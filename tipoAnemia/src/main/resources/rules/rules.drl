@@ -270,8 +270,67 @@ agenda-group "nivelesDeComponentesDeSangre"
         }
 end
 
+rule "R28 – Nivel de folato bajo" lock-on-active
+agenda-group "nivelesDeComponentesDeSangre"
+    when
+        $persona: Persona(muestraDeSangre.folato < 2.7)
+    then
+      modify($persona) {
+            getMuestraDeSangre().setNivelFolato(ComponentLevel.Bajo)
+        }
+end
 
-rule "R28 – Morfologia anemia microcitica" lock-on-active
+rule "R29 – Nivel de folato normal" lock-on-active
+agenda-group "nivelesDeComponentesDeSangre"
+    when
+        $persona: Persona(muestraDeSangre.folato >= 2.7 && muestraDeSangre.folato <= 17 )
+    then
+      modify($persona) {
+            getMuestraDeSangre().setNivelFolato(ComponentLevel.Normal)
+        }
+end
+
+rule "R30 – Nivel de folato alto" lock-on-active
+agenda-group "nivelesDeComponentesDeSangre"
+    when
+        $persona: Persona(muestraDeSangre.folato > 17 )
+    then
+      modify($persona) {
+            getMuestraDeSangre().setNivelFolato(ComponentLevel.Alto)
+        }
+end
+
+rule "R31 – Nivel de vitamina B12 bajo" lock-on-active
+agenda-group "nivelesDeComponentesDeSangre"
+    when
+        $persona: Persona(muestraDeSangre.vitaminaB12 < 200)
+    then
+      modify($persona) {
+            getMuestraDeSangre().setNivelVitaminaB12(ComponentLevel.Bajo)
+        }
+end
+
+rule "R32 – Nivel de vitamina B12 normal" lock-on-active
+agenda-group "nivelesDeComponentesDeSangre"
+    when
+        $persona: Persona(muestraDeSangre.vitaminaB12 >= 200 && muestraDeSangre.vitaminaB12 <= 900 )
+    then
+      modify($persona) {
+            getMuestraDeSangre().setNivelVitaminaB12(ComponentLevel.Normal)
+        }
+end
+
+rule "R33 – Nivel de vitamina B12 alto" lock-on-active
+agenda-group "nivelesDeComponentesDeSangre"
+    when
+        $persona: Persona(muestraDeSangre.vitaminaB12 > 900 )
+    then
+      modify($persona) {
+            getMuestraDeSangre().setNivelVitaminaB12(ComponentLevel.Alto)
+        }
+end
+
+rule "R34 – Morfologia anemia microcitica" lock-on-active
 agenda-group "morfologiaAnemia"
     when
         $persona: Persona(
@@ -284,7 +343,7 @@ agenda-group "morfologiaAnemia"
        $persona.getTipoAnemia().setMorfologia(AnemiaMorfology.Microcitica);
         update($persona);
 end
-rule "R29 – Morfologia anemia normocitica" lock-on-active
+rule "R35 – Morfologia anemia normocitica" lock-on-active
 agenda-group "morfologiaAnemia"
     when
         $persona: Persona(
@@ -298,7 +357,7 @@ agenda-group "morfologiaAnemia"
         }
 end
 
-rule "R30 – Morfologia anemia macrocitica" lock-on-active
+rule "R36 – Morfologia anemia macrocitica" lock-on-active
 agenda-group "morfologiaAnemia"
     when
         $persona: Persona(
@@ -311,29 +370,20 @@ agenda-group "morfologiaAnemia"
             getTipoAnemia().setMorfologia(AnemiaMorfology.Macrocitica)
         }
 end
-rule "R31 – Deficiencia de hierro" lock-on-active agenda-group "enfermedad"
-    when
-        $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeHierro.isa(PatologyOriginOptions.Si)
-       )
-    then
-      modify($persona) {
-            getEnfermedadPreexistente().setDeficienciaDeHierro(ExistingDiseaseOptions.Si)
-        }
-end
-rule "R32 – Deficiencia de vitamina B12 y folatos"
+
+rule "R37 – Deficiencia de vitamina B12 y folatos"
 lock-on-active agenda-group "enfermedad"
     when
         $persona: Persona(
-            enfermedadPreexistente.origen.DeficienciaDeVitaminaB12.isa(PatologyOriginOptions.Si),
-            enfermedadPreexistente.origen.DeficienciaDeFolatos.isa(PatologyOriginOptions.Si)
+             muestraDeSangre.nivelFolato.isa(ComponentLevel.Bajo),
+             muestraDeSangre.nivelVitaminaB12.isa(ComponentLevel.Bajo)
          )
     then
       modify($persona) {
             getEnfermedadPreexistente().setDeficienciaDeVitaminaB12YFolatos(ExistingDiseaseOptions.Si)
         }
 end
-rule "R33 – Enfermedades crónicas por transtornos inmunitarios"
+rule "R38 – Enfermedades crónicas por transtornos inmunitarios"
 lock-on-active agenda-group "enfermedad"
     when
         $persona: Persona(
@@ -344,7 +394,7 @@ lock-on-active agenda-group "enfermedad"
             getEnfermedadPreexistente().setEnfermedadesCronicas(ExistingDiseaseOptions.Si)
         }
 end
-rule "R34 – Enfermedades crónicas por cancer"
+rule "R39 – Enfermedades crónicas por cancer"
 lock-on-active agenda-group "enfermedad"
     when
         $persona: Persona(
@@ -355,7 +405,7 @@ lock-on-active agenda-group "enfermedad"
             getEnfermedadPreexistente().setEnfermedadesCronicas(ExistingDiseaseOptions.Si)
         }
 end
-rule "R35 – Enfermedades crónicas por infecciones prologandas"
+rule "R40 – Enfermedades crónicas por infecciones prologandas"
 lock-on-active agenda-group "enfermedad"
     when
         $persona: Persona(
@@ -366,7 +416,7 @@ lock-on-active agenda-group "enfermedad"
             getEnfermedadPreexistente().setEnfermedadesCronicas(ExistingDiseaseOptions.Si)
         }
 end
-rule "R36 – Glóbulos rojos con forma defectuosa originado por enfermedad drepanocítica"
+rule "R41 – Glóbulos rojos con forma defectuosa originado por enfermedad drepanocítica"
 lock-on-active agenda-group "enfermedad"
     when
         $persona: Persona(
@@ -377,7 +427,7 @@ lock-on-active agenda-group "enfermedad"
             getEnfermedadPreexistente().setGlobulosRojosConFormaDefectuosa(ExistingDiseaseOptions.Si)
         }
 end
-rule "R37 – Glóbulos rojos con forma defectuosa originado por rasgo drepanocítico"
+rule "R42 – Glóbulos rojos con forma defectuosa originado por rasgo drepanocítico"
 lock-on-active agenda-group "enfermedad"
     when
         $persona: Persona(
@@ -388,40 +438,8 @@ lock-on-active agenda-group "enfermedad"
             getEnfermedadPreexistente().setGlobulosRojosConFormaDefectuosa(ExistingDiseaseOptions.Si)
         }
 end
-rule "R38 – Destrucción de glóbulos rojos antes de lo normal"
-lock-on-active agenda-group "enfermedad"
-    when
-        $persona: Persona(
-            enfermedadPreexistente.origen.VelocidadDeRegeneracionDeGlobulosRojosBaja.isa(PatologyOriginOptions.Si)
-       )
-    then
-      modify($persona) {
-            getEnfermedadPreexistente().setDestruccionDeGlobulosRojosAntesDeLoNormal(ExistingDiseaseOptions.Si)
-        }
-end
-rule "R39 – Baja producción de glóbulos rojos"
-lock-on-active agenda-group "enfermedad"
-    when
-        $persona: Persona(
-            enfermedadPreexistente.origen.EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos.isa(PatologyOriginOptions.Si)
-       )
-    then
-      modify($persona) {
-            getEnfermedadPreexistente().setBajaProduccionDeGlobulosRojos(ExistingDiseaseOptions.Si)
-        }
-end
-rule "R40 – Acumulación excesiva de hierro "
-lock-on-active agenda-group "enfermedad"
-    when
-        $persona: Persona(
-            enfermedadPreexistente.origen.Hemocromatosis.isa(PatologyOriginOptions.Si)
-       )
-    then
-      modify($persona) {
-            getEnfermedadPreexistente().setAcumulacionExcesivaDeHierro(ExistingDiseaseOptions.Si)
-        }
-end
-rule "R41 – Deficiencia hereditario de hemoglobina"
+
+rule "R43 – Deficiencia hereditario de hemoglobina"
 lock-on-active agenda-group "enfermedad"
     when
         $persona: Persona(
@@ -432,13 +450,26 @@ lock-on-active agenda-group "enfermedad"
             getEnfermedadPreexistente().setDeficitHereditarioDeHemoglobina(ExistingDiseaseOptions.Si)
         }
 end
-rule "R42 – Anemia sideroblastica"
+
+rule "R44 – Acumulación excesiva de hierro "
+lock-on-active agenda-group "enfermedad"
+    when
+        $persona: Persona(
+             muestraDeSangre.nivelFerritina.isa(ComponentLevel.Alto),
+             muestraDeSangre.nivelTransferrina.isa(ComponentLevel.Alto)
+        )
+    then
+      modify($persona) {
+            getEnfermedadPreexistente().setAcumulacionExcesivaDeHierro(ExistingDiseaseOptions.Si)
+        }
+end
+rule "R45 – Anemia sideroblastica"
 lock-on-active agenda-group "diagnosticoFinal"
     when
         $persona: Persona(
             tipoAnemia.morfologia.isa(AnemiaMorfology.Microcitica),
             muestraDeSangre.nivelSideremia.isa(ComponentLevel.Normal) || muestraDeSangre.nivelSideremia.isa(ComponentLevel.Alto),
-            muestraDeSangre.nivelTransferrina.isa(ComponentLevel.Normal),
+            muestraDeSangre.nivelTransferrina.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelFerritina.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Bajo),
@@ -451,7 +482,7 @@ lock-on-active agenda-group "diagnosticoFinal"
         }
 end
 
-rule "R43 – Talasemia"
+rule "R46 – Talasemia"
 lock-on-active agenda-group "diagnosticoFinal"
     when
         $persona: Persona(
@@ -469,7 +500,7 @@ lock-on-active agenda-group "diagnosticoFinal"
             getTipoAnemia().setDiagnostico(AnemiaTypes.Talasemia)
         }
 end
-rule "R44 – Anemia ferropénica"
+rule "R47 – Anemia ferropénica"
 lock-on-active agenda-group "diagnosticoFinal"
     when
         $persona: Persona(
@@ -479,15 +510,14 @@ lock-on-active agenda-group "diagnosticoFinal"
             muestraDeSangre.nivelFerritina.isa(ComponentLevel.Bajo),
             muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Normal),
-            muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo),
-            enfermedadPreexistente.DeficienciaDeHierro.isa(ExistingDiseaseOptions.Si)
+            muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo)
           )
     then
       modify($persona) {
             getTipoAnemia().setDiagnostico(AnemiaTypes.AnemiaFerropenica)
         }
 end
-rule "R45 – Anemia de enfermedades cronicas"
+rule "R48 – Anemia de enfermedades cronicas"
 lock-on-active agenda-group "diagnosticoFinal"
     when
         $persona: Persona(
@@ -506,7 +536,7 @@ lock-on-active agenda-group "diagnosticoFinal"
         }
 end
 
-rule "R46 – Anemia hemolitica"
+rule "R49 – Anemia hemolitica"
 lock-on-active agenda-group "diagnosticoFinal"
     when
         $persona: Persona(
@@ -516,8 +546,7 @@ lock-on-active agenda-group "diagnosticoFinal"
             muestraDeSangre.nivelFerritina.isa(ComponentLevel.Normal) || muestraDeSangre.nivelFerritina.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Normal),
             muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Alto),
-            muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo),
-            enfermedadPreexistente.DestruccionDeGlobulosRojosAntesDeLoNormal.isa(ExistingDiseaseOptions.Si)
+            muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo)
        )
     then
       modify($persona) {
@@ -525,7 +554,7 @@ lock-on-active agenda-group "diagnosticoFinal"
         }
 end
 
-rule "R47 – Anemia aplasica"
+rule "R50 – Anemia aplasica"
 lock-on-active agenda-group "diagnosticoFinal"
     when
         $persona: Persona(
@@ -535,8 +564,7 @@ lock-on-active agenda-group "diagnosticoFinal"
             muestraDeSangre.nivelFerritina.isa(ComponentLevel.Alto),
             muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(ComponentLevel.Normal),
             muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Bajo) || muestraDeSangre.nivelReticulocitos.isa(ComponentLevel.Normal),
-            muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo),
-            enfermedadPreexistente.BajaProduccionDeGlobulosRojos.isa(ExistingDiseaseOptions.Si)
+            muestraDeSangre.nivelHematies.isa(ComponentLevel.Bajo)
        )
     then
       modify($persona) {
@@ -544,7 +572,7 @@ lock-on-active agenda-group "diagnosticoFinal"
         }
 end
 
-rule "R48 – Anemia de celulas falciformes"
+rule "R51 – Anemia de celulas falciformes"
 lock-on-active agenda-group "diagnosticoFinal"
     when
         $persona: Persona(
@@ -563,7 +591,7 @@ lock-on-active agenda-group "diagnosticoFinal"
         }
 end
 
-rule "R49 – Anemia megaloblastica"
+rule "R52 – Anemia megaloblastica"
 lock-on-active agenda-group "diagnosticoFinal"
     when
         $persona: Persona(

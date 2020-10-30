@@ -76,20 +76,16 @@ public class ForwardTestCases {
 		muestra.setAmplitudDistribucionEritrocitaria(15.0);
 		muestra.setReticulocitos(40000.0);
 		muestra.setHematies(3000000.0);
-
+		muestra.setFolato(10.0);
+		muestra.setVitaminaB12(100.0);
+		
 		OrigenPatologia origen = new OrigenPatologia();
 		origen.setCancer(PatologyOriginOptions.Si);
-		origen.setDeficienciaDeFolatos(PatologyOriginOptions.Si);
-		origen.setDeficienciaDeHierro(PatologyOriginOptions.Si);
-		origen.setDeficienciaDeVitaminaB12(PatologyOriginOptions.Si);
-		origen.setEnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos(PatologyOriginOptions.No);
 		origen.setEnfermedadDrepanocítica(PatologyOriginOptions.No);
 		origen.setGenDeProduccionDeHemoglobinaDefectuoso(PatologyOriginOptions.No);
-		origen.setHemocromatosis(PatologyOriginOptions.No);
 		origen.setInfeccionesProlongadas(PatologyOriginOptions.No);
 		origen.setRasgoDrepanocítico(PatologyOriginOptions.No);
 		origen.setTrastornoInmunitario(PatologyOriginOptions.No);
-		origen.setVelocidadDeRegeneracionDeGlobulosRojosBaja(PatologyOriginOptions.No);
 
 		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
 		enfermedad.setOrigen(origen);
@@ -132,20 +128,16 @@ public class ForwardTestCases {
 		muestra.setAmplitudDistribucionEritrocitaria(12.0);
 		muestra.setReticulocitos(80000.0);
 		muestra.setHematies(100000.0);
-
+		muestra.setFolato(13.0);
+		muestra.setVitaminaB12(300.0);
+		
 		OrigenPatologia origen = new OrigenPatologia();
 		origen.setCancer(PatologyOriginOptions.No);
-		origen.setDeficienciaDeFolatos(PatologyOriginOptions.No);
-		origen.setDeficienciaDeHierro(PatologyOriginOptions.No);
-		origen.setDeficienciaDeVitaminaB12(PatologyOriginOptions.No);
-		origen.setEnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos(PatologyOriginOptions.No);
 		origen.setEnfermedadDrepanocítica(PatologyOriginOptions.No);
 		origen.setGenDeProduccionDeHemoglobinaDefectuoso(PatologyOriginOptions.No);
-		origen.setHemocromatosis(PatologyOriginOptions.No);
 		origen.setInfeccionesProlongadas(PatologyOriginOptions.No);
 		origen.setRasgoDrepanocítico(PatologyOriginOptions.No);
 		origen.setTrastornoInmunitario(PatologyOriginOptions.No);
-		origen.setVelocidadDeRegeneracionDeGlobulosRojosBaja(PatologyOriginOptions.Si);
 
 		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
 		enfermedad.setOrigen(origen);
@@ -186,20 +178,16 @@ public class ForwardTestCases {
 		muestra.setAmplitudDistribucionEritrocitaria(17.0);
 		muestra.setReticulocitos(80000.0);
 		muestra.setHematies(6000000.0);
-
+		muestra.setFolato(13.0);
+		muestra.setVitaminaB12(300.0);
+		
 		OrigenPatologia origen = new OrigenPatologia();
 		origen.setCancer(PatologyOriginOptions.No);
-		origen.setDeficienciaDeFolatos(PatologyOriginOptions.No);
-		origen.setDeficienciaDeHierro(PatologyOriginOptions.No);
-		origen.setDeficienciaDeVitaminaB12(PatologyOriginOptions.No);
-		origen.setEnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos(PatologyOriginOptions.No);
 		origen.setEnfermedadDrepanocítica(PatologyOriginOptions.Si);
 		origen.setGenDeProduccionDeHemoglobinaDefectuoso(PatologyOriginOptions.No);
-		origen.setHemocromatosis(PatologyOriginOptions.No);
 		origen.setInfeccionesProlongadas(PatologyOriginOptions.No);
 		origen.setRasgoDrepanocítico(PatologyOriginOptions.No);
 		origen.setTrastornoInmunitario(PatologyOriginOptions.No);
-		origen.setVelocidadDeRegeneracionDeGlobulosRojosBaja(PatologyOriginOptions.No);
 
 		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
 		enfermedad.setOrigen(origen);
@@ -241,20 +229,16 @@ public class ForwardTestCases {
 		muestra.setAmplitudDistribucionEritrocitaria(17.0);
 		muestra.setReticulocitos(30000.0);
 		muestra.setHematies(3000000.0);
-
+		muestra.setFolato(1.0);
+		muestra.setVitaminaB12(100.0);
+		
 		OrigenPatologia origen = new OrigenPatologia();
 		origen.setCancer(PatologyOriginOptions.No);
-		origen.setDeficienciaDeFolatos(PatologyOriginOptions.Si);
-		origen.setDeficienciaDeHierro(PatologyOriginOptions.No);
-		origen.setDeficienciaDeVitaminaB12(PatologyOriginOptions.Si);
-		origen.setEnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos(PatologyOriginOptions.No);
 		origen.setEnfermedadDrepanocítica(PatologyOriginOptions.No);
 		origen.setGenDeProduccionDeHemoglobinaDefectuoso(PatologyOriginOptions.No);
-		origen.setHemocromatosis(PatologyOriginOptions.No);
 		origen.setInfeccionesProlongadas(PatologyOriginOptions.No);
 		origen.setRasgoDrepanocítico(PatologyOriginOptions.No);
 		origen.setTrastornoInmunitario(PatologyOriginOptions.No);
-		origen.setVelocidadDeRegeneracionDeGlobulosRojosBaja(PatologyOriginOptions.No);
 
 		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
 		enfermedad.setOrigen(origen);
@@ -290,25 +274,21 @@ public class ForwardTestCases {
 		muestra.setHemoglobinaCorspucularMedia(20.0);
 		muestra.setVolumenCorpuscularMedio(70.0);
 		muestra.setSideremia(100.0);
-		muestra.setTransferrina(300.0);
+		muestra.setTransferrina(370.0);
 		muestra.setFerritina(400.0);
 		muestra.setAmplitudDistribucionEritrocitaria(17.0);
 		muestra.setReticulocitos(30000.0);
 		muestra.setHematies(4000000.0);
-
+		muestra.setFolato(13.0);
+		muestra.setVitaminaB12(300.0);
+		
 		OrigenPatologia origen = new OrigenPatologia();
 		origen.setCancer(PatologyOriginOptions.No);
-		origen.setDeficienciaDeFolatos(PatologyOriginOptions.No);
-		origen.setDeficienciaDeHierro(PatologyOriginOptions.No);
-		origen.setDeficienciaDeVitaminaB12(PatologyOriginOptions.No);
-		origen.setEnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos(PatologyOriginOptions.No);
 		origen.setEnfermedadDrepanocítica(PatologyOriginOptions.No);
 		origen.setGenDeProduccionDeHemoglobinaDefectuoso(PatologyOriginOptions.No);
-		origen.setHemocromatosis(PatologyOriginOptions.Si);
 		origen.setInfeccionesProlongadas(PatologyOriginOptions.No);
 		origen.setRasgoDrepanocítico(PatologyOriginOptions.No);
 		origen.setTrastornoInmunitario(PatologyOriginOptions.No);
-		origen.setVelocidadDeRegeneracionDeGlobulosRojosBaja(PatologyOriginOptions.No);
 
 		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
 		enfermedad.setOrigen(origen);
@@ -350,20 +330,16 @@ public class ForwardTestCases {
 		muestra.setAmplitudDistribucionEritrocitaria(12.0);
 		muestra.setReticulocitos(50000.0);
 		muestra.setHematies(50000.0);
-
+		muestra.setFolato(13.0);
+		muestra.setVitaminaB12(300.0);
+		
 		OrigenPatologia origen = new OrigenPatologia();
 		origen.setCancer(PatologyOriginOptions.No);
-		origen.setDeficienciaDeFolatos(PatologyOriginOptions.No);
-		origen.setDeficienciaDeHierro(PatologyOriginOptions.No);
-		origen.setDeficienciaDeVitaminaB12(PatologyOriginOptions.No);
-		origen.setEnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos(PatologyOriginOptions.Si);
 		origen.setEnfermedadDrepanocítica(PatologyOriginOptions.No);
 		origen.setGenDeProduccionDeHemoglobinaDefectuoso(PatologyOriginOptions.No);
-		origen.setHemocromatosis(PatologyOriginOptions.No);
 		origen.setInfeccionesProlongadas(PatologyOriginOptions.No);
 		origen.setRasgoDrepanocítico(PatologyOriginOptions.No);
 		origen.setTrastornoInmunitario(PatologyOriginOptions.No);
-		origen.setVelocidadDeRegeneracionDeGlobulosRojosBaja(PatologyOriginOptions.No);
 
 		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
 		enfermedad.setOrigen(origen);
