@@ -1,9 +1,8 @@
 package model.enums;
 
 public enum OriginType {
-	DeficienciaDeHierro, DeficienciaDeVitaminaB12, DeficienciaDeFolatos, TrastornoInmunitario, Cancer,
-	InfeccionesProlongadas, EnfermedadDrepanocítica, RasgoDrepanocítico, VelocidadDeRegeneracionDeGlobulosRojosBaja,
-	EnfermedadDeMedulaOseaAsociadaAlosGlobulosRojos, Hemocromatosis, GenDeProduccionDeHemoglobinaDefectuoso;
+	TrastornoInmunitario, Cancer, InfeccionesProlongadas, EnfermedadDrepanocítica, RasgoDrepanocítico,
+	GenDeProduccionDeHemoglobinaDefectuoso;
 
 	public Boolean isa(OriginType option) {
 

@@ -44,7 +44,7 @@ public class ForwardTestCases {
 
 	private void prepareKnowledgeSession() {
 		sessionStatefull = KnowledgeSessionHelper.getStatefulKnowledgeSession(kieContainer, K_SESSION_NAME);
-		sessionStatefull.addEventListener(buildEventListener());
+//		sessionStatefull.addEventListener(buildEventListener());
 	}
 
 	@Before
@@ -364,6 +364,58 @@ public class ForwardTestCases {
 		AnemiaTypes diagnostico = persona.getTipoAnemia().getDiagnostico();
 
 		String valorEsperado = AnemiaTypes.AnemiaAplasica.toString();
+		print(persona);
+		assertResults(diagnostico, valorEsperado);
+	}
+	
+	@Test
+	public void personaSinAnemiaTest() {
+
+		print("Caso de prueba: Persona sin anemia");
+		MuestraDeSangre muestra = new MuestraDeSangre();
+		muestra.setHematocrito(43.0);
+		muestra.setHemoglobinaCorspucularMedia(30.0);
+		muestra.setVolumenCorpuscularMedio(90.0);
+		muestra.setSideremia(100.0);
+		muestra.setTransferrina(300.0);
+		muestra.setFerritina(200.0);
+		muestra.setAmplitudDistribucionEritrocitaria(12.0);
+		muestra.setReticulocitos(50000.0);
+		muestra.setHematies(5000000.0);
+		muestra.setFolato(13.0);
+		muestra.setVitaminaB12(500.0);
+		
+		OrigenPatologia origen = new OrigenPatologia();
+		origen.setCancer(PatologyOriginOptions.No);
+		origen.setEnfermedadDrepanocítica(PatologyOriginOptions.No);
+		origen.setGenDeProduccionDeHemoglobinaDefectuoso(PatologyOriginOptions.No);
+		origen.setInfeccionesProlongadas(PatologyOriginOptions.No);
+		origen.setRasgoDrepanocítico(PatologyOriginOptions.No);
+		origen.setTrastornoInmunitario(PatologyOriginOptions.No);
+
+		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
+		enfermedad.setOrigen(origen);
+
+		TipoAnemia tipoAnemia = new TipoAnemia();
+		
+		Persona persona = new Persona();
+		persona.setMuestraDeSangre(muestra);
+		persona.setEnfermedadPreexistente(enfermedad);
+		persona.setTipoAnemia(tipoAnemia);
+
+		sessionStatefull.insert(persona);
+		Agenda agenda = sessionStatefull.getAgenda();
+
+		agenda.getAgendaGroup("diagnosticoFinal").setFocus();
+		agenda.getAgendaGroup("morfologiaAnemia").setFocus();
+		agenda.getAgendaGroup("enfermedad").setFocus();
+		agenda.getAgendaGroup("nivelesDeComponentesDeSangre").setFocus();
+
+		sessionStatefull.fireAllRules();
+
+		AnemiaTypes diagnostico = persona.getTipoAnemia().getDiagnostico();
+
+		String valorEsperado = AnemiaTypes.NoDeterminado.toString();
 		print(persona);
 		assertResults(diagnostico, valorEsperado);
 	}
