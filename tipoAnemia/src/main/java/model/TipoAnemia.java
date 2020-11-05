@@ -1,31 +1,31 @@
 package model;
 
-import model.enums.AnemiaMorfology;
-import model.enums.AnemiaTypes;
+import model.enums.MorfologiasAnemia;
+import model.enums.TiposAnemia;
 
 public class TipoAnemia {
-	private AnemiaTypes diagnostico;
-	private AnemiaMorfology morfologia;
+	public TiposAnemia diagnostico;
+	public MorfologiasAnemia morfologia;
 
 	public TipoAnemia() {
 		super();
-		this.diagnostico = AnemiaTypes.NoDeterminado;
-		this.morfologia = AnemiaMorfology.NoDeterminado;
+		this.diagnostico = TiposAnemia.NoDeterminado;
+		this.morfologia = MorfologiasAnemia.NoDeterminado;
 	}
 
-	public AnemiaMorfology getMorfologia() {
+	public MorfologiasAnemia getMorfologia() {
 		return morfologia;
 	}
 
-	public void setMorfologia(AnemiaMorfology morfologia) {
+	public void setMorfologia(MorfologiasAnemia morfologia) {
 		this.morfologia = morfologia;
 	}
 
-	public AnemiaTypes getDiagnostico() {
+	public TiposAnemia getDiagnostico() {
 		return diagnostico;
 	}
 
-	public void setDiagnostico(AnemiaTypes diagnostico) {
+	public void setDiagnostico(TiposAnemia diagnostico) {
 		this.diagnostico = diagnostico;
 	}
 

@@ -1,10 +1,10 @@
 package model.enums;
 
-public enum AnemiaTypes {
+public enum TiposAnemia {
 	NoDeterminado, AnemiaSideroblastica, AnemiaMegaloblastica, AnemiaDeEnfermedadesCronicas, AnemiaDeCelulasFalciformes, AnemiaHemolitica, AnemiaAplasica,
 	AnemiaFerropenica, Talasemia;
 
-	public Boolean isa(AnemiaTypes tipo) {
+	public Boolean isa(TiposAnemia tipo) {
 
 		return this.toString() == tipo.toString();
 

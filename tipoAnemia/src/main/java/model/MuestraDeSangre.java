@@ -1,44 +1,44 @@
 package model;
 
-import model.enums.ComponentLevel;
+import model.enums.NivelComponente;
 
 public class MuestraDeSangre {
-	private Double hematocrito;
-	private ComponentLevel nivelHematocrito;
-	private Double hemoglobinaCorspucularMedia;
-	private ComponentLevel nivelHemoglobinaCorpusculasMedia;
-	private Double volumenCorpuscularMedio;
-	private ComponentLevel nivelVolumenCorpuscularMedio;
-	private Double sideremia;
-	private ComponentLevel nivelSideremia;
-	private Double transferrina;
-	private ComponentLevel nivelTransferrina;
-	private Double ferritina;
-	private ComponentLevel nivelFerritina;
-	private Double amplitudDistribucionEritrocitaria;
-	private ComponentLevel nivelAmplitudDistribucionEritrocitaria;
-	private Double reticulocitos;
-	private ComponentLevel nivelReticulocitos;
-	private Double hematies;
-	private ComponentLevel nivelHematies;
-	private Double vitaminaB12;
-	private ComponentLevel nivelVitaminaB12;	
-	private Double folato;
-	private ComponentLevel nivelFolato;
+	public Double hematocrito;
+	public NivelComponente nivelHematocrito;
+	public Double hemoglobinaCorspucularMedia;
+	public NivelComponente nivelHemoglobinaCorpuscularMedia;
+	public Double volumenCorpuscularMedio;
+	public NivelComponente nivelVolumenCorpuscularMedio;
+	public Double sideremia;
+	public NivelComponente nivelSideremia;
+	public Double transferrina;
+	public NivelComponente nivelTransferrina;
+	public Double ferritina;
+	public NivelComponente nivelFerritina;
+	public Double amplitudDistribucionEritrocitaria;
+	public NivelComponente nivelAmplitudDistribucionEritrocitaria;
+	public Double reticulocitos;
+	public NivelComponente nivelReticulocitos;
+	public Double hematies;
+	public NivelComponente nivelHematies;
+	public Double vitaminaB12;
+	public NivelComponente nivelVitaminaB12;	
+	public Double folato;
+	public NivelComponente nivelFolato;
 	
 	public MuestraDeSangre() {
 		super();
-		this.nivelHematocrito = ComponentLevel.NoDeterminado;
-		this.nivelHemoglobinaCorpusculasMedia = ComponentLevel.NoDeterminado;
-		this.nivelVolumenCorpuscularMedio = ComponentLevel.NoDeterminado;
-		this.nivelSideremia = ComponentLevel.NoDeterminado;
-		this.nivelTransferrina = ComponentLevel.NoDeterminado;
-		this.nivelAmplitudDistribucionEritrocitaria = ComponentLevel.NoDeterminado;
-		this.nivelReticulocitos = ComponentLevel.NoDeterminado;
-		this.nivelHematies = ComponentLevel.NoDeterminado;
-		this.nivelFerritina = ComponentLevel.NoDeterminado;
-		this.nivelVitaminaB12 = ComponentLevel.NoDeterminado;
-		this.nivelFolato = ComponentLevel.NoDeterminado;
+		this.nivelHematocrito = NivelComponente.NoDeterminado;
+		this.nivelHemoglobinaCorpuscularMedia = NivelComponente.NoDeterminado;
+		this.nivelVolumenCorpuscularMedio = NivelComponente.NoDeterminado;
+		this.nivelSideremia = NivelComponente.NoDeterminado;
+		this.nivelTransferrina = NivelComponente.NoDeterminado;
+		this.nivelAmplitudDistribucionEritrocitaria = NivelComponente.NoDeterminado;
+		this.nivelReticulocitos = NivelComponente.NoDeterminado;
+		this.nivelHematies = NivelComponente.NoDeterminado;
+		this.nivelFerritina = NivelComponente.NoDeterminado;
+		this.nivelVitaminaB12 = NivelComponente.NoDeterminado;
+		this.nivelFolato = NivelComponente.NoDeterminado;
 	}
 
 	public Double getHematocrito() {
@@ -49,11 +49,11 @@ public class MuestraDeSangre {
 		this.hematocrito = hematocrito;
 	}
 
-	public ComponentLevel getNivelHematocrito() {
+	public NivelComponente getNivelHematocrito() {
 		return nivelHematocrito;
 	}
 
-	public void setNivelHematocrito(ComponentLevel nivelHematocrito) {
+	public void setNivelHematocrito(NivelComponente nivelHematocrito) {
 		this.nivelHematocrito = nivelHematocrito;
 	}
 
@@ -65,12 +65,12 @@ public class MuestraDeSangre {
 		this.hemoglobinaCorspucularMedia = hemoglobinaCorspucularMedia;
 	}
 
-	public ComponentLevel getNivelHemoglobinaCorpusculasMedia() {
-		return nivelHemoglobinaCorpusculasMedia;
+	public NivelComponente getNivelHemoglobinaCorpusculasMedia() {
+		return nivelHemoglobinaCorpuscularMedia;
 	}
 
-	public void setNivelHemoglobinaCorpusculasMedia(ComponentLevel nivelHemoglobinaCorpusculasMedia) {
-		this.nivelHemoglobinaCorpusculasMedia = nivelHemoglobinaCorpusculasMedia;
+	public void setNivelHemoglobinaCorpusculasMedia(NivelComponente nivelHemoglobinaCorpusculasMedia) {
+		this.nivelHemoglobinaCorpuscularMedia = nivelHemoglobinaCorpusculasMedia;
 	}
 
 	public Double getVolumenCorpuscularMedio() {
@@ -82,11 +82,11 @@ public class MuestraDeSangre {
 		this.volumenCorpuscularMedio = volumenCorpuscularMedio;
 	}
 
-	public ComponentLevel getNivelVolumenCorpuscularMedio() {
+	public NivelComponente getNivelVolumenCorpuscularMedio() {
 		return nivelVolumenCorpuscularMedio;
 	}
 
-	public void setNivelVolumenCorpuscularMedio(ComponentLevel nivelVolumenCorpuscularMedio) {
+	public void setNivelVolumenCorpuscularMedio(NivelComponente nivelVolumenCorpuscularMedio) {
 		this.nivelVolumenCorpuscularMedio = nivelVolumenCorpuscularMedio;
 	}
 
@@ -98,11 +98,11 @@ public class MuestraDeSangre {
 		this.sideremia = sideremia;
 	}
 
-	public ComponentLevel getNivelSideremia() {
+	public NivelComponente getNivelSideremia() {
 		return nivelSideremia;
 	}
 
-	public void setNivelSideremia(ComponentLevel nivelSideremia) {
+	public void setNivelSideremia(NivelComponente nivelSideremia) {
 		this.nivelSideremia = nivelSideremia;
 	}
 
@@ -114,11 +114,11 @@ public class MuestraDeSangre {
 		this.transferrina = transferrina;
 	}
 
-	public ComponentLevel getNivelTransferrina() {
+	public NivelComponente getNivelTransferrina() {
 		return nivelTransferrina;
 	}
 
-	public void setNivelTransferrina(ComponentLevel nivelTransferrina) {
+	public void setNivelTransferrina(NivelComponente nivelTransferrina) {
 		this.nivelTransferrina = nivelTransferrina;
 	}
 
@@ -130,11 +130,11 @@ public class MuestraDeSangre {
 		this.ferritina = ferritina;
 	}
 
-	public ComponentLevel getNivelFerritina() {
+	public NivelComponente getNivelFerritina() {
 		return nivelFerritina;
 	}
 
-	public void setNivelFerritina(ComponentLevel nivelFerritina) {
+	public void setNivelFerritina(NivelComponente nivelFerritina) {
 		this.nivelFerritina = nivelFerritina;
 	}
 
@@ -146,11 +146,11 @@ public class MuestraDeSangre {
 		this.amplitudDistribucionEritrocitaria = amplitudDistribucionEritrocitaria;
 	}
 
-	public ComponentLevel getNivelAmplitudDistribucionEritrocitaria() {
+	public NivelComponente getNivelAmplitudDistribucionEritrocitaria() {
 		return nivelAmplitudDistribucionEritrocitaria;
 	}
 
-	public void setNivelAmplitudDistribucionEritrocitaria(ComponentLevel nivelAmplitudDistribucionEritrocitaria) {
+	public void setNivelAmplitudDistribucionEritrocitaria(NivelComponente nivelAmplitudDistribucionEritrocitaria) {
 		this.nivelAmplitudDistribucionEritrocitaria = nivelAmplitudDistribucionEritrocitaria;
 	}
 
@@ -162,11 +162,11 @@ public class MuestraDeSangre {
 		this.reticulocitos = reticulocitos;
 	}
 
-	public ComponentLevel getNivelReticulocitos() {
+	public NivelComponente getNivelReticulocitos() {
 		return nivelReticulocitos;
 	}
 
-	public void setNivelReticulocitos(ComponentLevel nivelReticulocitos) {
+	public void setNivelReticulocitos(NivelComponente nivelReticulocitos) {
 		this.nivelReticulocitos = nivelReticulocitos;
 	}
 
@@ -178,11 +178,11 @@ public class MuestraDeSangre {
 		this.hematies = hematies;
 	}
 
-	public ComponentLevel getNivelHematies() {
+	public NivelComponente getNivelHematies() {
 		return nivelHematies;
 	}
 
-	public void setNivelHematies(ComponentLevel nivelHematies) {
+	public void setNivelHematies(NivelComponente nivelHematies) {
 		this.nivelHematies = nivelHematies;
 	}
 
@@ -194,11 +194,11 @@ public class MuestraDeSangre {
 		this.vitaminaB12 = vitaminaB12;
 	}
 
-	public ComponentLevel getNivelVitaminaB12() {
+	public NivelComponente getNivelVitaminaB12() {
 		return nivelVitaminaB12;
 	}
 
-	public void setNivelVitaminaB12(ComponentLevel nivelVitaminaB12) {
+	public void setNivelVitaminaB12(NivelComponente nivelVitaminaB12) {
 		this.nivelVitaminaB12 = nivelVitaminaB12;
 	}
 
@@ -210,11 +210,11 @@ public class MuestraDeSangre {
 		this.folato = folato;
 	}
 
-	public ComponentLevel getNivelFolato() {
+	public NivelComponente getNivelFolato() {
 		return nivelFolato;
 	}
 
-	public void setNivelFolato(ComponentLevel nivelFolato) {
+	public void setNivelFolato(NivelComponente nivelFolato) {
 		this.nivelFolato = nivelFolato;
 	}
 
@@ -222,7 +222,7 @@ public class MuestraDeSangre {
 	public String toString() {
 		return "MuestraDeSangre [hematocrito=" + hematocrito + ", nivelHematocrito=" + nivelHematocrito
 				+ ", hemoglobinaCorspucularMedia=" + hemoglobinaCorspucularMedia + ", nivelHemoglobinaCorpusculasMedia="
-				+ nivelHemoglobinaCorpusculasMedia + ", volumenCorpuscularMedio=" + volumenCorpuscularMedio
+				+ nivelHemoglobinaCorpuscularMedia + ", volumenCorpuscularMedio=" + volumenCorpuscularMedio
 				+ ", nivelVolumenCorpuscularMedio=" + nivelVolumenCorpuscularMedio + ", sideremia=" + sideremia
 				+ ", nivelSideremia=" + nivelSideremia + ", transferrina=" + transferrina + ", nivelTransferrina="
 				+ nivelTransferrina + ", ferritina=" + ferritina + ", nivelFerritina=" + nivelFerritina

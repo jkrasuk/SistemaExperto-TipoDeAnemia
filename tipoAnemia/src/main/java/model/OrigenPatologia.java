@@ -1,69 +1,61 @@
 package model;
 
-import model.enums.PatologyOriginOptions;
+import model.enums.OrigenPatologiasOpciones;
 
 public class OrigenPatologia {
-	private PatologyOriginOptions
-			TrastornoInmunitario, Cancer, InfeccionesProlongadas, EnfermedadDrepanocítica, RasgoDrepanocítico,
-			GenDeProduccionDeHemoglobinaDefectuoso;
+	public OrigenPatologiasOpciones
+			trastornoInmunitario, cancer, infeccionesProlongadas, enfermedadDrepanocitica, rasgoDrepanocitico,
+			genDeProduccionDeHemoglobinaDefectuoso;
+
+
+	public OrigenPatologiasOpciones getTrastornoInmunitario() {
+		return trastornoInmunitario;
+	}
+
+	public void setTrastornoInmunitario(OrigenPatologiasOpciones trastornoInmunitario) {
+		this.trastornoInmunitario = trastornoInmunitario;
+	}
+
+	public OrigenPatologiasOpciones getCancer() {
+		return cancer;
+	}
+
+	public void setCancer(OrigenPatologiasOpciones cancer) {
+		this.cancer = cancer;
+	}
+
+	public OrigenPatologiasOpciones getInfeccionesProlongadas() {
+		return infeccionesProlongadas;
+	}
+
+	public void setInfeccionesProlongadas(OrigenPatologiasOpciones infeccionesProlongadas) {
+		this.infeccionesProlongadas = infeccionesProlongadas;
+	}
+
+	public OrigenPatologiasOpciones getEnfermedadDrepanocitica() {
+		return enfermedadDrepanocitica;
+	}
+
+	public void setEnfermedadDrepanocitica(OrigenPatologiasOpciones enfermedadDrepanocitica) {
+		this.enfermedadDrepanocitica = enfermedadDrepanocitica;
+	}
+
+	public OrigenPatologiasOpciones getRasgoDrepanocitico() {
+		return rasgoDrepanocitico;
+	}
+
+	public void setRasgoDrepanocitico(OrigenPatologiasOpciones rasgoDrepanocitico) {
+		this.rasgoDrepanocitico = rasgoDrepanocitico;
+	}
+
+	public OrigenPatologiasOpciones getGenDeProduccionDeHemoglobinaDefectuoso() {
+		return genDeProduccionDeHemoglobinaDefectuoso;
+	}
+
+	public void setGenDeProduccionDeHemoglobinaDefectuoso(OrigenPatologiasOpciones genDeProduccionDeHemoglobinaDefectuoso) {
+		this.genDeProduccionDeHemoglobinaDefectuoso = genDeProduccionDeHemoglobinaDefectuoso;
+	}
 
 	
-	public PatologyOriginOptions getTrastornoInmunitario() {
-		return TrastornoInmunitario;
-	}
-
-	public void setTrastornoInmunitario(PatologyOriginOptions trastornoInmunitario) {
-		TrastornoInmunitario = trastornoInmunitario;
-	}
-
-	public PatologyOriginOptions getCancer() {
-		return Cancer;
-	}
-
-	public void setCancer(PatologyOriginOptions cancer) {
-		Cancer = cancer;
-	}
-
-	public PatologyOriginOptions getInfeccionesProlongadas() {
-		return InfeccionesProlongadas;
-	}
-
-	public void setInfeccionesProlongadas(PatologyOriginOptions infeccionesProlongadas) {
-		InfeccionesProlongadas = infeccionesProlongadas;
-	}
-
-	public PatologyOriginOptions getEnfermedadDrepanocítica() {
-		return EnfermedadDrepanocítica;
-	}
-
-	public void setEnfermedadDrepanocítica(PatologyOriginOptions enfermedadDrepanocítica) {
-		EnfermedadDrepanocítica = enfermedadDrepanocítica;
-	}
-
-	public PatologyOriginOptions getRasgoDrepanocítico() {
-		return RasgoDrepanocítico;
-	}
-
-	public void setRasgoDrepanocítico(PatologyOriginOptions rasgoDrepanocítico) {
-		RasgoDrepanocítico = rasgoDrepanocítico;
-	}
-
-	
-	public PatologyOriginOptions getGenDeProduccionDeHemoglobinaDefectuoso() {
-		return GenDeProduccionDeHemoglobinaDefectuoso;
-	}
-
-	public void setGenDeProduccionDeHemoglobinaDefectuoso(
-			PatologyOriginOptions genDeProduccionDeHemoglobinaDefectuoso) {
-		GenDeProduccionDeHemoglobinaDefectuoso = genDeProduccionDeHemoglobinaDefectuoso;
-	}
-
-	@Override
-	public String toString() {
-		return "OrigenPatologia [TrastornoInmunitario=" + TrastornoInmunitario + ", Cancer=" + Cancer
-				+ ", InfeccionesProlongadas=" + InfeccionesProlongadas + ", EnfermedadDrepanocítica="
-				+ EnfermedadDrepanocítica + ", RasgoDrepanocítico=" + RasgoDrepanocítico
-				+ ", GenDeProduccionDeHemoglobinaDefectuoso=" + GenDeProduccionDeHemoglobinaDefectuoso + "]";
-	}
 
 }

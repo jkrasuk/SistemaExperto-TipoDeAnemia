@@ -1,9 +1,9 @@
 package model.enums;
 
-public enum AnemiaMorfology {
+public enum MorfologiasAnemia {
 	NoDeterminado, Microcitica, Normocitica, Macrocitica;
 
-	public Boolean isa(AnemiaMorfology morfologia) {
+	public Boolean isa(MorfologiasAnemia morfologia) {
 
 		return this.toString() == morfologia.toString();
 

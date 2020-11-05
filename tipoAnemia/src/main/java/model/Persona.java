@@ -1,15 +1,15 @@
 package model;
 
 public class Persona {
-	private MuestraDeSangre muestraDeSangre;
-	private EnfermedadPreexistente enfermedadPreexistente;
-	private TipoAnemia tipoAnemia;
+	public MuestraDeSangre muestraDeSangre;
+	public EnfermedadesPreexistentes enfermedadPreexistente;
+	public TipoAnemia tipoAnemia;
 
-	public EnfermedadPreexistente getEnfermedadPreexistente() {
+	public EnfermedadesPreexistentes getEnfermedadPreexistente() {
 		return enfermedadPreexistente;
 	}
 
-	public void setEnfermedadPreexistente(EnfermedadPreexistente enfermedadPreexistente) {
+	public void setEnfermedadPreexistente(EnfermedadesPreexistentes enfermedadPreexistente) {
 		this.enfermedadPreexistente = enfermedadPreexistente;
 	}
 

@@ -1,9 +1,9 @@
 package model.enums;
 
-public enum ComponentLevel {
+public enum NivelComponente {
 	NoDeterminado, Bajo, Normal, Alto;
 
-	public Boolean isa(ComponentLevel level) {
+	public Boolean isa(NivelComponente level) {
 		return this.toString() == level.toString();
 	}
 

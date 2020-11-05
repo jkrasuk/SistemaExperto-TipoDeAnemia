@@ -2,10 +2,10 @@ package utils;
 
 import java.util.List;
 
-import model.EnfermedadPreexistente;
+import model.EnfermedadesPreexistentes;
 import model.Persona;
-import model.enums.AnemiaMorfology;
-import model.enums.AnemiaTypes;
+import model.enums.MorfologiasAnemia;
+import model.enums.TiposAnemia;
 
 public class TestCaseUtils {
 
@@ -21,8 +21,8 @@ public class TestCaseUtils {
 
 	public static void print(Persona persona) {
 
-		AnemiaMorfology morfologia = persona.getTipoAnemia().getMorfologia();
-		AnemiaTypes tipoAnemia = persona.getTipoAnemia().getDiagnostico();
+		MorfologiasAnemia morfologia = persona.getTipoAnemia().getMorfologia();
+		TiposAnemia tipoAnemia = persona.getTipoAnemia().getDiagnostico();
 
 		print();
 		print("Persona");
@@ -33,22 +33,19 @@ public class TestCaseUtils {
 		print();
 	}
 
-	private static void printDiseases(EnfermedadPreexistente enfermedadPreexistente) {
+	private static void printDiseases(EnfermedadesPreexistentes enfermedadPreexistente) {
 
 		print();
 		print("\t Acumulación excesiva de hierro: " + enfermedadPreexistente.getAcumulacionExcesivaDeHierro());
-		print("\t Deficiencia de hierro: " + enfermedadPreexistente.getDeficienciaDeHierro());
 		print("\t Deficiencia de vitamina B12 y folatos: "
 				+ enfermedadPreexistente.getDeficienciaDeVitaminaB12YFolatos());
 		print("\t Enfermedades cronicas: " + enfermedadPreexistente.getEnfermedadesCronicas());
 		print("\t Globulos rojos con forma defectuosa: " + enfermedadPreexistente.getGlobulosRojosConFormaDefectuosa());
-		print("\t Destruccion de globulos rojos antes de lo normal: " + enfermedadPreexistente.getDestruccionDeGlobulosRojosAntesDeLoNormal());
-		print("\t Baja produccion de globulos rojos: " + enfermedadPreexistente.getBajaProduccionDeGlobulosRojos());
 		print("\t Deficit hereditario de hemoglobina: " + enfermedadPreexistente.getDeficitHereditarioDeHemoglobina());
 		print();
 	}
 
-	public static void assertResults(AnemiaTypes diagnostico, String valorEsperado) {
+	public static void assertResults(TiposAnemia diagnostico, String valorEsperado) {
 
 		String diagnosticoFinal = diagnostico.toString();
 

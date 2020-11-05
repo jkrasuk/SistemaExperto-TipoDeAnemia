@@ -16,13 +16,13 @@ import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.rule.Agenda;
 import org.kie.api.runtime.rule.FactHandle;
 
-import model.EnfermedadPreexistente;
+import model.EnfermedadesPreexistentes;
 import model.MuestraDeSangre;
 import model.OrigenPatologia;
 import model.Persona;
 import model.TipoAnemia;
-import model.enums.AnemiaTypes;
-import model.enums.PatologyOriginOptions;
+import model.enums.TiposAnemia;
+import model.enums.OrigenPatologiasOpciones;
 import utils.KnowledgeSessionHelper;
 
 public class ForwardTestCases {
@@ -80,14 +80,14 @@ public class ForwardTestCases {
 		muestra.setVitaminaB12(100.0);
 		
 		OrigenPatologia origen = new OrigenPatologia();
-		origen.setCancer(PatologyOriginOptions.Si);
-		origen.setEnfermedadDrepanocítica(PatologyOriginOptions.No);
-		origen.setGenDeProduccionDeHemoglobinaDefectuoso(PatologyOriginOptions.No);
-		origen.setInfeccionesProlongadas(PatologyOriginOptions.No);
-		origen.setRasgoDrepanocítico(PatologyOriginOptions.No);
-		origen.setTrastornoInmunitario(PatologyOriginOptions.No);
+		origen.setCancer(OrigenPatologiasOpciones.Si);
+		origen.setEnfermedadDrepanocitica(OrigenPatologiasOpciones.No);
+		origen.setGenDeProduccionDeHemoglobinaDefectuoso(OrigenPatologiasOpciones.No);
+		origen.setInfeccionesProlongadas(OrigenPatologiasOpciones.No);
+		origen.setRasgoDrepanocitico(OrigenPatologiasOpciones.No);
+		origen.setTrastornoInmunitario(OrigenPatologiasOpciones.No);
 
-		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
+		EnfermedadesPreexistentes enfermedad = new EnfermedadesPreexistentes();
 		enfermedad.setOrigen(origen);
 
 		TipoAnemia tipoAnemia = new TipoAnemia();
@@ -107,9 +107,9 @@ public class ForwardTestCases {
 
 		sessionStatefull.fireAllRules();
 
-		AnemiaTypes diagnostico = persona.getTipoAnemia().getDiagnostico();
+		TiposAnemia diagnostico = persona.getTipoAnemia().getDiagnostico();
 
-		String valorEsperado = AnemiaTypes.AnemiaFerropenica.toString();
+		String valorEsperado = TiposAnemia.AnemiaFerropenica.toString();
 		print(persona);
 		assertResults(diagnostico, valorEsperado);
 	}
@@ -132,14 +132,14 @@ public class ForwardTestCases {
 		muestra.setVitaminaB12(300.0);
 		
 		OrigenPatologia origen = new OrigenPatologia();
-		origen.setCancer(PatologyOriginOptions.No);
-		origen.setEnfermedadDrepanocítica(PatologyOriginOptions.No);
-		origen.setGenDeProduccionDeHemoglobinaDefectuoso(PatologyOriginOptions.No);
-		origen.setInfeccionesProlongadas(PatologyOriginOptions.No);
-		origen.setRasgoDrepanocítico(PatologyOriginOptions.No);
-		origen.setTrastornoInmunitario(PatologyOriginOptions.No);
+		origen.setCancer(OrigenPatologiasOpciones.No);
+		origen.setEnfermedadDrepanocitica(OrigenPatologiasOpciones.No);
+		origen.setGenDeProduccionDeHemoglobinaDefectuoso(OrigenPatologiasOpciones.No);
+		origen.setInfeccionesProlongadas(OrigenPatologiasOpciones.No);
+		origen.setRasgoDrepanocitico(OrigenPatologiasOpciones.No);
+		origen.setTrastornoInmunitario(OrigenPatologiasOpciones.No);
 
-		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
+		EnfermedadesPreexistentes enfermedad = new EnfermedadesPreexistentes();
 		enfermedad.setOrigen(origen);
 		TipoAnemia tipoAnemia = new TipoAnemia();
 		
@@ -158,9 +158,9 @@ public class ForwardTestCases {
 
 		sessionStatefull.fireAllRules();
 
-		AnemiaTypes diagnostico = persona.getTipoAnemia().getDiagnostico();
+		TiposAnemia diagnostico = persona.getTipoAnemia().getDiagnostico();
 
-		String valorEsperado = AnemiaTypes.AnemiaHemolitica.toString();
+		String valorEsperado = TiposAnemia.AnemiaHemolitica.toString();
 		print(persona);
 		assertResults(diagnostico, valorEsperado);
 	}
@@ -182,14 +182,14 @@ public class ForwardTestCases {
 		muestra.setVitaminaB12(300.0);
 		
 		OrigenPatologia origen = new OrigenPatologia();
-		origen.setCancer(PatologyOriginOptions.No);
-		origen.setEnfermedadDrepanocítica(PatologyOriginOptions.Si);
-		origen.setGenDeProduccionDeHemoglobinaDefectuoso(PatologyOriginOptions.No);
-		origen.setInfeccionesProlongadas(PatologyOriginOptions.No);
-		origen.setRasgoDrepanocítico(PatologyOriginOptions.No);
-		origen.setTrastornoInmunitario(PatologyOriginOptions.No);
+		origen.setCancer(OrigenPatologiasOpciones.No);
+		origen.setEnfermedadDrepanocitica(OrigenPatologiasOpciones.Si);
+		origen.setGenDeProduccionDeHemoglobinaDefectuoso(OrigenPatologiasOpciones.No);
+		origen.setInfeccionesProlongadas(OrigenPatologiasOpciones.No);
+		origen.setRasgoDrepanocitico(OrigenPatologiasOpciones.No);
+		origen.setTrastornoInmunitario(OrigenPatologiasOpciones.No);
 
-		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
+		EnfermedadesPreexistentes enfermedad = new EnfermedadesPreexistentes();
 		enfermedad.setOrigen(origen);
 		TipoAnemia tipoAnemia = new TipoAnemia();
 		
@@ -207,9 +207,9 @@ public class ForwardTestCases {
 
 		sessionStatefull.fireAllRules();
 
-		AnemiaTypes diagnostico = persona.getTipoAnemia().getDiagnostico();
+		TiposAnemia diagnostico = persona.getTipoAnemia().getDiagnostico();
 
-		String valorEsperado = AnemiaTypes.AnemiaDeCelulasFalciformes.toString();
+		String valorEsperado = TiposAnemia.AnemiaDeCelulasFalciformes.toString();
 		print(persona);
 		assertResults(diagnostico, valorEsperado);
 	}
@@ -233,14 +233,14 @@ public class ForwardTestCases {
 		muestra.setVitaminaB12(100.0);
 		
 		OrigenPatologia origen = new OrigenPatologia();
-		origen.setCancer(PatologyOriginOptions.No);
-		origen.setEnfermedadDrepanocítica(PatologyOriginOptions.No);
-		origen.setGenDeProduccionDeHemoglobinaDefectuoso(PatologyOriginOptions.No);
-		origen.setInfeccionesProlongadas(PatologyOriginOptions.No);
-		origen.setRasgoDrepanocítico(PatologyOriginOptions.No);
-		origen.setTrastornoInmunitario(PatologyOriginOptions.No);
+		origen.setCancer(OrigenPatologiasOpciones.No);
+		origen.setEnfermedadDrepanocitica(OrigenPatologiasOpciones.No);
+		origen.setGenDeProduccionDeHemoglobinaDefectuoso(OrigenPatologiasOpciones.No);
+		origen.setInfeccionesProlongadas(OrigenPatologiasOpciones.No);
+		origen.setRasgoDrepanocitico(OrigenPatologiasOpciones.No);
+		origen.setTrastornoInmunitario(OrigenPatologiasOpciones.No);
 
-		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
+		EnfermedadesPreexistentes enfermedad = new EnfermedadesPreexistentes();
 		enfermedad.setOrigen(origen);
 		TipoAnemia tipoAnemia = new TipoAnemia();
 		
@@ -258,9 +258,9 @@ public class ForwardTestCases {
 
 		sessionStatefull.fireAllRules();
 
-		AnemiaTypes diagnostico = persona.getTipoAnemia().getDiagnostico();
+		TiposAnemia diagnostico = persona.getTipoAnemia().getDiagnostico();
 
-		String valorEsperado = AnemiaTypes.AnemiaMegaloblastica.toString();
+		String valorEsperado = TiposAnemia.AnemiaMegaloblastica.toString();
 		print(persona);
 		assertResults(diagnostico, valorEsperado);
 	}
@@ -283,14 +283,14 @@ public class ForwardTestCases {
 		muestra.setVitaminaB12(300.0);
 		
 		OrigenPatologia origen = new OrigenPatologia();
-		origen.setCancer(PatologyOriginOptions.No);
-		origen.setEnfermedadDrepanocítica(PatologyOriginOptions.No);
-		origen.setGenDeProduccionDeHemoglobinaDefectuoso(PatologyOriginOptions.No);
-		origen.setInfeccionesProlongadas(PatologyOriginOptions.No);
-		origen.setRasgoDrepanocítico(PatologyOriginOptions.No);
-		origen.setTrastornoInmunitario(PatologyOriginOptions.No);
+		origen.setCancer(OrigenPatologiasOpciones.No);
+		origen.setEnfermedadDrepanocitica(OrigenPatologiasOpciones.No);
+		origen.setGenDeProduccionDeHemoglobinaDefectuoso(OrigenPatologiasOpciones.No);
+		origen.setInfeccionesProlongadas(OrigenPatologiasOpciones.No);
+		origen.setRasgoDrepanocitico(OrigenPatologiasOpciones.No);
+		origen.setTrastornoInmunitario(OrigenPatologiasOpciones.No);
 
-		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
+		EnfermedadesPreexistentes enfermedad = new EnfermedadesPreexistentes();
 		enfermedad.setOrigen(origen);
 
 		TipoAnemia tipoAnemia = new TipoAnemia();
@@ -310,9 +310,9 @@ public class ForwardTestCases {
 
 		sessionStatefull.fireAllRules();
 
-		AnemiaTypes diagnostico = persona.getTipoAnemia().getDiagnostico();
+		TiposAnemia diagnostico = persona.getTipoAnemia().getDiagnostico();
 
-		String valorEsperado = AnemiaTypes.AnemiaSideroblastica.toString();
+		String valorEsperado = TiposAnemia.AnemiaSideroblastica.toString();
 		print(persona);
 		assertResults(diagnostico, valorEsperado);
 	}
@@ -334,14 +334,14 @@ public class ForwardTestCases {
 		muestra.setVitaminaB12(300.0);
 		
 		OrigenPatologia origen = new OrigenPatologia();
-		origen.setCancer(PatologyOriginOptions.No);
-		origen.setEnfermedadDrepanocítica(PatologyOriginOptions.No);
-		origen.setGenDeProduccionDeHemoglobinaDefectuoso(PatologyOriginOptions.No);
-		origen.setInfeccionesProlongadas(PatologyOriginOptions.No);
-		origen.setRasgoDrepanocítico(PatologyOriginOptions.No);
-		origen.setTrastornoInmunitario(PatologyOriginOptions.No);
+		origen.setCancer(OrigenPatologiasOpciones.No);
+		origen.setEnfermedadDrepanocitica(OrigenPatologiasOpciones.No);
+		origen.setGenDeProduccionDeHemoglobinaDefectuoso(OrigenPatologiasOpciones.No);
+		origen.setInfeccionesProlongadas(OrigenPatologiasOpciones.No);
+		origen.setRasgoDrepanocitico(OrigenPatologiasOpciones.No);
+		origen.setTrastornoInmunitario(OrigenPatologiasOpciones.No);
 
-		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
+		EnfermedadesPreexistentes enfermedad = new EnfermedadesPreexistentes();
 		enfermedad.setOrigen(origen);
 
 		TipoAnemia tipoAnemia = new TipoAnemia();
@@ -361,9 +361,9 @@ public class ForwardTestCases {
 
 		sessionStatefull.fireAllRules();
 
-		AnemiaTypes diagnostico = persona.getTipoAnemia().getDiagnostico();
+		TiposAnemia diagnostico = persona.getTipoAnemia().getDiagnostico();
 
-		String valorEsperado = AnemiaTypes.AnemiaAplasica.toString();
+		String valorEsperado = TiposAnemia.AnemiaAplasica.toString();
 		print(persona);
 		assertResults(diagnostico, valorEsperado);
 	}
@@ -386,14 +386,14 @@ public class ForwardTestCases {
 		muestra.setVitaminaB12(500.0);
 		
 		OrigenPatologia origen = new OrigenPatologia();
-		origen.setCancer(PatologyOriginOptions.No);
-		origen.setEnfermedadDrepanocítica(PatologyOriginOptions.No);
-		origen.setGenDeProduccionDeHemoglobinaDefectuoso(PatologyOriginOptions.No);
-		origen.setInfeccionesProlongadas(PatologyOriginOptions.No);
-		origen.setRasgoDrepanocítico(PatologyOriginOptions.No);
-		origen.setTrastornoInmunitario(PatologyOriginOptions.No);
+		origen.setCancer(OrigenPatologiasOpciones.No);
+		origen.setEnfermedadDrepanocitica(OrigenPatologiasOpciones.No);
+		origen.setGenDeProduccionDeHemoglobinaDefectuoso(OrigenPatologiasOpciones.No);
+		origen.setInfeccionesProlongadas(OrigenPatologiasOpciones.No);
+		origen.setRasgoDrepanocitico(OrigenPatologiasOpciones.No);
+		origen.setTrastornoInmunitario(OrigenPatologiasOpciones.No);
 
-		EnfermedadPreexistente enfermedad = new EnfermedadPreexistente();
+		EnfermedadesPreexistentes enfermedad = new EnfermedadesPreexistentes();
 		enfermedad.setOrigen(origen);
 
 		TipoAnemia tipoAnemia = new TipoAnemia();
@@ -413,9 +413,9 @@ public class ForwardTestCases {
 
 		sessionStatefull.fireAllRules();
 
-		AnemiaTypes diagnostico = persona.getTipoAnemia().getDiagnostico();
+		TiposAnemia diagnostico = persona.getTipoAnemia().getDiagnostico();
 
-		String valorEsperado = AnemiaTypes.NoDeterminado.toString();
+		String valorEsperado = TiposAnemia.NoDeterminado.toString();
 		print(persona);
 		assertResults(diagnostico, valorEsperado);
 	}
