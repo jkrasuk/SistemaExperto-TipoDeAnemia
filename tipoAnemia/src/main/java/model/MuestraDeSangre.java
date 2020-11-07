@@ -65,11 +65,11 @@ public class MuestraDeSangre {
 		this.hemoglobinaCorspucularMedia = hemoglobinaCorspucularMedia;
 	}
 
-	public NivelComponente getNivelHemoglobinaCorpusculasMedia() {
+	public NivelComponente getNivelHemoglobinaCorpuscularMedia() {
 		return nivelHemoglobinaCorpuscularMedia;
 	}
 
-	public void setNivelHemoglobinaCorpusculasMedia(NivelComponente nivelHemoglobinaCorpusculasMedia) {
+	public void setNivelHemoglobinaCorpuscularMedia(NivelComponente nivelHemoglobinaCorpusculasMedia) {
 		this.nivelHemoglobinaCorpuscularMedia = nivelHemoglobinaCorpusculasMedia;
 	}
 

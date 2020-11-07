@@ -37,7 +37,7 @@ lock-on-active agenda-group "nivelesDeComponentesDeSangre"
         $persona: Persona(muestraDeSangre.hemoglobinaCorspucularMedia < 27)
     then
       modify($persona) {
-            getMuestraDeSangre().setNivelHemoglobinaCorpusculasMedia(NivelComponente.Bajo)
+            getMuestraDeSangre().setNivelHemoglobinaCorpuscularMedia(NivelComponente.Bajo)
         }
 end
 rule "R5 – Nivel de hemoglobina corspucular media normal"
@@ -46,7 +46,7 @@ lock-on-active agenda-group "nivelesDeComponentesDeSangre"
         $persona: Persona(muestraDeSangre.hemoglobinaCorspucularMedia >= 27 && muestraDeSangre.hemoglobinaCorspucularMedia <= 33 )
     then
       modify($persona) {
-            getMuestraDeSangre().setNivelHemoglobinaCorpusculasMedia(NivelComponente.Normal)
+            getMuestraDeSangre().setNivelHemoglobinaCorpuscularMedia(NivelComponente.Normal)
         }
 end
 rule "R6 – Nivel de hemoglobina corspucular media alto"
@@ -55,7 +55,7 @@ lock-on-active agenda-group "nivelesDeComponentesDeSangre"
         $persona: Persona(muestraDeSangre.hemoglobinaCorspucularMedia > 33 )
     then
       modify($persona) {
-            getMuestraDeSangre().setNivelHemoglobinaCorpusculasMedia(NivelComponente.Alto)
+            getMuestraDeSangre().setNivelHemoglobinaCorpuscularMedia(NivelComponente.Alto)
         }
 end
 rule "R7 – Nivel de volumen corpuscular medio bajo"
@@ -329,13 +329,14 @@ lock-on-active agenda-group "morfologiaAnemia"
     when
         $persona: Persona(
             muestraDeSangre.getNivelHematocrito().isa(NivelComponente.Bajo),
-            muestraDeSangre.nivelHemoglobinaCorpusculasMedia.isa(NivelComponente.Bajo),
+            muestraDeSangre.nivelHemoglobinaCorpuscularMedia.isa(NivelComponente.Bajo),
             muestraDeSangre.nivelVolumenCorpuscularMedio.isa(NivelComponente.Bajo)
        )
      
     then
-       $persona.getTipoAnemia().setMorfologia(MorfologiasAnemia.Microcitica);
-        update($persona);
+      modify($persona) {
+          getTipoAnemia().setMorfologia(MorfologiasAnemia.Microcitica);
+       }
 end
 rule "R35 – Morfologia anemia normocitica"
 lock-on-active agenda-group "morfologiaAnemia"
@@ -356,7 +357,7 @@ lock-on-active agenda-group "morfologiaAnemia"
     when
         $persona: Persona(
             muestraDeSangre.nivelHematocrito.isa(NivelComponente.Bajo),
-            muestraDeSangre.nivelHemoglobinaCorpusculasMedia.isa(NivelComponente.Alto),
+            muestraDeSangre.nivelHemoglobinaCorpuscularMedia.isa(NivelComponente.Alto),
             muestraDeSangre.nivelVolumenCorpuscularMedio.isa(NivelComponente.Alto)
        )
     then

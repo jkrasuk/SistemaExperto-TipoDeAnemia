@@ -1,7 +1,5 @@
 package utils;
 
-import java.util.List;
-
 import model.EnfermedadesPreexistentes;
 import model.Persona;
 import model.enums.MorfologiasAnemia;

@@ -7,9 +7,18 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.kie.api.event.rule.AfterMatchFiredEvent;
+import org.kie.api.event.rule.AgendaEventListener;
+import org.kie.api.event.rule.AgendaGroupPoppedEvent;
+import org.kie.api.event.rule.AgendaGroupPushedEvent;
+import org.kie.api.event.rule.BeforeMatchFiredEvent;
+import org.kie.api.event.rule.MatchCancelledEvent;
+import org.kie.api.event.rule.MatchCreatedEvent;
 import org.kie.api.event.rule.ObjectDeletedEvent;
 import org.kie.api.event.rule.ObjectInsertedEvent;
 import org.kie.api.event.rule.ObjectUpdatedEvent;
+import org.kie.api.event.rule.RuleFlowGroupActivatedEvent;
+import org.kie.api.event.rule.RuleFlowGroupDeactivatedEvent;
 import org.kie.api.event.rule.RuleRuntimeEventListener;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
@@ -32,8 +41,6 @@ public class ForwardTestCases {
 	KieSession sessionStatefull;
 	static KieContainer kieContainer;
 
-	FactHandle automovilDir;
-
 	public ForwardTestCases() {
 	}
 
@@ -44,6 +51,7 @@ public class ForwardTestCases {
 
 	private void prepareKnowledgeSession() {
 		sessionStatefull = KnowledgeSessionHelper.getStatefulKnowledgeSession(kieContainer, K_SESSION_NAME);
+		sessionStatefull.addEventListener(agendaEventListener());
 //		sessionStatefull.addEventListener(buildEventListener());
 	}
 
@@ -78,7 +86,7 @@ public class ForwardTestCases {
 		muestra.setHematies(3000000.0);
 		muestra.setFolato(10.0);
 		muestra.setVitaminaB12(100.0);
-		
+
 		OrigenPatologia origen = new OrigenPatologia();
 		origen.setCancer(OrigenPatologiasOpciones.Si);
 		origen.setEnfermedadDrepanocitica(OrigenPatologiasOpciones.No);
@@ -91,15 +99,17 @@ public class ForwardTestCases {
 		enfermedad.setOrigen(origen);
 
 		TipoAnemia tipoAnemia = new TipoAnemia();
-		
+
 		Persona persona = new Persona();
 		persona.setMuestraDeSangre(muestra);
 		persona.setEnfermedadPreexistente(enfermedad);
 		persona.setTipoAnemia(tipoAnemia);
-		
-		sessionStatefull.insert(persona);
-		Agenda agenda = sessionStatefull.getAgenda();
 
+		sessionStatefull.insert(persona);
+		
+		Agenda agenda = sessionStatefull.getAgenda();
+		
+		// En primer lugar, se tiene el ultimo conjunto de reglas a ejecutar
 		agenda.getAgendaGroup("diagnosticoFinal").setFocus();
 		agenda.getAgendaGroup("morfologiaAnemia").setFocus();
 		agenda.getAgendaGroup("enfermedad").setFocus();
@@ -130,7 +140,7 @@ public class ForwardTestCases {
 		muestra.setHematies(100000.0);
 		muestra.setFolato(13.0);
 		muestra.setVitaminaB12(300.0);
-		
+
 		OrigenPatologia origen = new OrigenPatologia();
 		origen.setCancer(OrigenPatologiasOpciones.No);
 		origen.setEnfermedadDrepanocitica(OrigenPatologiasOpciones.No);
@@ -142,7 +152,7 @@ public class ForwardTestCases {
 		EnfermedadesPreexistentes enfermedad = new EnfermedadesPreexistentes();
 		enfermedad.setOrigen(origen);
 		TipoAnemia tipoAnemia = new TipoAnemia();
-		
+
 		Persona persona = new Persona();
 		persona.setMuestraDeSangre(muestra);
 		persona.setEnfermedadPreexistente(enfermedad);
@@ -151,6 +161,7 @@ public class ForwardTestCases {
 		sessionStatefull.insert(persona);
 		Agenda agenda = sessionStatefull.getAgenda();
 
+		// En primer lugar, se tiene el ultimo conjunto de reglas a ejecutar
 		agenda.getAgendaGroup("diagnosticoFinal").setFocus();
 		agenda.getAgendaGroup("morfologiaAnemia").setFocus();
 		agenda.getAgendaGroup("enfermedad").setFocus();
@@ -180,7 +191,7 @@ public class ForwardTestCases {
 		muestra.setHematies(6000000.0);
 		muestra.setFolato(13.0);
 		muestra.setVitaminaB12(300.0);
-		
+
 		OrigenPatologia origen = new OrigenPatologia();
 		origen.setCancer(OrigenPatologiasOpciones.No);
 		origen.setEnfermedadDrepanocitica(OrigenPatologiasOpciones.Si);
@@ -192,7 +203,7 @@ public class ForwardTestCases {
 		EnfermedadesPreexistentes enfermedad = new EnfermedadesPreexistentes();
 		enfermedad.setOrigen(origen);
 		TipoAnemia tipoAnemia = new TipoAnemia();
-		
+
 		Persona persona = new Persona();
 		persona.setMuestraDeSangre(muestra);
 		persona.setEnfermedadPreexistente(enfermedad);
@@ -200,6 +211,7 @@ public class ForwardTestCases {
 		sessionStatefull.insert(persona);
 		Agenda agenda = sessionStatefull.getAgenda();
 
+		// En primer lugar, se tiene el ultimo conjunto de reglas a ejecutar
 		agenda.getAgendaGroup("diagnosticoFinal").setFocus();
 		agenda.getAgendaGroup("morfologiaAnemia").setFocus();
 		agenda.getAgendaGroup("enfermedad").setFocus();
@@ -231,7 +243,7 @@ public class ForwardTestCases {
 		muestra.setHematies(3000000.0);
 		muestra.setFolato(1.0);
 		muestra.setVitaminaB12(100.0);
-		
+
 		OrigenPatologia origen = new OrigenPatologia();
 		origen.setCancer(OrigenPatologiasOpciones.No);
 		origen.setEnfermedadDrepanocitica(OrigenPatologiasOpciones.No);
@@ -243,7 +255,7 @@ public class ForwardTestCases {
 		EnfermedadesPreexistentes enfermedad = new EnfermedadesPreexistentes();
 		enfermedad.setOrigen(origen);
 		TipoAnemia tipoAnemia = new TipoAnemia();
-		
+
 		Persona persona = new Persona();
 		persona.setMuestraDeSangre(muestra);
 		persona.setEnfermedadPreexistente(enfermedad);
@@ -251,6 +263,7 @@ public class ForwardTestCases {
 		sessionStatefull.insert(persona);
 		Agenda agenda = sessionStatefull.getAgenda();
 
+		// En primer lugar, se tiene el ultimo conjunto de reglas a ejecutar
 		agenda.getAgendaGroup("diagnosticoFinal").setFocus();
 		agenda.getAgendaGroup("morfologiaAnemia").setFocus();
 		agenda.getAgendaGroup("enfermedad").setFocus();
@@ -281,7 +294,7 @@ public class ForwardTestCases {
 		muestra.setHematies(4000000.0);
 		muestra.setFolato(13.0);
 		muestra.setVitaminaB12(300.0);
-		
+
 		OrigenPatologia origen = new OrigenPatologia();
 		origen.setCancer(OrigenPatologiasOpciones.No);
 		origen.setEnfermedadDrepanocitica(OrigenPatologiasOpciones.No);
@@ -294,7 +307,7 @@ public class ForwardTestCases {
 		enfermedad.setOrigen(origen);
 
 		TipoAnemia tipoAnemia = new TipoAnemia();
-		
+
 		Persona persona = new Persona();
 		persona.setMuestraDeSangre(muestra);
 		persona.setEnfermedadPreexistente(enfermedad);
@@ -303,6 +316,7 @@ public class ForwardTestCases {
 		sessionStatefull.insert(persona);
 		Agenda agenda = sessionStatefull.getAgenda();
 
+		// En primer lugar, se tiene el ultimo conjunto de reglas a ejecutar
 		agenda.getAgendaGroup("diagnosticoFinal").setFocus();
 		agenda.getAgendaGroup("morfologiaAnemia").setFocus();
 		agenda.getAgendaGroup("enfermedad").setFocus();
@@ -332,7 +346,7 @@ public class ForwardTestCases {
 		muestra.setHematies(50000.0);
 		muestra.setFolato(13.0);
 		muestra.setVitaminaB12(300.0);
-		
+
 		OrigenPatologia origen = new OrigenPatologia();
 		origen.setCancer(OrigenPatologiasOpciones.No);
 		origen.setEnfermedadDrepanocitica(OrigenPatologiasOpciones.No);
@@ -345,7 +359,7 @@ public class ForwardTestCases {
 		enfermedad.setOrigen(origen);
 
 		TipoAnemia tipoAnemia = new TipoAnemia();
-		
+
 		Persona persona = new Persona();
 		persona.setMuestraDeSangre(muestra);
 		persona.setEnfermedadPreexistente(enfermedad);
@@ -354,6 +368,7 @@ public class ForwardTestCases {
 		sessionStatefull.insert(persona);
 		Agenda agenda = sessionStatefull.getAgenda();
 
+		// En primer lugar, se tiene el ultimo conjunto de reglas a ejecutar
 		agenda.getAgendaGroup("diagnosticoFinal").setFocus();
 		agenda.getAgendaGroup("morfologiaAnemia").setFocus();
 		agenda.getAgendaGroup("enfermedad").setFocus();
@@ -367,7 +382,7 @@ public class ForwardTestCases {
 		print(persona);
 		assertResults(diagnostico, valorEsperado);
 	}
-	
+
 	@Test
 	public void personaSinAnemiaTest() {
 
@@ -384,7 +399,7 @@ public class ForwardTestCases {
 		muestra.setHematies(5000000.0);
 		muestra.setFolato(13.0);
 		muestra.setVitaminaB12(500.0);
-		
+
 		OrigenPatologia origen = new OrigenPatologia();
 		origen.setCancer(OrigenPatologiasOpciones.No);
 		origen.setEnfermedadDrepanocitica(OrigenPatologiasOpciones.No);
@@ -397,7 +412,7 @@ public class ForwardTestCases {
 		enfermedad.setOrigen(origen);
 
 		TipoAnemia tipoAnemia = new TipoAnemia();
-		
+
 		Persona persona = new Persona();
 		persona.setMuestraDeSangre(muestra);
 		persona.setEnfermedadPreexistente(enfermedad);
@@ -406,6 +421,7 @@ public class ForwardTestCases {
 		sessionStatefull.insert(persona);
 		Agenda agenda = sessionStatefull.getAgenda();
 
+		// En primer lugar, se tiene el ultimo conjunto de reglas a ejecutar
 		agenda.getAgendaGroup("diagnosticoFinal").setFocus();
 		agenda.getAgendaGroup("morfologiaAnemia").setFocus();
 		agenda.getAgendaGroup("enfermedad").setFocus();
@@ -438,6 +454,69 @@ public class ForwardTestCases {
 			public void objectDeleted(ObjectDeletedEvent event) {
 				System.out.println("Object deleted \n" + event.getOldObject().toString());
 			}
+		};
+	}
+
+	private AgendaEventListener agendaEventListener() {
+		return new AgendaEventListener() {
+			@Override
+			public void matchCreated(MatchCreatedEvent event) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+
+			public void matchCancelled(MatchCancelledEvent event) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+
+			public void beforeMatchFired(BeforeMatchFiredEvent event) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void afterMatchFired(AfterMatchFiredEvent event) {
+				System.out.println("The rule " + event.getMatch().getRule().getName() + " has be fired");
+			}
+
+			@Override
+			public void afterRuleFlowGroupActivated(RuleFlowGroupActivatedEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void afterRuleFlowGroupDeactivated(RuleFlowGroupDeactivatedEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void agendaGroupPopped(AgendaGroupPoppedEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void agendaGroupPushed(AgendaGroupPushedEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void beforeRuleFlowGroupActivated(RuleFlowGroupActivatedEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void beforeRuleFlowGroupDeactivated(RuleFlowGroupDeactivatedEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
 		};
 	}
 }
