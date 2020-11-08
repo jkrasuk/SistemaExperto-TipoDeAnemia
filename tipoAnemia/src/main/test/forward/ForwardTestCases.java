@@ -51,7 +51,7 @@ public class ForwardTestCases {
 
 	private void prepareKnowledgeSession() {
 		sessionStatefull = KnowledgeSessionHelper.getStatefulKnowledgeSession(kieContainer, K_SESSION_NAME);
-		sessionStatefull.addEventListener(agendaEventListener());
+//		sessionStatefull.addEventListener(agendaEventListener());
 //		sessionStatefull.addEventListener(buildEventListener());
 	}
 

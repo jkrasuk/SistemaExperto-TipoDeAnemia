@@ -43,7 +43,8 @@ end
 rule "R5 – Nivel de hemoglobina corspucular media normal"
 lock-on-active agenda-group "nivelesDeComponentesDeSangre"
     when
-        $persona: Persona(muestraDeSangre.hemoglobinaCorspucularMedia >= 27 && muestraDeSangre.hemoglobinaCorspucularMedia <= 33 )
+        $persona: Persona(muestraDeSangre.hemoglobinaCorspucularMedia >= 27
+         					&& muestraDeSangre.hemoglobinaCorspucularMedia <= 33 )
     then
       modify($persona) {
             getMuestraDeSangre().setNivelHemoglobinaCorpuscularMedia(NivelComponente.Normal)
@@ -72,7 +73,8 @@ end
 rule "R8 – Nivel de volumen corpuscular medio normal"
 lock-on-active agenda-group "nivelesDeComponentesDeSangre"
 when
-    $persona: Persona(muestraDeSangre.volumenCorpuscularMedio >= 78.0 && muestraDeSangre.volumenCorpuscularMedio <= 100.0 )
+    $persona: Persona(muestraDeSangre.volumenCorpuscularMedio >= 78.0 
+    					&& muestraDeSangre.volumenCorpuscularMedio <= 100.0 )
 then
   modify($persona) {
         getMuestraDeSangre().setNivelVolumenCorpuscularMedio(NivelComponente.Normal)
@@ -130,7 +132,8 @@ end
 rule "R14 – Nivel de transferrina normal"
 lock-on-active agenda-group "nivelesDeComponentesDeSangre"
     when
-        $persona: Persona(muestraDeSangre.transferrina >= 200 && muestraDeSangre.transferrina <= 360 )
+        $persona: Persona(muestraDeSangre.transferrina >= 200
+        					 && muestraDeSangre.transferrina <= 360 )
     then
       modify($persona) {
             getMuestraDeSangre().setNivelTransferrina(NivelComponente.Normal)
@@ -188,7 +191,8 @@ end
 rule "R20 – Nivel de amplitud de distribucion eritrocitaria normal"
 lock-on-active agenda-group "nivelesDeComponentesDeSangre"
     when
-        $persona: Persona(muestraDeSangre.amplitudDistribucionEritrocitaria >= 11 && muestraDeSangre.amplitudDistribucionEritrocitaria <= 14 )
+        $persona: Persona(muestraDeSangre.amplitudDistribucionEritrocitaria >= 11
+        					 && muestraDeSangre.amplitudDistribucionEritrocitaria <= 14 )
     then
       modify($persona) {
             getMuestraDeSangre().setNivelAmplitudDistribucionEritrocitaria(NivelComponente.Normal)
@@ -217,7 +221,8 @@ end
 rule "R23 – Nivel de reticulocitos normal"
 lock-on-active agenda-group "nivelesDeComponentesDeSangre"
     when
-        $persona: Persona(muestraDeSangre.reticulocitos >= 35000 && muestraDeSangre.reticulocitos <= 75000 )
+        $persona: Persona(muestraDeSangre.reticulocitos >= 35000 
+        					&& muestraDeSangre.reticulocitos <= 75000 )
     then
       modify($persona) {
             getMuestraDeSangre().setNivelReticulocitos(NivelComponente.Normal)
@@ -247,7 +252,8 @@ end
 rule "R26 – Nivel de hematies normal"
 lock-on-active agenda-group "nivelesDeComponentesDeSangre"
     when
-        $persona: Persona(muestraDeSangre.hematies >= 4500000 && muestraDeSangre.hematies <= 5500000 )
+        $persona: Persona(muestraDeSangre.hematies >= 4500000
+        					 && muestraDeSangre.hematies <= 5500000 )
     then
       modify($persona) {
             getMuestraDeSangre().setNivelHematies(NivelComponente.Normal)
@@ -463,7 +469,8 @@ lock-on-active agenda-group "diagnosticoFinal"
     when
         $persona: Persona(
             tipoAnemia.morfologia.isa(MorfologiasAnemia.Microcitica),
-            muestraDeSangre.nivelSideremia.isa(NivelComponente.Normal) || muestraDeSangre.nivelSideremia.isa(NivelComponente.Alto),
+            muestraDeSangre.nivelSideremia.isa(NivelComponente.Normal)
+             || muestraDeSangre.nivelSideremia.isa(NivelComponente.Alto),
             muestraDeSangre.nivelTransferrina.isa(NivelComponente.Alto),
             muestraDeSangre.nivelFerritina.isa(NivelComponente.Alto),
             muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(NivelComponente.Alto),
@@ -538,7 +545,8 @@ lock-on-active agenda-group "diagnosticoFinal"
             tipoAnemia.morfologia.isa(MorfologiasAnemia.Normocitica),
             muestraDeSangre.nivelSideremia.isa(NivelComponente.Alto),
             muestraDeSangre.nivelTransferrina.isa(NivelComponente.Bajo),
-            muestraDeSangre.nivelFerritina.isa(NivelComponente.Normal) || muestraDeSangre.nivelFerritina.isa(NivelComponente.Alto),
+            muestraDeSangre.nivelFerritina.isa(NivelComponente.Normal)
+             || muestraDeSangre.nivelFerritina.isa(NivelComponente.Alto),
             muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(NivelComponente.Normal),
             muestraDeSangre.nivelReticulocitos.isa(NivelComponente.Alto),
             muestraDeSangre.nivelHematies.isa(NivelComponente.Bajo)
@@ -558,7 +566,8 @@ lock-on-active agenda-group "diagnosticoFinal"
             muestraDeSangre.nivelTransferrina.isa(NivelComponente.Bajo),
             muestraDeSangre.nivelFerritina.isa(NivelComponente.Alto),
             muestraDeSangre.nivelAmplitudDistribucionEritrocitaria.isa(NivelComponente.Normal),
-            muestraDeSangre.nivelReticulocitos.isa(NivelComponente.Bajo) || muestraDeSangre.nivelReticulocitos.isa(NivelComponente.Normal),
+            muestraDeSangre.nivelReticulocitos.isa(NivelComponente.Bajo)
+             || muestraDeSangre.nivelReticulocitos.isa(NivelComponente.Normal),
             muestraDeSangre.nivelHematies.isa(NivelComponente.Bajo)
        )
     then
